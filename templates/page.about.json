@@ -1,0 +1,353 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "hero_HyBiF8": {
+      "type": "hero",
+      "blocks": {
+        "text_Af4Ge3": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Because your pets<br/>deserve the absolute best!</h1>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_GMgqpQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>We started PawPal because every pet deserves products you can actually trust — made by people who are just as obsessed with animals as you are.</strong></p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_rd9LJq": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop now",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_Af4Ge3",
+        "text_GMgqpQ",
+        "button_rd9LJq"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/this-is-my-paw-store-and-i-want-to-design-a-hero-image-that-matches-the-store.png",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-5",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "pawpal_about": {
+      "type": "about-pet-master",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "stat_number": "50K+",
+            "stat_label": "Happy Pets"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "stat_number": "4.9★",
+            "stat_label": "Average Rating"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "stat_number": "24/7",
+            "stat_label": "Support"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "stat_number": "100%",
+            "stat_label": "Love Guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "bg_color": "#FFF9F0",
+        "badge_text": "🐾 Our Story",
+        "heading_top": "Because your pets",
+        "heading_pink": "deserve the",
+        "heading_teal": "absolute best!",
+        "subtext": "We started PawPal because every pet deserves products you can actually trust — made by people who are just as obsessed with animals as you are.",
+        "btn_1_text": "Shop Now 🛍️",
+        "btn_1_link": "shopify://collections/all",
+        "btn_2_text": "Meet the Team 👋",
+        "btn_2_link": "",
+        "emojis": "🐶🐱🐰🐹🦜",
+        "pink_color": "#FF8BA7",
+        "teal_color": "#44D7B6",
+        "accent_color": "#FFEBAD",
+        "stats_bg_color": "#1A1A2E"
+      }
+    },
+    "about_history": {
+      "type": "about-history",
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "card_bg_gradient": "linear-gradient(180deg, #FFF0F0 0%, #FFDEDE 100%)",
+        "badge_year": "2016",
+        "badge_text": "Started with love",
+        "badge_bg_color": "#44D7B6",
+        "top_badge_label": "How it all started",
+        "top_badge_bg_color": "#FFEBAD",
+        "heading": "One dog. One frustrated owner. One big idea.",
+        "content": "<p>Our founder [Name] had a scruffy rescue pup named Biscuit who had the most sensitive tummy on the planet. The shelves were full of products loaded with mystery ingredients — so [Name] decided to do something about it.</p><p>What started in a tiny kitchen with a dog food recipe became PawPal — a brand obsessed with making pet care genuinely good, ridiculously fun, and 100% trustworthy.</p><p>Biscuit has since approved every single product we've launched. (He's very thorough.)</p>"
+      }
+    },
+    "about_quote": {
+      "type": "about-quote",
+      "settings": {
+        "section_bg_color": "#FF8BA7",
+        "card_bg_color": "#1A1A2E",
+        "quote_text": "Every pet deserves to live their best, most tail-waggingest life. We exist to make that happen — one treat, one toy, one belly rub at a time.",
+        "quote_color": "#FFEBAD",
+        "author_text": "[FOUNDER NAME], CHIEF BISCUIT OFFICER & FOUNDER",
+        "author_color": "#ffffff",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "about_values": {
+      "type": "about-values",
+      "blocks": {
+        "value_1": {
+          "type": "value",
+          "settings": {
+            "bg_color": "#FFF9E6",
+            "icon": "🔬",
+            "title": "Science, not guesswork",
+            "description": "Every formula is developed with vets and pet nutritionists. If it doesn't work, it doesn't ship. Period."
+          }
+        },
+        "value_2": {
+          "type": "value",
+          "settings": {
+            "bg_color": "#E6FFF9",
+            "icon": "🌱",
+            "title": "Kind to the planet",
+            "description": "Eco-friendly packaging, responsibly sourced ingredients, and carbon-offset shipping. Biscuit cares about the environment too."
+          }
+        },
+        "value_3": {
+          "type": "value",
+          "settings": {
+            "bg_color": "#FFE6F0",
+            "icon": "🤝",
+            "title": "Pet parents first",
+            "description": "You're trusting us with your family — we take that seriously. 24/7 support, easy returns, no nonsense."
+          }
+        },
+        "value_4": {
+          "type": "value",
+          "settings": {
+            "bg_color": "#F0E6FF",
+            "icon": "🏡",
+            "title": "Shelter love",
+            "description": "10% of every sale goes to pet shelters. Because every animal deserves a loving home and a full belly."
+          }
+        },
+        "value_5": {
+          "type": "value",
+          "settings": {
+            "bg_color": "#E6F4FF",
+            "icon": "🔍",
+            "title": "Nothing to hide",
+            "description": "Full ingredient transparency on every product. Scan the QR code and see exactly what's inside — and why."
+          }
+        },
+        "value_6": {
+          "type": "value",
+          "settings": {
+            "bg_color": "#FFF5E6",
+            "icon": "✨",
+            "title": "Always improving",
+            "description": "Our R&D team is constantly formulating something new. If your pet can imagine it, we're probably already making it."
+          }
+        }
+      },
+      "block_order": [
+        "value_1",
+        "value_2",
+        "value_3",
+        "value_4",
+        "value_5",
+        "value_6"
+      ],
+      "settings": {
+        "bg_color": "#FFFDF5",
+        "top_badge_label": "💛 What we believe",
+        "top_badge_bg_color": "#FFEBAD",
+        "heading": "Our values (aka our paw-mise to you)",
+        "subtext": "These aren't just words on a wall. They're how we make every single decision — big and small.",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "about_cta": {
+      "type": "about-cta",
+      "blocks": {
+        "promise_1": {
+          "type": "promise",
+          "settings": {
+            "icon": "🐾",
+            "label": "Vet-Approved"
+          }
+        },
+        "promise_2": {
+          "type": "promise",
+          "settings": {
+            "icon": "🌿",
+            "label": "Natural Ingredients"
+          }
+        },
+        "promise_3": {
+          "type": "promise",
+          "settings": {
+            "icon": "📦",
+            "label": "Free Shipping"
+          }
+        },
+        "promise_4": {
+          "type": "promise",
+          "settings": {
+            "icon": "💛",
+            "label": "30-Day Returns"
+          }
+        }
+      },
+      "block_order": [
+        "promise_1",
+        "promise_2",
+        "promise_3",
+        "promise_4"
+      ],
+      "settings": {
+        "promise_bg_color": "#44D7B6",
+        "promise_badge_label": "🎯 Our Guarantee",
+        "promise_heading": "The PawPal Promise",
+        "cta_bg_color": "#1A1A2E",
+        "cta_heading": "Ready to make your pet do a happy dance?",
+        "cta_heading_color": "#FFEBAD",
+        "cta_subtext": "Join 50,000+ pet parents who switched to PawPal.",
+        "btn_1_text": "Shop All Products 🛒",
+        "btn_1_link": "shopify://collections/all",
+        "btn_2_text": "Say Hello 💌",
+        "btn_2_link": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_HyBiF8",
+    "pawpal_about",
+    "about_history",
+    "about_quote",
+    "about_values",
+    "about_cta"
+  ]
+}

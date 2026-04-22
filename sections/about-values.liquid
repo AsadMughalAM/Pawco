@@ -1,0 +1,260 @@
+{% comment %}
+  Section: About Values
+  A grid of value cards with customized backgrounds and icons.
+{% endcomment %}
+
+<div id="AboutValues-{{ section.id }}" class="about-values-wrapper section-spacing">
+  <div class="page-width">
+    <!-- Header Area -->
+    <div class="about-values-header">
+      <div class="about-values-top-badge" style="background-color: {{ section.settings.top_badge_bg_color }};">
+         {{ section.settings.top_badge_label }}
+      </div>
+      
+      <h2 class="about-values-heading">{{ section.settings.heading }}</h2>
+      
+      {% if section.settings.subtext != blank %}
+        <p class="about-values-subtext">{{ section.settings.subtext }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Values Grid -->
+    <div class="about-values-grid">
+      {% for block in section.blocks %}
+        <div class="about-value-card" {{ block.shopify_attributes }} 
+             style="background-color: {{ block.settings.bg_color }};">
+          
+          <div class="value-icon">{{ block.settings.icon }}</div>
+          <h3 class="value-title">{{ block.settings.title }}</h3>
+          <p class="value-desc">{{ block.settings.description }}</p>
+          
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #AboutValues-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+  }
+
+  .about-values-header {
+    margin-bottom: 60px;
+  }
+
+  .about-values-top-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 3px solid #1A1A2E;
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 25px;
+    box-shadow: 4px 4px 0px #1A1A2E;
+  }
+
+  .about-values-heading {
+    font-family: 'Fredoka', 'Outfit', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 900;
+    color: #1A1A2E;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+  }
+
+  .about-values-subtext {
+    font-size: 20px;
+    color: #444;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  /* Grid Layout */
+  .about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .about-value-card {
+    border: 3px solid #1A1A2E;
+    border-radius: 30px;
+    padding: 40px 30px;
+    box-shadow: 8px 8px 0px #1A1A2E;
+    transition: transform 0.2s;
+  }
+
+  /* Icons can be emojis or small images */
+  .value-icon {
+    font-size: 40px;
+    margin-bottom: 25px;
+  }
+
+  .value-title {
+    font-family: 'Fredoka', 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #1A1A2E;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+  }
+
+  .value-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .about-values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-values-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-values-header {
+      text-align: center;
+    }
+    .about-values-subtext {
+      margin: 0 auto;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About Values",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#FFFDF5"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Header Text"
+    },
+    {
+      "type": "text",
+      "id": "top_badge_label",
+      "label": "Top Badge Label",
+      "default": "💛 What we believe"
+    },
+    {
+      "type": "color",
+      "id": "top_badge_bg_color",
+      "label": "Top Badge Background",
+      "default": "#FFEBAD"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our values (aka our paw-mise to you)"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "These aren't just words on a wall. They're how we make every single decision — big and small."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value Card",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Card Background",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji or SVG)",
+          "default": "🐾"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Value Header"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Add your value description here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Values",
+      "blocks": [
+        { "type": "value", "settings": { "bg_color": "#FFF9E6", "icon": "🔬", "title": "Science, not guesswork" } },
+        { "type": "value", "settings": { "bg_color": "#E6FFF9", "icon": "🌱", "title": "Kind to the planet" } },
+        { "type": "value", "settings": { "bg_color": "#FFE6F0", "icon": "🤝", "title": "Pet parents first" } },
+        { "type": "value", "settings": { "bg_color": "#F0E6FF", "icon": "🏡", "title": "Shelter love" } },
+        { "type": "value", "settings": { "bg_color": "#E6F4FF", "icon": "🔍", "title": "Nothing to hide" } },
+        { "type": "value", "settings": { "bg_color": "#FFF5E6", "icon": "✨", "title": "Always improving" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

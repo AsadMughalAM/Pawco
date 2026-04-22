@@ -1,0 +1,488 @@
+
+
+{% liquid
+  assign should_render = section.settings.enabled
+  assign display_style = section.settings.display_style | default: 'marquee'
+
+  assign visibility = section.settings.visibility
+  assign template_base = template.name | downcase
+  assign template_key = template_base
+  if template.suffix != blank
+    assign template_key = template_base | append: '.' | append: template.suffix | downcase
+  endif
+
+  assign template_list = section.settings.template_allowlist
+  assign template_list = template_list | downcase | replace: '\r', '\n' | replace: '\n', ',' | split: ','
+  assign template_match = false
+  for item in template_list
+    assign cleaned = item | strip
+    if cleaned != blank
+      if cleaned == template_base or cleaned == template_key
+        assign template_match = true
+      endif
+    endif
+  endfor
+
+  assign page_list = section.settings.page_allowlist
+  assign page_list = page_list | downcase | replace: '\r', '\n' | replace: '\n', ',' | split: ','
+  assign page_match = false
+  if request.page_type == 'page' and page != blank
+    assign page_handle = page.handle | downcase
+    for item in page_list
+      assign cleaned = item | strip
+      if cleaned != blank and cleaned == page_handle
+        assign page_match = true
+      endif
+    endfor
+  endif
+
+  if should_render
+    case visibility
+      when 'all'
+        assign should_render = true
+      when 'only_templates'
+        assign should_render = template_match
+      when 'exclude_templates'
+        if template_match
+          assign should_render = false
+        endif
+      when 'only_pages'
+        assign should_render = page_match
+      when 'exclude_pages'
+        if page_match
+          assign should_render = false
+        endif
+    endcase
+  endif
+%}
+
+{% if display_style == 'slider' and section.blocks.size > 1 %}
+  <script
+    src="{{ 'announcement-bar.js' | asset_url }}"
+    type="module"
+    fetchpriority="low"
+  ></script>
+{% endif %}
+
+{% if display_style != 'slider' %}
+  <script
+    src="{{ 'marquee.js' | asset_url }}"
+    type="module"
+    fetchpriority="low"
+  ></script>
+{% endif %}
+
+{% if should_render %}
+{%- capture section_blocks -%}
+  {% content_for 'blocks' %}
+{%- endcapture -%}
+
+<aside
+  class="announcement-bar spacing-style section section--full-width color-{{ section.settings.color_scheme }}"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    --border-bottom-width: {{ section.settings.divider_width }}px;
+    position: relative;
+    z-index: 10;
+    display: block;
+    {% if section.settings.use_custom_colors %}
+      --pp-announcement-bg: {{ section.settings.custom_bg_color }};
+      --pp-announcement-text: {{ section.settings.custom_text_color }};
+      background-color: var(--pp-announcement-bg);
+      color: var(--pp-announcement-text);
+      --color-foreground: var(--pp-announcement-text);
+    {% endif %}
+  "
+>
+  {% if display_style != 'slider' %}
+    <marquee-component
+      class="announcement-marquee"
+      style="
+        --marquee-gap: {{ section.settings.marquee_gap }}px;
+        --marquee-direction: normal;
+        color: inherit;
+      "
+      data-speed-factor="{{ section.settings.marquee_duration | default: 25 }}"
+    >
+      <div class="marquee__wrapper" ref="wrapper">
+        <div class="marquee__content" ref="content">
+          <div class="marquee__repeated-items" ref="marqueeItems[]">
+            {{ section_blocks }}
+          </div>
+        </div>
+      </div>
+    </marquee-component>
+  {% else %}
+    {% liquid
+      assign autoplay = false
+      assign show_arrows = false
+      if section.blocks.size > 1
+        assign autoplay = true
+        assign show_arrows = true
+      endif
+    %}
+
+    <announcement-bar-component
+      class="announcement-bar__slider"
+      {% if autoplay == true %}
+        autoplay="{{ section.settings.speed }}" aria-live="polite"
+      {% endif %}
+    >
+      {% if show_arrows %}
+        {% render 'slideshow-arrows', icon_style: 'chevron' %}
+      {% endif %}
+
+      <div class="announcement-bar__slides">
+        {{ section_blocks }}
+      </div>
+    </announcement-bar-component>
+  {% endif %}
+</aside>
+{% endif %}
+
+{% stylesheet %}
+  .announcement-bar {
+    border-block-end: var(--border-bottom-width) solid var(--color-border);
+  }
+
+  .announcement-bar__slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+
+    @media screen and (max-width: 749px) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .announcement-bar__slides {
+    display: grid;
+    grid: [stack] auto / [stack] auto;
+    width: calc(100% - var(--button-size) * 2);
+    max-width: 680px;
+    margin-inline: auto;
+  }
+
+  .announcement-bar__slides > * {
+    grid-area: stack;
+  }
+
+  .announcement-bar__slide {
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    content-visibility: visible;
+
+    &[aria-hidden='true'] {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .announcement-bar__slider slideshow-arrows {
+    padding: 0;
+    mix-blend-mode: normal;
+  }
+
+  .announcement-bar__slider slideshow-arrows .slideshow-control {
+    color: var(--color-foreground);
+  }
+
+  .announcement-bar__slider .slideshow-control {
+    display: flex;
+    padding: 0;
+    width: var(--button-size);
+    height: var(--button-size);
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    animation: none;
+
+    @media screen and (min-width: 750px) {
+      --slideshow-control-offset: calc((var(--button-size) - var(--icon-size-xs)) / 2);
+
+      .section--page-width &.slideshow-control--previous {
+        transform: translateX(var(--slideshow-control-offset));
+      }
+    }
+  }
+
+  .announcement-bar__slider .slideshow-control .svg-wrapper {
+    width: var(--icon-size-xs);
+    height: var(--icon-size-xs);
+  }
+
+  .announcement-bar__slide {
+    place-content: center;
+  }
+
+  .announcement-bar__text:first-child {
+    margin: 0;
+  }
+
+  .announcement-bar__link {
+    position: absolute;
+    inset: 0;
+  }
+
+  .announcement-marquee {
+    overflow: hidden;
+    width: 100%;
+    color: var(--pp-announcement-text, var(--color-foreground));
+    --marquee-speed: 20s; /* Default speed */
+  }
+
+  marquee-component.announcement-marquee {
+    display: block;
+  }
+
+  .marquee__wrapper {
+    display: flex;
+    gap: var(--marquee-gap);
+    width: max-content;
+    white-space: nowrap;
+  }
+
+  .marquee__content {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+    background: transparent;
+  }
+
+  .marquee__repeated-items {
+    min-width: max-content;
+    display: flex;
+    gap: var(--marquee-gap);
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    marquee-component.announcement-marquee .marquee__wrapper {
+      animation: marquee-motion var(--marquee-speed) linear infinite var(--marquee-direction);
+    }
+  }
+
+  @keyframes marquee-motion {
+    to {
+      transform: translate3d(calc(-50% - (var(--marquee-gap) / 2)), 0, 0);
+    }
+  }
+
+  /* Ensure blocks inside marquee are visible and correctly styled */
+  .announcement-marquee slideshow-slide {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: none !important;
+    padding-inline: 0 !important;
+    background: transparent !important;
+  }
+
+  .announcement-marquee .announcement-bar__text {
+    margin: 0;
+    white-space: nowrap;
+    color: inherit !important;
+    font-weight: 900;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+  }
+
+  .announcement-marquee .announcement-bar__link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    marquee-component.announcement-marquee .marquee__wrapper {
+      animation: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.announcement_bar",
+  "blocks": [
+    {
+      "type": "_announcement"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Enable announcement bar",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "display_style",
+      "label": "Display style",
+      "options": [
+        { "value": "marquee", "label": "Infinite marquee" },
+        { "value": "slider", "label": "Slider (arrows)" }
+      ],
+      "default": "marquee"
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "Show on",
+      "options": [
+        { "value": "all", "label": "All pages" },
+        { "value": "only_templates", "label": "Only specific templates" },
+        { "value": "exclude_templates", "label": "All except templates" },
+        { "value": "only_pages", "label": "Only specific pages" },
+        { "value": "exclude_pages", "label": "All except pages" }
+      ],
+      "default": "all"
+    },
+    {
+      "type": "textarea",
+      "id": "template_allowlist",
+      "label": "Template list",
+      "info": "Comma/newline separated template names, e.g. page.about, page.pawpal-about",
+      "default": "page.about, page.pawpal-about"
+    },
+    {
+      "type": "textarea",
+      "id": "page_allowlist",
+      "label": "Page handle list",
+      "info": "Comma/newline separated page handles (Pages only), e.g. about, our-story",
+      "default": "about"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "t:settings.scroll_speed",
+      "min": 2,
+      "max": 10,
+      "default": 5,
+      "unit": "sec"
+    },
+    {
+      "type": "range",
+      "id": "marquee_duration",
+      "label": "Marquee duration",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "sec",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "marquee_gap",
+      "label": "Marquee item spacing",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-4",
+      "label": "t:settings.color_scheme"
+    },
+    {
+      "type": "header",
+      "content": "Custom colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_colors",
+      "label": "Override background/text colors",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "custom_bg_color",
+      "label": "Background color",
+      "default": "#FF8A00"
+    },
+    {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "divider_width",
+      "label": "t:settings.divider_thickness",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.announcement_bar",
+      "blocks": {
+        "announcement_1": {
+          "type": "_announcement"
+        }
+      },
+      "block_order": ["announcement_1"]
+    }
+  ]
+}
+{% endschema %}

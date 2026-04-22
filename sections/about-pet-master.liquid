@@ -1,0 +1,141 @@
+{% comment %}
+  Custom Section for Merchant Ease: Text and Colors are editable from Sidebar
+{% endcomment %}
+
+<div id="PawpalSection-{{ section.id }}" class="pp-section-wrapper">
+  {% liquid
+    assign stat_blocks = section.blocks | where: 'type', 'stat'
+  %}
+
+  <section class="pp-hero">
+    <div class="pp-dot pp-dot-1"></div>
+    <div class="pp-dot pp-dot-2"></div>
+
+    <div class="pp-badge">{{ section.settings.badge_text }}</div>
+
+    <h1 class="pp-main-title">
+      {{ section.settings.heading_top }}<br>
+      <span class="pp-pink">{{ section.settings.heading_pink }}</span>
+      <span class="pp-teal">{{ section.settings.heading_teal }}</span>
+    </h1>
+
+    <p class="pp-subtext">{{ section.settings.subtext }}</p>
+
+    <div class="pp-btns">
+      {% if section.settings.btn_1_link != blank %}
+        <a href="{{ section.settings.btn_1_link }}" class="pp-btn pp-btn-pink">{{ section.settings.btn_1_text }}</a>
+      {% else %}
+        <span class="pp-btn pp-btn-pink" role="link" aria-disabled="true">{{ section.settings.btn_1_text }}</span>
+      {% endif %}
+
+      {% if section.settings.btn_2_link != blank %}
+        <a href="{{ section.settings.btn_2_link }}" class="pp-btn pp-btn-white">{{ section.settings.btn_2_text }}</a>
+      {% else %}
+        <span class="pp-btn pp-btn-white" role="link" aria-disabled="true">{{ section.settings.btn_2_text }}</span>
+      {% endif %}
+    </div>
+
+    <div class="pp-emojis">
+      {{ section.settings.emojis }}
+    </div>
+
+    <svg class="pp-wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="{{ section.settings.stats_bg_color }}"></path>
+    </svg>
+  </section>
+
+  <div class="pp-stats" style="background-color: {{ section.settings.stats_bg_color }};">
+    <div class="pp-stats-grid">
+      {% for block in stat_blocks %}
+        <div class="pp-stat" {{ block.shopify_attributes }}>
+          <h3 style="color: {{ section.settings.accent_color }};">{{ block.settings.stat_number }}</h3>
+          <p>{{ block.settings.stat_label }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #PawpalSection-{{ section.id }} {
+    --pink: {{ section.settings.pink_color }};
+    --teal: {{ section.settings.teal_color }};
+    --dark: #1A1A2E;
+    --cream: {{ section.settings.bg_color }};
+    font-family: 'Fredoka', 'Outfit', sans-serif;
+  }
+
+  #PawpalSection-{{ section.id }} .pp-hero { background: var(--cream); padding: 80px 20px; text-align: center; position: relative; overflow: hidden; }
+  #PawpalSection-{{ section.id }} .pp-dot { position: absolute; border-radius: 50%; filter: blur(50px); opacity: 0.3; z-index: 1; }
+  #PawpalSection-{{ section.id }} .pp-dot-1 { width: 200px; height: 200px; background: var(--pink); top: -20px; left: -20px; }
+  #PawpalSection-{{ section.id }} .pp-dot-2 { width: 150px; height: 150px; background: {{ section.settings.accent_color }}; top: 10%; right: -20px; }
+
+  #PawpalSection-{{ section.id }} .pp-badge { background: #000; color: #fff; padding: 8px 20px; border-radius: 50px; display: inline-block; margin-bottom: 20px; font-weight: 700; position: relative; z-index: 5; }
+  #PawpalSection-{{ section.id }} .pp-main-title { font-size: clamp(35px, 7vw, 70px); font-weight: 900; line-height: 1.1; margin: 0 0 20px 0; color: var(--dark); position: relative; z-index: 5; }
+  #PawpalSection-{{ section.id }} .pp-pink { color: var(--pink); display: block; }
+  #PawpalSection-{{ section.id }} .pp-teal { color: var(--teal); display: block; }
+  #PawpalSection-{{ section.id }} .pp-subtext { max-width: 650px; margin: 0 auto 35px; font-size: 18px; color: #444; position: relative; z-index: 5; }
+
+  #PawpalSection-{{ section.id }} .pp-btns { display: flex; gap: 15px; justify-content: center; margin-bottom: 40px; position: relative; z-index: 5; flex-wrap: wrap; }
+  #PawpalSection-{{ section.id }} .pp-btn { text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 900; border: 3px solid var(--dark); box-shadow: 4px 4px 0px var(--dark); transition: 0.2s; display: inline-block; }
+  #PawpalSection-{{ section.id }} .pp-btn-pink { background: var(--pink); color: #fff; }
+  #PawpalSection-{{ section.id }} .pp-btn-white { background: #fff; color: var(--dark); }
+
+  #PawpalSection-{{ section.id }} .pp-emojis { font-size: 45px; display: flex; justify-content: center; gap: 15px; position: relative; z-index: 5; }
+  #PawpalSection-{{ section.id }} .pp-wave { position: absolute; bottom: 0; left: 0; width: 100%; height: 80px; }
+
+  #PawpalSection-{{ section.id }} .pp-stats { color: #fff; padding: 50px 20px; }
+  #PawpalSection-{{ section.id }} .pp-stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center; }
+  #PawpalSection-{{ section.id }} .pp-stat h3 { font-size: 35px; margin: 0; font-weight: 900; }
+  #PawpalSection-{{ section.id }} .pp-stat p { margin: 5px 0 0 0; opacity: 0.8; }
+
+  @media (max-width: 768px) {
+    #PawpalSection-{{ section.id }} .pp-btns { flex-direction: column; align-items: center; }
+    #PawpalSection-{{ section.id }} .pp-btn { width: 100%; max-width: 280px; text-align: center; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About Pet Master",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FFF9F0" },
+    { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "🐾 Our Story" },
+    { "type": "text", "id": "heading_top", "label": "Heading Black Part", "default": "Because your pets" },
+    { "type": "text", "id": "heading_pink", "label": "Heading Pink Part", "default": "deserve the" },
+    { "type": "text", "id": "heading_teal", "label": "Heading Teal Part", "default": "absolute best!" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "We started PawPal because every pet deserves..." },
+    { "type": "text", "id": "btn_1_text", "label": "Button 1 Text", "default": "Shop Now 🛍️" },
+    { "type": "url", "id": "btn_1_link", "label": "Button 1 Link" },
+    { "type": "text", "id": "btn_2_text", "label": "Button 2 Text", "default": "Meet the Team 👋" },
+    { "type": "url", "id": "btn_2_link", "label": "Button 2 Link" },
+    { "type": "text", "id": "emojis", "label": "Emojis Footer", "default": "🐶🐱🐰🐹🦜" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "pink_color", "label": "Main Pink Color", "default": "#FF8BA7" },
+    { "type": "color", "id": "teal_color", "label": "Main Teal Color", "default": "#44D7B6" },
+    { "type": "color", "id": "accent_color", "label": "Accent Yellow", "default": "#FFEBAD" },
+    { "type": "color", "id": "stats_bg_color", "label": "Stats Bar Background", "default": "#1A1A2E" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat Card",
+      "settings": [
+        { "type": "text", "id": "stat_number", "label": "Number", "default": "50K+" },
+        { "type": "text", "id": "stat_label", "label": "Label", "default": "Happy Pets" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Pet Master",
+      "blocks": [
+        { "type": "stat" },
+        { "type": "stat" },
+        { "type": "stat" },
+        { "type": "stat" }
+      ]
+    }
+  ]
+}
+{% endschema %}

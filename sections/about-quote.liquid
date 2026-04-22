@@ -1,0 +1,169 @@
+{% comment %}
+  Section: About Quote
+  A stylized quote section with a dark card on a colored background.
+{% endcomment %}
+
+<div id="AboutQuote-{{ section.id }}" class="about-quote-wrapper">
+  <div class="page-width">
+    <div class="about-quote-card" style="background-color: {{ section.settings.card_bg_color }};">
+      
+      {% if section.settings.show_pattern %}
+        <div class="about-quote-pattern">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+             <path d="M20,20 Q25,10 30,20 T40,20" fill="rgba(255,255,255,0.05)" />
+             <!-- Simple paw shape placeholder or pattern -->
+          </svg>
+        </div>
+      {% endif %}
+
+      <div class="about-quote-content">
+        <h2 class="about-quote-text" style="color: {{ section.settings.quote_color }};">
+          "{{ section.settings.quote_text }}"
+        </h2>
+        
+        <p class="about-quote-author" style="color: {{ section.settings.author_color }};">
+          &mdash; {{ section.settings.author_text }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #AboutQuote-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .about-quote-card {
+    position: relative;
+    border-radius: 40px;
+    padding: 80px 40px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.15);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .about-quote-pattern {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: 150px;
+    opacity: 0.1;
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="white"><path d="M256 160c12.2 0 24.2 1.4 35.6 3.9C304.7 90.3 361.6 32 432 32c53 0 96 43 96 96c0 37.6-21.6 70.1-53.1 85.9c3 13.1 5.1 26.6 5.1 40.1c0 106-86 192-192 192c-56.2 0-106.8-24.1-142.2-62.7c-21.7 13.9-47.5 22.7-75.3 22.7c-75.1 0-136-60.9-136-136c0-37.5 15.2-71.4 39.8-96c-24.6-24.6-39.8-58.5-39.8-96c0-75.1 60.9-136 136-136c70.4 0 127.3 58.3 140.4 132.1c11.4-2.5 23.4-3.9 35.6-3.9z"/></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .about-quote-text {
+    font-family: 'Fredoka', 'Outfit', sans-serif;
+    font-size: clamp(24px, 4vw, 42px);
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 30px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-quote-author {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .about-quote-card {
+      padding: 60px 20px;
+      border-radius: 30px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About Quote",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#FF8BA7"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Quote Content"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_text",
+      "label": "Quote Text",
+      "default": "Every pet deserves to live their best, most tail-waggingest life. We exist to make that happen — one treat, one toy, one belly rub at a time."
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote Color",
+      "default": "#FFEBAD"
+    },
+    {
+      "type": "text",
+      "id": "author_text",
+      "label": "Author/Attribution",
+      "default": "[FOUNDER NAME], CHIEF BISCUIT OFFICER & FOUNDER"
+    },
+    {
+      "type": "color",
+      "id": "author_color",
+      "label": "Author Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pattern",
+      "label": "Show Paw Pattern",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Quote"
+    }
+  ]
+}
+{% endschema %}

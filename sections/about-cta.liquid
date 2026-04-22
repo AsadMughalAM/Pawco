@@ -1,0 +1,314 @@
+{% comment %}
+  Section: About CTA & Promise
+  A two-part section featuring a promise bar and a call-to-action bottom area.
+{% endcomment %}
+
+<div id="AboutCTA-{{ section.id }}" class="about-cta-wrapper">
+  
+  <!-- Top Part: Promise Bar -->
+  <div class="about-promise-bar" style="background-color: {{ section.settings.promise_bg_color }};">
+    <div class="page-width">
+      <div class="about-promise-header">
+        <div class="about-promise-badge">
+          {{ section.settings.promise_badge_label }}
+        </div>
+        <h2 class="about-promise-heading">{{ section.settings.promise_heading }}</h2>
+      </div>
+
+      <div class="about-promise-icons">
+        {% for block in section.blocks %}
+          {% if block.type == 'promise' %}
+            <div class="promise-item" {{ block.shopify_attributes }}>
+              <div class="promise-icon">{{ block.settings.icon }}</div>
+              <span class="promise-label">{{ block.settings.label }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Part: CTA Area -->
+  <div class="about-cta-main" style="background-color: {{ section.settings.cta_bg_color }};">
+    <div class="page-width">
+      <div class="about-cta-content">
+        <div class="about-cta-icon">🐾</div>
+        
+        <h2 class="about-cta-heading" style="color: {{ section.settings.cta_heading_color }};">
+          {{ section.settings.cta_heading }}
+        </h2>
+        
+        <p class="about-cta-subtext">{{ section.settings.cta_subtext }}</p>
+        
+        <div class="about-cta-buttons">
+          {% if section.settings.btn_1_text != blank %}
+            <a href="{{ section.settings.btn_1_link | default: '#' }}" class="pp-btn pp-btn-orange">
+              {{ section.settings.btn_1_text }}
+            </a>
+          {% endif %}
+          
+          {% if section.settings.btn_2_text != blank %}
+            <a href="{{ section.settings.btn_2_link | default: '#' }}" class="pp-btn pp-btn-outline">
+              {{ section.settings.btn_2_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .about-cta-wrapper {
+    overflow: hidden;
+  }
+
+  /* Promise Bar Styles */
+  .about-promise-bar {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .about-promise-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 3px solid #1A1A2E;
+    font-weight: 800;
+    font-size: 14px;
+    background: #FFEBAD;
+    margin-bottom: 20px;
+  }
+
+  .about-promise-heading {
+    font-family: 'Fredoka', 'Outfit', sans-serif;
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 900;
+    color: #1A1A2E;
+    margin: 0 0 40px 0;
+  }
+
+  .about-promise-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .promise-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .promise-icon {
+    font-size: 40px;
+  }
+
+  .promise-label {
+    font-weight: 900;
+    font-size: 18px;
+    color: #1A1A2E;
+  }
+
+  /* CTA Main Styles */
+  .about-cta-main {
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  .about-cta-icon {
+    font-size: 60px;
+    opacity: 0.15;
+    margin-bottom: 30px;
+  }
+
+  .about-cta-heading {
+    font-family: 'Fredoka', 'Outfit', sans-serif;
+    font-size: clamp(35px, 6vw, 65px);
+    font-weight: 900;
+    line-height: 1;
+    margin: 0 0 25px 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-cta-subtext {
+    font-size: 22px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 45px;
+    font-weight: 500;
+  }
+
+  .about-cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Re-use/Define Buttons */
+  .pp-btn {
+    text-decoration: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 18px;
+    border: 3px solid #1A1A2E;
+    box-shadow: 4px 4px 0px #1A1A2E;
+    transition: 0.2s;
+    display: inline-block;
+  }
+
+  .pp-btn-orange {
+    background: #FF8F6B;
+    color: #fff;
+  }
+
+  .pp-btn-outline {
+    background: transparent;
+    color: #fff;
+    border-color: #ffffff;
+    box-shadow: 4px 4px 0px #444;
+  }
+
+  .pp-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #1A1A2E;
+  }
+
+  @media (max-width: 768px) {
+    .about-promise-icons {
+      gap: 20px;
+    }
+    .promise-item {
+      width: calc(50% - 10px);
+    }
+    .pp-btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About Promise & CTA",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Promise Bar (Top)"
+    },
+    {
+      "type": "color",
+      "id": "promise_bg_color",
+      "label": "Promise Background",
+      "default": "#44D7B6"
+    },
+    {
+      "type": "text",
+      "id": "promise_badge_label",
+      "label": "Badge Label",
+      "default": "🎯 Our Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "promise_heading",
+      "label": "Heading",
+      "default": "The PawPal Promise"
+    },
+    {
+      "type": "header",
+      "content": "CTA Area (Bottom)"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "CTA Background",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA Heading",
+      "default": "Ready to make your pet do a happy dance?"
+    },
+    {
+      "type": "color",
+      "id": "cta_heading_color",
+      "label": "Heading Color",
+      "default": "#FFEBAD"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_subtext",
+      "label": "CTA Subtext",
+      "default": "Join 50,000+ pet parents who switched to PawPal."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn_1_text",
+      "label": "Button 1 Text",
+      "default": "Shop All Products 🛒"
+    },
+    {
+      "type": "url",
+      "id": "btn_1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_2_text",
+      "label": "Button 2 Text",
+      "default": "Say Hello 💌"
+    },
+    {
+      "type": "url",
+      "id": "btn_2_link",
+      "label": "Button 2 Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promise",
+      "name": "Promise Icon",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji)",
+          "default": "🐾"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Vet-Approved"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Promise & CTA",
+      "blocks": [
+        { "type": "promise", "settings": { "icon": "🐾", "label": "Vet-Approved" } },
+        { "type": "promise", "settings": { "icon": "🌿", "label": "Natural Ingredients" } },
+        { "type": "promise", "settings": { "icon": "📦", "label": "Free Shipping" } },
+        { "type": "promise", "settings": { "icon": "💛", "label": "30-Day Returns" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

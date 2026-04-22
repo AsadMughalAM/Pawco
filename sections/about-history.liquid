@@ -1,0 +1,294 @@
+{% comment %}
+  Section: About History
+  A split-layout section with a decorative card on the left and content on the right.
+{% endcomment %}
+
+<div id="AboutHistory-{{ section.id }}" class="about-history-wrapper section-spacing">
+  <div class="page-width">
+    <div class="about-history-grid">
+      
+      <!-- Left Column: Card -->
+      <div class="about-history-card-container">
+        <div class="about-history-card" style="background: {{ section.settings.card_bg_gradient }};">
+          {% if section.settings.main_image != blank %}
+            <img src="{{ section.settings.main_image | image_url: width: 800 }}" 
+                 alt="{{ section.settings.main_image.alt | default: 'About illustration' }}"
+                 class="about-history-main-img"
+                 loading="lazy">
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg about-history-main-img' }}
+          {% endif %}
+          
+          <div class="about-history-floating-badge" style="background-color: {{ section.settings.badge_bg_color }};">
+            <span class="badge-year">{{ section.settings.badge_year }}</span>
+            <span class="badge-text">{{ section.settings.badge_text }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Content -->
+      <div class="about-history-content">
+        <div class="about-history-top-badge" style="background-color: {{ section.settings.top_badge_bg_color }};">
+          {{ section.settings.top_badge_label }}
+        </div>
+        
+        <h2 class="about-history-heading">{{ section.settings.heading }}</h2>
+        
+        <div class="about-history-text rte">
+          {{ section.settings.content }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  #AboutHistory-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .about-history-wrapper {
+    overflow: hidden;
+  }
+
+  .about-history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Card Styles */
+  .about-history-card-container {
+    position: relative;
+    padding: 20px;
+  }
+
+  .about-history-card {
+    position: relative;
+    aspect-ratio: 0.85 / 1;
+    border: 4px solid var(--dark);
+    border-radius: 35px;
+    box-shadow: 15px 15px 0px var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .about-history-main-img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    z-index: 1;
+  }
+
+  .about-history-floating-badge {
+    position: absolute;
+    bottom: -5%;
+    right: -5%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(-8deg);
+    z-index: 10;
+    box-shadow: 6px 6px 0px var(--dark);
+  }
+
+  .badge-year {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--dark);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .badge-text {
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--dark);
+    max-width: 90px;
+    text-transform: capitalize;
+  }
+
+  /* Content Styles */
+  .about-history-top-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 3px solid var(--dark);
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 0px var(--dark);
+    text-transform: lowercase;
+  }
+
+  .about-history-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(40px, 6vw, 65px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--dark);
+    margin: 0 0 35px 0;
+    letter-spacing: -1px;
+  }
+
+  .about-history-text {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #444;
+    font-weight: 500;
+  }
+
+  .about-history-text p {
+    margin-bottom: 25px;
+  }
+
+  @media (max-width: 1100px) {
+    .about-history-grid {
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .about-history-grid {
+      grid-template-columns: 1fr;
+      gap: 80px;
+      text-align: center;
+    }
+    .about-history-card-container {
+      max-width: 450px;
+      margin: 0 auto;
+    }
+    .about-history-top-badge {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-history-floating-badge {
+      width: 110px;
+      height: 110px;
+      bottom: -10px;
+      right: -10px;
+    }
+    .badge-year { font-size: 28px; }
+    .badge-text { font-size: 13px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About History",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Left Card"
+    },
+    {
+      "type": "color_background",
+      "id": "card_bg_gradient",
+      "label": "Card Background Gradient",
+      "default": "linear-gradient(180deg, #FFF0F0 0%, #FFDEDE 100%)"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "badge_year",
+      "label": "Circular Badge Year",
+      "default": "2016"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Circular Badge Text",
+      "default": "Started with love"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Circular Badge Background",
+      "default": "#44D7B6"
+    },
+    {
+      "type": "header",
+      "content": "Right Content"
+    },
+    {
+      "type": "text",
+      "id": "top_badge_label",
+      "label": "Top Badge Label",
+      "default": "🐾 How it all started"
+    },
+    {
+      "type": "color",
+      "id": "top_badge_bg_color",
+      "label": "Top Badge Background",
+      "default": "#FFEBAD"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "One dog. One frustrated owner. One big idea."
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Our founder [Name] had a scruffy rescue pup named Biscuit who had the most sensitive tummy on the planet.</p><p>What started in a tiny kitchen with a dog food recipe became PawPal — a brand obsessed with making pet care genuinely good.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About History"
+    }
+  ]
+}
+{% endschema %}
