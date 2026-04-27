@@ -12,11 +12,37 @@
     "main": {
       "type": "main-page",
       "blocks": {
-        "text_KD4JCg": {
+        "text_8nAgpK": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Personalized Products</h2>",
+            "text": "<h2>Help & FAQ</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_xDcBKh": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>We're here to help. Find answers to the most common questions below.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -40,108 +66,15 @@
         }
       },
       "block_order": [
-        "text_KD4JCg"
+        "text_8nAgpK",
+        "text_xDcBKh"
       ],
-      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
         "color_scheme": "",
         "padding-block-start": 40,
         "padding-block-end": 80
-      }
-    },
-    "section_4CFWzF": {
-      "type": "section",
-      "blocks": {
-        "text_gy8XbH": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Contact us</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "contact_form_wWceH4": {
-          "type": "contact-form",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "submit-button": {
-              "type": "contact-form-submit-button",
-              "static": true,
-              "settings": {
-                "label": "Submit",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "block_order": [
-        "text_gy8XbH",
-        "contact_form_wWceH4"
-      ],
-      "name": "t:names.contact_form",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 32,
-        "padding-block-end": 32
       }
     },
     "section_FDbRce": {
@@ -195,7 +128,7 @@
             "accordion_row_UJnFg6": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "What is the return policy?",
+                "heading": "Canceling an Order",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -204,9 +137,9 @@
                 "text_Hbj8qX": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                    "text": "<p>Need to cancel or change your order? Reach out to us at right away and we'll do everything we can to help. Since our orders ship fast, we can't always guarantee a cancellation, but we truly appreciate your patience and understanding.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -234,7 +167,7 @@
             "accordion_row_miWccz": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "Are any purchases final sale?",
+                "heading": "Returns, Exchanges & Refunds",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -243,9 +176,9 @@
                 "text_49LPJJ": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We are unable to accept returns on certain items. These will be carefully marked before purchase.</p>",
+                    "text": "<p>We want you to love your purchase — and if something isn't right, we're here to make it easy. We offer a 30-day money-back guarantee on the purchase price, excluding a restocking fee. Just reach out to us at and we'll get you sorted.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -274,7 +207,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "When will I get my order?",
+                "heading": "Exchanges & Damaged Item",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -284,7 +217,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "text": "<p>Whether you need an exchange or received a damaged package, we've got you covered. Reach out to us at and we'll make it right.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -315,7 +248,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "Where are your products manufactured?",
+                "heading": "Prints Products",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -325,9 +258,9 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                    "text": "<p>Paw Prints are made just for you, so we're unable to accept returns on these items. The moment you place your order, your pet' photo goes straight to one of our artists. You can cancel your order at any time before approving the artwork. However, cancellations made more than 2 hours after purchase will include a $10 fee per pet — a small way to ensure our artists are compensated for their effort.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -356,7 +289,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_row",
               "settings": {
-                "heading": "How much does shipping cost?",
+                "heading": "Shipping Locations, Costs & Times",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -366,9 +299,9 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Shipping is calculated based on your location and the items in your order. You will always know the shipping price before you purchase.</p>",
+                    "text": "<p>We ship worldwide! Please allow at least  2 business days for order processing and fulfillment  this applies to all orders, including those with expedited shipping. Due to recent increases in carrier costs and tariffs, we ask customers to contribute a small portion of the shipping fee. Alpha Paw continues to cover the majority of shipping costs within the Continental USA. For rates outside the US, simply enter your shippin address at checkout. Domestic orders (within the USA) typically arrive in 3–8 business days. International orders may take an additional 10–15 business days. Please note that any applicable taxes and duties are the responsibility of the customer.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -392,6 +325,46 @@
               "block_order": [
                 "text_CKaLEc"
               ]
+            },
+            "accordion_row_fg6k8n": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "Sales & Coupons",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_FLaB3w": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We love a good deal! From time to time, we run promotions and offer coupon codes just enter yours at checkout. Please note that only one code can be used per order. Forgot to use your code? Don't stress just email us at within 24 hours of your purchase and we'll take care of it. Discounts are applied within 2 business days. Keep in mind that multiple discounts can't be combined, but we'll do our best to accommodate you.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_FLaB3w"
+              ]
             }
           },
           "block_order": [
@@ -399,7 +372,8 @@
             "accordion_row_miWccz",
             "accordion_row_4YhTHH",
             "accordion_row_rXQEnf",
-            "accordion_row_Xk37Ta"
+            "accordion_row_Xk37Ta",
+            "accordion_row_fg6k8n"
           ]
         }
       },
@@ -414,7 +388,7 @@
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
+        "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 32,
         "section_width": "page-width",
@@ -434,6 +408,99 @@
         "gradient_direction": "to top",
         "padding-block-start": 48,
         "padding-block-end": 48
+      }
+    },
+    "section_4CFWzF": {
+      "type": "section",
+      "blocks": {
+        "text_gy8XbH": {
+          "type": "text",
+          "settings": {
+            "text": "<h2><strong>Contact us</strong></h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 100,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "contact_form_wWceH4": {
+          "type": "contact-form",
+          "settings": {
+            "width": "fit-content",
+            "custom_width": 52,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 63,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "submit-button": {
+              "type": "contact-form-submit-button",
+              "static": true,
+              "settings": {
+                "label": "Submit",
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "text_gy8XbH",
+        "contact_form_wWceH4"
+      ],
+      "name": "t:names.contact_form",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 32,
+        "padding-block-end": 32
       }
     }
   },
