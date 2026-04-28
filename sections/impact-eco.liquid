@@ -1,0 +1,243 @@
+{% comment %}
+  Section: Impact Eco
+  Split layout with features and images.
+{% endcomment %}
+
+<div id="ImpactEco-{{ section.id }}" class="impact-eco-wrapper">
+  <div class="page-width">
+    <div class="impact-eco-grid">
+      
+      <!-- Text Side -->
+      <div class="impact-eco-content">
+        <div class="impact-eco-badge" style="background-color: {{ section.settings.badge_bg_color }}; color: {{ section.settings.badge_text_color }};">
+          {{ section.settings.badge_label }}
+        </div>
+        <h2 class="impact-eco-heading" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
+        <div class="impact-eco-subtext" style="color: {{ section.settings.subtext_color }};">
+          {{ section.settings.subtext }}
+        </div>
+
+        <div class="impact-eco-features">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              <div class="impact-eco-feature" {{ block.shopify_attributes }}>
+                <div class="feature-icon-box" style="background-color: {{ block.settings.icon_bg }};">
+                  {{ block.settings.icon }}
+                </div>
+                <div class="feature-text">
+                  <h4 style="color: {{ section.settings.heading_color }};">{{ block.settings.title }}</h4>
+                  <p style="color: {{ section.settings.subtext_color }};">{{ block.settings.description }}</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Image Side -->
+      <div class="impact-eco-visuals">
+        <div class="eco-img-main-wrap">
+          {% if section.settings.image_main != blank %}
+             <img src="{{ section.settings.image_main | image_url: width: 800 }}" alt="Eco 1" class="eco-img-main">
+          {% else %}
+             {{ 'image' | placeholder_svg_tag: 'placeholder-svg eco-img-main' }}
+          {% endif %}
+        </div>
+        <div class="eco-img-sub-grid">
+          <div class="eco-img-sub-wrap">
+            {% if section.settings.image_sub_1 != blank %}
+               <img src="{{ section.settings.image_sub_1 | image_url: width: 400 }}" alt="Eco 2" class="eco-img-sub">
+            {% endif %}
+          </div>
+          <div class="eco-img-sub-wrap">
+            {% if section.settings.image_sub_2 != blank %}
+               <img src="{{ section.settings.image_sub_2 | image_url: width: 400 }}" alt="Eco 3" class="eco-img-sub">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  #ImpactEco-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  .impact-eco-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .impact-eco-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 3px solid var(--dark);
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 25px;
+    box-shadow: 4px 4px 0px var(--dark);
+    text-transform: uppercase;
+  }
+
+  .impact-eco-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(35px, 5vw, 60px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 0 25px 0;
+  }
+
+  .impact-eco-subtext {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-weight: 500;
+  }
+
+  .impact-eco-features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .impact-eco-feature {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 25px;
+    border: 3px solid var(--dark);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 6px 6px 0px var(--dark);
+  }
+
+  .feature-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    border: 2px solid var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .feature-text h4 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0 0 5px 0;
+  }
+
+  .feature-text p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  /* Visuals */
+  .impact-eco-visuals {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .eco-img-main-wrap {
+    border: 4px solid var(--dark);
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 12px 12px 0px var(--dark);
+  }
+
+  .eco-img-main {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .eco-img-sub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+
+  .eco-img-sub-wrap {
+    border: 4px solid var(--dark);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 8px 8px 0px var(--dark);
+  }
+
+  .eco-img-sub {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 991px) {
+    .impact-eco-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Impact Eco Section",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Section Background", "default": "#1C3A2F" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 100 },
+    { "type": "header", "content": "Header" },
+    { "type": "text", "id": "badge_label", "label": "Badge Label", "default": "🌿 Sustainability" },
+    { "type": "color", "id": "badge_bg_color", "label": "Badge Background", "default": "#FFEBAD" },
+    { "type": "color", "id": "badge_text_color", "label": "Badge Text", "default": "#1A1A2E" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Shrinking Our Paw Print" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#ffffff" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "We believe that loving pets and loving the planet go hand in hand." },
+    { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#ffffff" },
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "image_main", "label": "Main Image" },
+    { "type": "image_picker", "id": "image_sub_1", "label": "Sub Image 1" },
+    { "type": "image_picker", "id": "image_sub_2", "label": "Sub Image 2" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (Emoji)", "default": "📦" },
+        { "type": "color", "id": "icon_bg", "label": "Icon Background", "default": "#4A7C59" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Zero-waste packaging" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Fully compostable boxes — no plastic, no glue, no guilt." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Impact Eco Section",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "📦", "title": "Zero-waste packaging" } },
+        { "type": "feature", "settings": { "icon": "🌱", "title": "Carbon-neutral shipping" } },
+        { "type": "feature", "settings": { "icon": "♻️", "title": "Responsibly sourced" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

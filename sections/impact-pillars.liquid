@@ -1,0 +1,215 @@
+{% comment %}
+  Section: Impact Pillars
+  A grid of commitment cards.
+{% endcomment %}
+
+<div id="ImpactPillars-{{ section.id }}" class="impact-pillars-wrapper">
+  <div class="page-width">
+    <!-- Header -->
+    <div class="impact-pillars-header">
+      <div class="impact-pillars-badge" style="background-color: {{ section.settings.badge_bg_color }};">
+         {{ section.settings.badge_label }}
+      </div>
+      
+      <h2 class="impact-pillars-heading">{{ section.settings.heading }}</h2>
+      
+      {% if section.settings.subtext != blank %}
+        <p class="impact-pillars-subtext">{{ section.settings.subtext }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Grid -->
+    <div class="impact-pillars-grid">
+      {% for block in section.blocks %}
+        <div class="impact-pillar-card" {{ block.shopify_attributes }} 
+             style="background-color: {{ block.settings.bg_color }};">
+          
+          {% if block.settings.image != blank %}
+            <div class="pillar-image-container">
+              <img src="{{ block.settings.image | image_url: width: 600 }}" 
+                   alt="{{ block.settings.image.alt | default: block.settings.title }}"
+                   class="pillar-img"
+                   loading="lazy">
+            </div>
+          {% endif %}
+
+          <div class="pillar-content">
+            <div class="pillar-icon-badge" style="background-color: {{ block.settings.icon_bg_color }};">
+              {{ block.settings.icon }}
+            </div>
+            <h3 class="pillar-title">{{ block.settings.title }}</h3>
+            <p class="pillar-desc">{{ block.settings.description }}</p>
+          </div>
+          
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #ImpactPillars-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
+    background-color: {{ section.settings.section_bg }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .impact-pillars-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .impact-pillars-badge {
+    display: inline-flex;
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 3px solid var(--dark);
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 25px;
+    box-shadow: 4px 4px 0px var(--dark);
+    text-transform: uppercase;
+  }
+
+  .impact-pillars-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 900;
+    color: var(--dark);
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+  }
+
+  .impact-pillars-subtext {
+    font-size: 20px;
+    color: #444;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .impact-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+  }
+
+  .impact-pillar-card {
+    border: 4px solid var(--dark);
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 10px 10px 0px var(--dark);
+    transition: transform 0.3s;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .impact-pillar-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px var(--dark);
+  }
+
+  .pillar-image-container {
+    height: 250px;
+    overflow: hidden;
+    border-bottom: 4px solid var(--dark);
+  }
+
+  .pillar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pillar-content {
+    padding: 35px 30px;
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .pillar-icon-badge {
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    border: 3px solid var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 25px;
+    box-shadow: 4px 4px 0px var(--dark);
+  }
+
+  .pillar-title {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--dark);
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+  }
+
+  .pillar-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #444;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1100px) {
+    .impact-pillars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .impact-pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Impact Pillars",
+  "settings": [
+    { "type": "color", "id": "section_bg", "label": "Section Background", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 100 },
+    { "type": "header", "content": "Header" },
+    { "type": "text", "id": "badge_label", "label": "Badge Label", "default": "🌿 Our Commitments" },
+    { "type": "color", "id": "badge_bg_color", "label": "Badge Background", "default": "#D4E8D0" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Three Pillars of Our Promise" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Everything we do is guided by our deep belief that pets deserve the very best." }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "icon", "label": "Icon (Emoji)", "default": "🌿" },
+        { "type": "color", "id": "icon_bg_color", "label": "Icon Background", "default": "#D4E8D0" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Sustainability" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Add your pillar description here." },
+        { "type": "color", "id": "bg_color", "label": "Card Background", "default": "#ffffff" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Impact Pillars",
+      "blocks": [
+        { "type": "pillar", "settings": { "icon": "🌿", "title": "Planet-First Sustainability" } },
+        { "type": "pillar", "settings": { "icon": "🏥", "title": "Vet-Approved Excellence" } },
+        { "type": "pillar", "settings": { "icon": "❤️", "title": "The PawCo Foundation" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

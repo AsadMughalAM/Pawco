@@ -1,0 +1,162 @@
+{% comment %}
+  Section: Impact CTA
+  Final call to action for the Impact page.
+{% endcomment %}
+
+<div id="ImpactCTA-{{ section.id }}" class="impact-cta-wrapper">
+  <div class="page-width">
+    
+    <div class="impact-cta-container" style="background-color: {{ section.settings.bg_color }};">
+      <div class="impact-cta-badge" style="background-color: {{ section.settings.badge_bg }};">
+        {{ section.settings.badge_label }}
+      </div>
+      
+      <h2 class="impact-cta-heading" style="color: {{ section.settings.heading_color }};">
+        {{ section.settings.heading }}
+      </h2>
+      
+      <p class="impact-cta-subtext" style="color: {{ section.settings.subtext_color }};">
+        {{ section.settings.subtext }}
+      </p>
+      
+      <div class="impact-cta-btns">
+        {% if section.settings.btn_1_text != blank %}
+          <a href="{{ section.settings.btn_1_link }}" class="impact-btn impact-btn-primary" style="background-color: {{ section.settings.btn_1_bg }}; color: {{ section.settings.btn_1_text_color }};">
+            {{ section.settings.btn_1_text }}
+          </a>
+        {% endif %}
+        
+        {% if section.settings.btn_2_text != blank %}
+          <a href="{{ section.settings.btn_2_link }}" class="impact-btn impact-btn-outline" style="border-color: {{ section.settings.btn_2_border }}; color: {{ section.settings.btn_2_text_color }};">
+            {{ section.settings.btn_2_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  #ImpactCTA-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .impact-cta-container {
+    padding: 80px 40px;
+    border: 4px solid var(--dark);
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 20px 20px 0px var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .impact-cta-badge {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 3px solid var(--dark);
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 30px;
+    box-shadow: 4px 4px 0px var(--dark);
+    text-transform: uppercase;
+    background: #fff;
+  }
+
+  .impact-cta-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(35px, 6vw, 65px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 auto 25px;
+    max-width: 800px;
+  }
+
+  .impact-cta-subtext {
+    font-size: 22px;
+    line-height: 1.5;
+    margin: 0 auto 45px;
+    max-width: 700px;
+    font-weight: 500;
+  }
+
+  .impact-cta-btns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .impact-btn {
+    text-decoration: none;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 900;
+    transition: all 0.2s;
+    border: 4px solid var(--dark);
+    box-shadow: 6px 6px 0px var(--dark);
+    display: inline-block;
+  }
+
+  .impact-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--dark);
+  }
+
+  .impact-btn-primary {
+    background-color: var(--dark);
+    color: #fff;
+  }
+
+  .impact-btn-outline {
+    background-color: #fff;
+    color: var(--dark);
+  }
+
+  @media (max-width: 768px) {
+    .impact-cta-container {
+      padding: 60px 20px;
+    }
+    .impact-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Impact CTA",
+  "settings": [
+    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 100 },
+    { "type": "header", "content": "Content" },
+    { "type": "color", "id": "bg_color", "label": "Container Background", "default": "#ffffff" },
+    { "type": "text", "id": "badge_label", "label": "Badge Label", "default": "Join the Movement" },
+    { "type": "color", "id": "badge_bg", "label": "Badge Background", "default": "#FFEBAD" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Shop with Purpose. Love with Purpose." },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A2E" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "When you choose PawCo, you're backing a mission to make the world a kinder place." },
+    { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#444444" },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "btn_1_text", "label": "Button 1 Text", "default": "Shop Our Products" },
+    { "type": "url", "id": "btn_1_link", "label": "Button 1 Link" },
+    { "type": "color", "id": "btn_1_bg", "label": "Button 1 Background", "default": "#1C3A2F" },
+    { "type": "color", "id": "btn_1_text_color", "label": "Button 1 Text Color", "default": "#ffffff" },
+    { "type": "text", "id": "btn_2_text", "label": "Button 2 Text", "default": "Meet Our Experts" },
+    { "type": "url", "id": "btn_2_link", "label": "Button 2 Link" },
+    { "type": "color", "id": "btn_2_border", "label": "Button 2 Border", "default": "#1A1A2E" },
+    { "type": "color", "id": "btn_2_text_color", "label": "Button 2 Text Color", "default": "#1A1A2E" }
+  ],
+  "presets": [
+    {
+      "name": "Impact CTA"
+    }
+  ]
+}
+{% endschema %}

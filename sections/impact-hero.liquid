@@ -1,0 +1,237 @@
+{% comment %}
+  Section: Impact Hero
+  Based on About Pet Master style for consistency.
+{% endcomment %}
+
+<div id="ImpactHero-{{ section.id }}" class="impact-hero-wrapper">
+  {% liquid
+    assign stat_blocks = section.blocks | where: 'type', 'stat'
+  %}
+
+  <section class="impact-hero-main">
+    <div class="impact-dot impact-dot-1"></div>
+    <div class="impact-dot impact-dot-2"></div>
+
+    <div class="impact-badge" style="background-color: {{ section.settings.badge_bg_color }}; color: {{ section.settings.badge_text_color }};">
+      {{ section.settings.badge_text }}
+    </div>
+
+    <h1 class="impact-title">
+      {{ section.settings.heading_top }}<br>
+      <span class="impact-highlight" style="color: {{ section.settings.highlight_color }};">{{ section.settings.heading_highlight }}</span>
+    </h1>
+
+    <p class="impact-subtext">{{ section.settings.subtext }}</p>
+
+    {% if section.settings.main_image != blank %}
+      <div class="impact-hero-image-container">
+         <img src="{{ section.settings.main_image | image_url: width: 1400 }}" 
+              alt="{{ section.settings.main_image.alt | default: 'Impact' }}"
+              class="impact-hero-img"
+              loading="eager">
+      </div>
+    {% endif %}
+
+    <svg class="impact-wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="{{ section.settings.stats_bg_color }}"></path>
+    </svg>
+  </section>
+
+  <div class="impact-stats" style="background-color: {{ section.settings.stats_bg_color }};">
+    <div class="impact-stats-grid">
+      {% for block in stat_blocks %}
+        <div class="impact-stat" {{ block.shopify_attributes }}>
+          <h3 style="color: {{ section.settings.accent_color }};">{{ block.settings.stat_number }}</h3>
+          <p>{{ block.settings.stat_label }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #ImpactHero-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .impact-hero-main {
+    padding: 100px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .impact-dot {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    z-index: 1;
+  }
+  .impact-dot-1 { width: 250px; height: 250px; background: {{ section.settings.highlight_color }}; top: -50px; left: -50px; }
+  .impact-dot-2 { width: 200px; height: 200px; background: {{ section.settings.accent_color }}; bottom: 10%; right: -50px; }
+
+  .impact-badge {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 5;
+    border: 3px solid var(--dark);
+    box-shadow: 4px 4px 0px var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .impact-title {
+    font-family: var(--font-heading);
+    font-size: clamp(40px, 8vw, 85px);
+    font-weight: 900;
+    line-height: 1;
+    margin: 0 0 30px 0;
+    color: var(--dark);
+    position: relative;
+    z-index: 5;
+    letter-spacing: -2px;
+  }
+
+  .impact-highlight {
+    display: block;
+    font-style: italic;
+  }
+
+  .impact-subtext {
+    max-width: 750px;
+    margin: 0 auto 50px;
+    font-size: 22px;
+    color: #444;
+    line-height: 1.5;
+    position: relative;
+    z-index: 5;
+    font-weight: 500;
+  }
+
+  .impact-hero-image-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    padding: 0 20px;
+  }
+
+  .impact-hero-img {
+    width: 100%;
+    height: auto;
+    border-radius: 40px;
+    border: 4px solid var(--dark);
+    box-shadow: 20px 20px 0px var(--dark);
+    display: block;
+  }
+
+  .impact-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 2;
+  }
+
+  .impact-stats {
+    padding: 60px 20px;
+    color: #fff;
+    position: relative;
+    z-index: 10;
+  }
+
+  .impact-stats-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+
+  .impact-stat h3 {
+    font-family: var(--font-heading);
+    font-size: 55px;
+    margin: 0;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .impact-stat p {
+    margin: 10px 0 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .impact-stats-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .impact-hero-main {
+      padding: 60px 20px 60px;
+    }
+    .impact-title {
+      font-size: 45px;
+    }
+    .impact-subtext {
+      font-size: 18px;
+    }
+    .impact-stat h3 {
+      font-size: 45px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Impact Hero",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FAF7F2" },
+    { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "🐾 Making a Difference" },
+    { "type": "color", "id": "badge_bg_color", "label": "Badge Background", "default": "#FFEBAD" },
+    { "type": "color", "id": "badge_text_color", "label": "Badge Text Color", "default": "#1A1A2E" },
+    { "type": "text", "id": "heading_top", "label": "Heading Top Part", "default": "Every Purchase Builds a" },
+    { "type": "text", "id": "heading_highlight", "label": "Heading Highlighted Part", "default": "Better World" },
+    { "type": "color", "id": "highlight_color", "label": "Highlight Color", "default": "#D4832A" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "At PawCo, our mission goes far beyond products. We're building a movement — one wagging tail at a time." },
+    { "type": "image_picker", "id": "main_image", "label": "Main Hero Image" },
+    { "type": "header", "content": "Stats Bar" },
+    { "type": "color", "id": "stats_bg_color", "label": "Stats Bar Background", "default": "#1C3A2F" },
+    { "type": "color", "id": "accent_color", "label": "Stat Numbers Color", "default": "#F2C07A" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat Card",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "stat_number", "label": "Number", "default": "50K+" },
+        { "type": "text", "id": "stat_label", "label": "Label", "default": "Happy Pets" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Impact Hero",
+      "blocks": [
+        { "type": "stat", "settings": { "stat_number": "50K+", "stat_label": "Pets Served" } },
+        { "type": "stat", "settings": { "stat_number": "12K", "stat_label": "Donations" } },
+        { "type": "stat", "settings": { "stat_number": "100%", "stat_label": "Eco Packaging" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

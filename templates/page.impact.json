@@ -1,0 +1,222 @@
+{
+  "sections": {
+    "impact_hero": {
+      "type": "impact-hero",
+      "settings": {
+        "bg_color": "#FAF7F2",
+        "badge_text": "🐾 Making a Difference",
+        "heading_top": "Every Purchase Builds a",
+        "heading_highlight": "Better World",
+        "subtext": "At PawCo, our mission goes far beyond products. We're building a movement — one wagging tail at a time — toward a healthier, more compassionate world for every pet.",
+        "stats_bg_color": "#1C3A2F"
+      },
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "stat_number": "50K+",
+            "stat_label": "Happy Pets Served"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "stat_number": "12K",
+            "stat_label": "Shelter Donations"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "stat_number": "100%",
+            "stat_label": "Eco Packaging"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ]
+    },
+    "impact_pillars": {
+      "type": "impact-pillars",
+      "settings": {
+        "section_bg": "#ffffff",
+        "badge_label": "🌿 Our Commitments",
+        "heading": "Three Pillars of Our Promise",
+        "subtext": "Everything we do is guided by our deep belief that pets deserve the very best — and so does the planet they share with us."
+      },
+      "blocks": {
+        "pillar_1": {
+          "type": "pillar",
+          "settings": {
+            "icon": "🌿",
+            "icon_bg_color": "#D4E8D0",
+            "title": "Planet-First Sustainability",
+            "description": "We design every product and package with the Earth in mind. From biodegradable materials to carbon-neutral shipping."
+          }
+        },
+        "pillar_2": {
+          "type": "pillar",
+          "settings": {
+            "icon": "🏥",
+            "icon_bg_color": "#FDF1DF",
+            "title": "Vet-Approved Excellence",
+            "description": "Every formula, ingredient, and product we create is developed with and approved by licensed veterinarians."
+          }
+        },
+        "pillar_3": {
+          "type": "pillar",
+          "settings": {
+            "icon": "❤️",
+            "icon_bg_color": "#FFE6F0",
+            "title": "The PawCo Foundation",
+            "description": "Our in-house charitable foundation partners with shelters and rescue groups to find forever homes for animals."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_1",
+        "pillar_2",
+        "pillar_3"
+      ]
+    },
+    "impact_eco": {
+      "type": "impact-eco",
+      "settings": {
+        "bg_color": "#1C3A2F",
+        "badge_label": "🌿 Sustainability",
+        "heading": "Shrinking Our Paw Print",
+        "subtext": "We believe that loving pets and loving the planet go hand in hand. That's why sustainability is a core design principle.",
+        "heading_color": "#ffffff",
+        "subtext_color": "#ffffff"
+      },
+      "blocks": {
+        "feat_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "📦",
+            "title": "Zero-waste packaging",
+            "description": "Fully compostable boxes — no plastic, no glue, no guilt."
+          }
+        },
+        "feat_2": {
+          "type": "feature",
+          "settings": {
+            "icon": "🌱",
+            "title": "Carbon-neutral shipping",
+            "description": "Every order offset via certified tree-planting partnerships."
+          }
+        },
+        "feat_3": {
+          "type": "feature",
+          "settings": {
+            "icon": "♻️",
+            "title": "Responsibly sourced",
+            "description": "Traceable supply chains with zero harmful additives."
+          }
+        }
+      },
+      "block_order": [
+        "feat_1",
+        "feat_2",
+        "feat_3"
+      ]
+    },
+    "impact_initiatives": {
+      "type": "impact-initiatives",
+      "settings": {
+        "bg_color": "#ffffff",
+        "badge_label": "The PawCo Foundation",
+        "heading": "We Don't Just Care — We Act",
+        "subtext": "Charitable giving is woven into the fabric of who we are. Our team volunteers, donates, and organizes because they genuinely care.",
+        "label_title": "Over 3,200 rescues rehomed",
+        "label_subtext": "Since launching the PawCo Foundation in 2021"
+      },
+      "blocks": {
+        "init_1": {
+          "type": "initiative",
+          "settings": {
+            "title": "Shelter Partnerships",
+            "description": "We've partnered with 80+ local and national shelters donating products and funding."
+          }
+        },
+        "init_2": {
+          "type": "initiative",
+          "settings": {
+            "title": "Monthly Volunteer Days",
+            "description": "Our entire team closes the office once a month to spend the day at local shelters."
+          }
+        },
+        "init_3": {
+          "type": "initiative",
+          "settings": {
+            "title": "Adoption Events & Drives",
+            "description": "From pop-up adoption fairs to donation drives, we host community events."
+          }
+        }
+      },
+      "block_order": [
+        "init_1",
+        "init_2",
+        "init_3"
+      ]
+    },
+    "impact_quality": {
+      "type": "impact-quality",
+      "settings": {
+        "bg_color": "#FDF1DF",
+        "badge_number": "100%",
+        "badge_text": "Vet Reviewed",
+        "top_badge_label": "🐾 Product Responsibility",
+        "heading": "Only the Best Makes It to Your Pet's Bowl",
+        "subtext": "We hold ourselves to the highest possible standards — because best friends deserve the absolute best."
+      },
+      "blocks": {
+        "item_1": {
+          "type": "quality_item",
+          "settings": {
+            "title": "Expert-formulated from day one",
+            "description": "Every product begins with our team of accredited pet nutritionists."
+          }
+        },
+        "item_2": {
+          "type": "quality_item",
+          "settings": {
+            "title": "Rigorous safety testing",
+            "description": "Our production facilities welcome routine third-party inspections."
+          }
+        },
+        "item_3": {
+          "type": "quality_item",
+          "settings": {
+            "title": "Transparent ingredients",
+            "description": "No vague \"natural flavors\" or mystery fillers — every ingredient is listed."
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ]
+    },
+    "impact_cta": {
+      "type": "impact-cta",
+      "settings": {
+        "badge_label": "Join the Movement",
+        "heading": "Shop with Purpose. Love with Purpose.",
+        "subtext": "When you choose PawCo, you're not just buying a product — you're backing a mission to make the world a kinder place."
+      }
+    }
+  },
+  "order": [
+    "impact_hero",
+    "impact_pillars",
+    "impact_eco",
+    "impact_initiatives",
+    "impact_quality",
+    "impact_cta"
+  ]
+}

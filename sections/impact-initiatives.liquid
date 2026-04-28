@@ -1,0 +1,241 @@
+{% comment %}
+  Section: Impact Initiatives
+  Numbered cards and a large callout image.
+{% endcomment %}
+
+<div id="ImpactInitiatives-{{ section.id }}" class="impact-initiatives-wrapper">
+  <div class="page-width">
+    
+    <div class="initiatives-header-grid">
+      <div class="header-left">
+        <div class="initiatives-badge" style="background-color: {{ section.settings.badge_bg }};">
+          {{ section.settings.badge_label }}
+        </div>
+        <h2 class="initiatives-heading">{{ section.settings.heading }}</h2>
+      </div>
+      <div class="header-right">
+        <p class="initiatives-subtext">{{ section.settings.subtext }}</p>
+      </div>
+    </div>
+
+    <div class="initiatives-cards-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'initiative' %}
+          <div class="initiative-card" {{ block.shopify_attributes }}>
+            <div class="initiative-num" style="color: {{ block.settings.num_color }};">0{{ forloop.index }}</div>
+            <h3 class="initiative-title">{{ block.settings.title }}</h3>
+            <p class="initiative-desc">{{ block.settings.description }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.bottom_image != blank %}
+      <div class="initiatives-bottom-visual">
+        <img src="{{ section.settings.bottom_image | image_url: width: 1400 }}" alt="Impact" class="bottom-img">
+        <div class="bottom-label-card">
+          <h4>{{ section.settings.label_title }}</h4>
+          <p>{{ section.settings.label_subtext }}</p>
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<style>
+  #ImpactInitiatives-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .initiatives-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: flex-end;
+    margin-bottom: 60px;
+  }
+
+  .initiatives-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 3px solid var(--dark);
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 0px var(--dark);
+  }
+
+  .initiatives-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(35px, 5vw, 60px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--dark);
+  }
+
+  .initiatives-subtext {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #444;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .initiatives-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .initiative-card {
+    background: #fff;
+    border: 4px solid var(--dark);
+    border-radius: 35px;
+    padding: 40px 30px;
+    box-shadow: 10px 10px 0px var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .initiative-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 12px;
+    background: var(--dark);
+  }
+
+  .initiative-num {
+    font-family: var(--font-heading);
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 15px;
+    opacity: 0.3;
+  }
+
+  .initiative-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--dark);
+    margin: 0 0 15px 0;
+  }
+
+  .initiative-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .initiatives-bottom-visual {
+    position: relative;
+    border: 4px solid var(--dark);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 15px 15px 0px var(--dark);
+  }
+
+  .bottom-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bottom-label-card {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: #fff;
+    border: 3px solid var(--dark);
+    border-radius: 25px;
+    padding: 25px 35px;
+    box-shadow: 8px 8px 0px var(--dark);
+    max-width: 380px;
+  }
+
+  .bottom-label-card h4 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--dark);
+    margin: 0 0 5px 0;
+  }
+
+  .bottom-label-card p {
+    margin: 0;
+    font-size: 15px;
+    color: #666;
+    font-weight: 600;
+  }
+
+  @media (max-width: 991px) {
+    .initiatives-header-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .header-left { display: flex; flex-direction: column; align-items: center; }
+    .initiatives-cards-grid {
+      grid-template-columns: 1fr;
+    }
+    .bottom-label-card {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      margin: 20px;
+      max-width: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Impact Initiatives",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Section Background", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 100 },
+    { "type": "header", "content": "Header" },
+    { "type": "text", "id": "badge_label", "label": "Badge Label", "default": "The PawCo Foundation" },
+    { "type": "color", "id": "badge_bg", "label": "Badge Background", "default": "#FFEBAD" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "We Don't Just Care — We Act" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Charitable giving is woven into the fabric of who we are." },
+    { "type": "header", "content": "Bottom Visual" },
+    { "type": "image_picker", "id": "bottom_image", "label": "Large Visual Image" },
+    { "type": "text", "id": "label_title", "label": "Card Title", "default": "Over 3,200 rescues rehomed" },
+    { "type": "text", "id": "label_subtext", "label": "Card Subtext", "default": "Since launching the PawCo Foundation in 2021" }
+  ],
+  "blocks": [
+    {
+      "type": "initiative",
+      "name": "Initiative",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Shelter Partnerships" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "We've partnered with 80+ local and national shelters." },
+        { "type": "color", "id": "num_color", "label": "Number Color", "default": "#4A7C59" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Impact Initiatives",
+      "blocks": [
+        { "type": "initiative", "settings": { "title": "Shelter Partnerships", "num_color": "#4A7C59" } },
+        { "type": "initiative", "settings": { "title": "Monthly Volunteer Days", "num_color": "#D4832A" } },
+        { "type": "initiative", "settings": { "title": "Adoption Events & Drives", "num_color": "#1C3A2F" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
