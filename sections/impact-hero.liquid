@@ -54,6 +54,8 @@
     --dark: #1A1A2E;
     --font-heading: 'Fredoka', 'Outfit', sans-serif;
     background-color: {{ section.settings.bg_color }};
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
   }
 
   .impact-hero-main {
@@ -210,7 +212,31 @@
     { "type": "image_picker", "id": "main_image", "label": "Main Hero Image" },
     { "type": "header", "content": "Stats Bar" },
     { "type": "color", "id": "stats_bg_color", "label": "Stats Bar Background", "default": "#1C3A2F" },
-    { "type": "color", "id": "accent_color", "label": "Stat Numbers Color", "default": "#F2C07A" }
+    { "type": "color", "id": "accent_color", "label": "Stat Numbers Color", "default": "#F2C07A" },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 20
+    }
   ],
   "blocks": [
     {

@@ -8,7 +8,9 @@
         "heading_top": "Every Purchase Builds a",
         "heading_highlight": "Better World",
         "subtext": "At PawCo, our mission goes far beyond products. We're building a movement — one wagging tail at a time — toward a healthier, more compassionate world for every pet.",
-        "stats_bg_color": "#1C3A2F"
+        "stats_bg_color": "#1C3A2F",
+        "padding_left": 20,
+        "padding_right": 20
       },
       "blocks": {
         "stat_1": {
@@ -45,7 +47,9 @@
         "section_bg": "#ffffff",
         "badge_label": "🌿 Our Commitments",
         "heading": "Three Pillars of Our Promise",
-        "subtext": "Everything we do is guided by our deep belief that pets deserve the very best — and so does the planet they share with us."
+        "subtext": "Everything we do is guided by our deep belief that pets deserve the very best — and so does the planet they share with us.",
+        "padding_left": 20,
+        "padding_right": 20
       },
       "blocks": {
         "pillar_1": {
@@ -90,7 +94,9 @@
         "heading": "Shrinking Our Paw Print",
         "subtext": "We believe that loving pets and loving the planet go hand in hand. That's why sustainability is a core design principle.",
         "heading_color": "#ffffff",
-        "subtext_color": "#ffffff"
+        "subtext_color": "#ffffff",
+        "padding_left": 20,
+        "padding_right": 20
       },
       "blocks": {
         "feat_1": {
@@ -132,7 +138,9 @@
         "heading": "We Don't Just Care — We Act",
         "subtext": "Charitable giving is woven into the fabric of who we are. Our team volunteers, donates, and organizes because they genuinely care.",
         "label_title": "Over 3,200 rescues rehomed",
-        "label_subtext": "Since launching the PawCo Foundation in 2021"
+        "label_subtext": "Since launching the PawCo Foundation in 2021",
+        "padding_left": 20,
+        "padding_right": 20
       },
       "blocks": {
         "init_1": {
@@ -171,7 +179,9 @@
         "badge_text": "Vet Reviewed",
         "top_badge_label": "🐾 Product Responsibility",
         "heading": "Only the Best Makes It to Your Pet's Bowl",
-        "subtext": "We hold ourselves to the highest possible standards — because best friends deserve the absolute best."
+        "subtext": "We hold ourselves to the highest possible standards — because best friends deserve the absolute best.",
+        "padding_left": 20,
+        "padding_right": 20
       },
       "blocks": {
         "item_1": {
@@ -207,7 +217,9 @@
       "settings": {
         "badge_label": "Join the Movement",
         "heading": "Shop with Purpose. Love with Purpose.",
-        "subtext": "When you choose PawCo, you're not just buying a product — you're backing a mission to make the world a kinder place."
+        "subtext": "When you choose PawCo, you're not just buying a product — you're backing a mission to make the world a kinder place.",
+        "padding_left": 20,
+        "padding_right": 20
       }
     }
   },

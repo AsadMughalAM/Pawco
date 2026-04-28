@@ -54,6 +54,8 @@
     background-color: {{ section.settings.section_bg }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
   }
 
   .impact-pillars-header {
@@ -181,6 +183,26 @@
     { "type": "color", "id": "section_bg", "label": "Section Background", "default": "#ffffff" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Top", "default": 100 },
     { "type": "range", "id": "padding_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 100 },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 20
+    },
     { "type": "header", "content": "Header" },
     { "type": "text", "id": "badge_label", "label": "Badge Label", "default": "🌿 Our Commitments" },
     { "type": "color", "id": "badge_bg_color", "label": "Badge Background", "default": "#D4E8D0" },
