@@ -69,6 +69,7 @@
         "text_NDgknC",
         "text_CKFVQK"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -491,7 +492,24 @@
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-inline-end": 0,
+            "show_info": true,
+            "info_heading": "Get in Touch",
+            "info_text": "<p>We'd love to hear from you. Please fill out the form or reach out to us directly.</p>",
+            "email_label": "Email us",
+            "email_value": "info@example.com",
+            "phone_label": "Call us",
+            "phone_value": "+1 (555) 000-0000",
+            "address_label": "Visit us",
+            "address_value": "123 Street Name, City, Country",
+            "info_bg_color": "#f4f4f4",
+            "info_text_color": "#000000",
+            "facebook_url": "https://facebook.coom",
+            "instagram_url": "https://facebook.coom",
+            "youtube_url": "https://facebook.coom",
+            "tiktok_url": "https://facebook.coom",
+            "twitter_url": "https://facebook.coom",
+            "pinterest_url": "https://facebook.coom"
           },
           "blocks": {
             "submit-button": {

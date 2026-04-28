@@ -38,7 +38,7 @@
           "type": "menu",
           "settings": {
             "menu": "footer",
-            "heading": "Help",
+            "heading": "Support",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
@@ -57,10 +57,9 @@
         "menu_6jWwP4": {
           "type": "menu",
           "name": "t:names.menu",
-          "disabled": true,
           "settings": {
-            "menu": "",
-            "heading": "About",
+            "menu": "company",
+            "heading": "Company",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "caret",
