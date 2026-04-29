@@ -1,0 +1,173 @@
+{% comment %}
+  Section: Review Marquee
+  Animated scrolling marquee for customer reviews.
+{% endcomment %}
+
+<div id="ReviewMarquee-{{ section.id }}" class="review-marquee-wrapper">
+  <div class="marquee-inner">
+    {% if section.settings.label != blank %}
+      <p class="marquee-label" style="color: {{ section.settings.label_color }};">{{ section.settings.label }}</p>
+    {% endif %}
+    
+    <div class="marquee-overflow">
+      <div class="marquee-track" style="animation-duration: {{ section.settings.speed }}s;">
+        {% for i in (1..2) %}
+          {% for block in section.blocks %}
+            <div class="marquee-card" style="background-color: {{ section.settings.card_bg }}; border-color: {{ section.settings.card_border }};" {{ block.shopify_attributes }}>
+              <div class="mc-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.stars }}</div>
+              <div class="mc-quote" style="color: {{ section.settings.text_color }};">{{ block.settings.quote }}</div>
+              <div class="mc-author">
+                {% if block.settings.avatar != blank %}
+                  <img class="mc-avatar" src="{{ block.settings.avatar | image_url: width: 80 }}" alt="{{ block.settings.author_name }}">
+                {% else %}
+                  <div class="mc-avatar-placeholder"></div>
+                {% endif %}
+                <div>
+                  <div class="mc-name" style="color: {{ section.settings.author_color }};">{{ block.settings.author_name }}</div>
+                  <div class="mc-product" style="color: {{ section.settings.product_color }};">{{ block.settings.product_name }}</div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #ReviewMarquee-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  .marquee-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  .marquee-overflow {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 24px;
+    animation: marquee linear infinite;
+    width: max-content;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-card {
+    border-radius: 16px;
+    border: 1px solid;
+    padding: 24px;
+    width: 320px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mc-stars {
+    font-size: 14px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+
+  .mc-quote {
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 18px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .mc-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .mc-avatar, .mc-avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background-color: #eee;
+  }
+
+  .mc-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .mc-product {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Review Marquee",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FAF7F2" },
+    { "type": "text", "id": "label", "label": "Marquee Label", "default": "What pet parents are saying right now" },
+    { "type": "color", "id": "label_color", "label": "Label Color", "default": "#888888" },
+    { "type": "range", "id": "speed", "min": 10, "max": 100, "step": 5, "unit": "s", "label": "Animation Speed", "default": 40 },
+    { "type": "header", "content": "Card Styling" },
+    { "type": "color", "id": "card_bg", "label": "Card Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "card_border", "label": "Card Border", "default": "rgba(74,124,89,0.15)" },
+    { "type": "color", "id": "text_color", "label": "Quote Color", "default": "#4A4A4A" },
+    { "type": "color", "id": "author_color", "label": "Author Color", "default": "#1A1A1A" },
+    { "type": "color", "id": "product_color", "label": "Product Color", "default": "#4A7C59" },
+    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#E8A020" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review Card",
+      "settings": [
+        { "type": "text", "id": "stars", "label": "Stars Text", "default": "★★★★★" },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "The custom portrait of my golden retriever Biscuit arrived and I literally cried." },
+        { "type": "image_picker", "id": "avatar", "label": "Author Avatar" },
+        { "type": "text", "id": "author_name", "label": "Author Name", "default": "Sarah M." },
+        { "type": "text", "id": "product_name", "label": "Product Name", "default": "Custom Pet Portrait" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Marquee",
+      "blocks": [
+        { "type": "review", "settings": { "author_name": "Sarah M.", "product_name": "Custom Pet Portrait" } },
+        { "type": "review", "settings": { "author_name": "James T.", "product_name": "Personalized Blanket" } },
+        { "type": "review", "settings": { "author_name": "Priya K.", "product_name": "Engraved ID Tag" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

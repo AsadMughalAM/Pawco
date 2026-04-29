@@ -1,0 +1,168 @@
+{% comment %}
+  Section: Review Photo Grid
+  A gallery of customer photos with review info overlays.
+{% endcomment %}
+
+<div id="ReviewPhotoGrid-{{ section.id }}" class="review-photo-grid-wrapper">
+  <section class="section-inner">
+    <div class="header-content" style="text-align: {{ section.settings.header_align }};">
+      <span class="section-tag" style="color: {{ section.settings.tag_color }};">{{ section.settings.tag }}</span>
+      <h2 class="section-title" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
+      <p class="section-sub" style="color: {{ section.settings.subtext_color }};">{{ section.settings.subtext }}</p>
+    </div>
+
+    <div class="photo-grid">
+      {% for block in section.blocks %}
+        <div class="photo-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" 
+                 alt="{{ block.settings.author }}" 
+                 style="height: {{ block.settings.height }}px;">
+          {% else %}
+            <div class="photo-placeholder" style="height: {{ block.settings.height }}px;"></div>
+          {% endif %}
+          <div class="photo-card-overlay" style="background: linear-gradient(to top, {{ section.settings.overlay_color }} 0%, transparent 60%);"></div>
+          <div class="photo-card-info">
+            <div class="pc-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.stars }}</div>
+            <div class="pc-name" style="color: white;">{{ block.settings.author }}</div>
+            <div class="pc-product" style="color: rgba(255,255,255,0.8);">{{ block.settings.product }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<style>
+  #ReviewPhotoGrid-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .photo-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .photo-card img, .photo-placeholder {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s;
+    background-color: #eee;
+  }
+
+  .photo-card:hover img {
+    transform: scale(1.08);
+  }
+
+  .photo-card-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .photo-card:hover .photo-card-overlay {
+    opacity: 1;
+  }
+
+  .photo-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    transform: translateY(10px);
+    transition: transform 0.3s;
+    opacity: 0;
+  }
+
+  .photo-card:hover .photo-card-info {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .pc-stars {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .pc-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .pc-product {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 960px) {
+    .photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .photo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Review Photo Grid",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#D4E8D0" },
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Customer Photos" },
+    { "type": "color", "id": "tag_color", "label": "Tag Color", "default": "#4A7C59" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "See It in Real Homes" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A1A" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Unfiltered, unprompted — real photos shared by our happiest customers." },
+    { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#4A4A4A" },
+    { "type": "select", "id": "header_align", "label": "Header Alignment", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" }
+    ], "default": "left" },
+    { "type": "color", "id": "overlay_color", "label": "Hover Overlay Color", "default": "#1C3A2F" },
+    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#E8A020" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Photo" },
+        { "type": "range", "id": "height", "min": 200, "max": 500, "step": 10, "unit": "px", "label": "Card Height", "default": 300 },
+        { "type": "text", "id": "stars", "label": "Stars Text", "default": "★★★★★" },
+        { "type": "text", "id": "author", "label": "Author Name", "default": "Emma S." },
+        { "type": "text", "id": "product", "label": "Product Name", "default": "Custom Portrait" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Photo Grid",
+      "blocks": [
+        { "type": "photo", "settings": { "height": 350 } },
+        { "type": "photo", "settings": { "height": 280 } },
+        { "type": "photo", "settings": { "height": 280 } },
+        { "type": "photo", "settings": { "height": 350 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

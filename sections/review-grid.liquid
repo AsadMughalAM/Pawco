@@ -1,0 +1,340 @@
+{% comment %}
+  Section: Review Grid
+  A grid of customer stories and reviews with filtering capability.
+{% endcomment %}
+
+<div id="ReviewGrid-{{ section.id }}" class="review-grid-wrapper">
+  <section class="section-inner">
+    <div class="header-content" style="text-align: {{ section.settings.header_align }};">
+      <span class="section-tag" style="color: {{ section.settings.tag_color }};">{{ section.settings.tag }}</span>
+      <h2 class="section-title" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
+      <p class="section-sub" style="color: {{ section.settings.subtext_color }};">{{ section.settings.subtext }}</p>
+    </div>
+
+    {% if section.settings.show_filter %}
+      <div class="filter-wrap" style="background-color: {{ section.settings.filter_bg }};">
+        <span class="filter-label" style="color: {{ section.settings.subtext_color }}; opacity: 0.7;">{{ section.settings.filter_label }}</span>
+        <div class="filter-chips">
+          {% for block in section.blocks %}
+            {% if block.type == 'filter_chip' %}
+              <button class="chip {% if forloop.first %}active{% endif %}" style="--chip-border: {{ section.settings.card_border }}; --chip-active-bg: {{ section.settings.tag_color }};">
+                {{ block.settings.label }}
+              </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="reviews-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'review' %}
+          <div class="review-card {% if block.settings.is_featured %}featured{% endif %}" 
+               style="background-color: {% if block.settings.is_featured %}{{ section.settings.featured_card_bg }}{% else %}{{ section.settings.card_bg }}{% endif %}; 
+                      border-color: {% if block.settings.is_featured %}{{ section.settings.featured_card_border }}{% else %}{{ section.settings.card_border }}{% endif %};" 
+               {{ block.shopify_attributes }}>
+            
+            <div class="rc-top">
+              <div class="rc-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.stars }}</div>
+              {% if block.settings.badge != blank %}
+                <span class="rc-badge" style="background-color: {{ block.settings.badge_bg }}; color: {{ block.settings.badge_color }};">
+                  {{ block.settings.badge }}
+                </span>
+              {% endif %}
+            </div>
+
+            {% if block.settings.image != blank %}
+              <img class="rc-product-img" src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.author }}">
+            {% endif %}
+
+            <p class="rc-quote" style="color: {{ section.settings.quote_color }};">"{{ block.settings.quote }}"</p>
+            
+            <div class="rc-author" style="border-top-color: {{ section.settings.card_border }};">
+              {% if block.settings.avatar != blank %}
+                <img class="rc-avatar" src="{{ block.settings.avatar | image_url: width: 80 }}" alt="{{ block.settings.author }}">
+              {% else %}
+                <div class="rc-avatar-placeholder"></div>
+              {% endif %}
+              <div>
+                <div class="rc-author-name" style="color: {{ section.settings.heading_color }};">{{ block.settings.author }}</div>
+                <div class="rc-author-meta" style="color: {{ section.settings.subtext_color }}; opacity: 0.6;">{{ block.settings.meta }}</div>
+              </div>
+              {% if block.settings.verified %}
+                <span class="rc-verified" style="color: {{ section.settings.tag_color }};">Verified Purchase</span>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<style>
+  #ReviewGrid-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header-content {
+    margin-bottom: 40px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+
+  .section-sub {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+  }
+
+  .filter-wrap {
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .filter-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .filter-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    padding: 6px 16px;
+    border-radius: 50px;
+    border: 1.5px solid var(--chip-border);
+    font-size: 13px;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .chip.active {
+    background: var(--chip-active-bg);
+    color: white;
+    border-color: var(--chip-active-bg);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .review-card {
+    border-radius: 18px;
+    border: 1px solid;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reviews-grid .review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+  }
+
+  .review-card.featured {
+    grid-column: span 2;
+  }
+
+  .rc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
+  .rc-stars {
+    font-size: 14px;
+  }
+
+  .rc-badge {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+
+  .rc-product-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .review-card.featured .rc-product-img {
+    height: 240px;
+  }
+
+  .rc-quote {
+    font-size: 14px;
+    line-height: 1.7;
+    font-style: italic;
+    flex: 1;
+    margin-bottom: 18px;
+  }
+
+  .rc-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid;
+    padding-top: 15px;
+    margin-top: auto;
+  }
+
+  .rc-avatar, .rc-avatar-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #eee;
+  }
+
+  .rc-author-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .rc-author-meta {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .rc-verified {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .rc-verified::before {
+    content: '✓';
+    font-size: 12px;
+  }
+
+  @media (max-width: 960px) {
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+    .review-card.featured {
+      grid-column: span 1;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Review Grid",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FFFFFF" },
+    { "type": "header", "content": "Header" },
+    { "type": "text", "id": "tag", "label": "Tag", "default": "Customer Reviews" },
+    { "type": "color", "id": "tag_color", "label": "Tag/Accent Color", "default": "#4A7C59" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Stories From Our PawCo Family" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A1A" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Every review is verified. Every story is real. Every tail wag is earned." },
+    { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#4A4A4A" },
+    { "type": "select", "id": "header_align", "label": "Header Alignment", "options": [
+      { "value": "left", "label": "Left" },
+      { "value": "center", "label": "Center" }
+    ], "default": "left" },
+    { "type": "header", "content": "Filters" },
+    { "type": "checkbox", "id": "show_filter", "label": "Show Filter Bar", "default": true },
+    { "type": "text", "id": "filter_label", "label": "Filter Label", "default": "Filter by:" },
+    { "type": "color", "id": "filter_bg", "label": "Filter Bar BG", "default": "#FFFFFF" },
+    { "type": "header", "content": "Card Styling" },
+    { "type": "color", "id": "card_bg", "label": "Card BG", "default": "#FFFFFF" },
+    { "type": "color", "id": "card_border", "label": "Card Border", "default": "rgba(74,124,89,0.15)" },
+    { "type": "color", "id": "featured_card_bg", "label": "Featured Card BG", "default": "#FDF1DF" },
+    { "type": "color", "id": "featured_card_border", "label": "Featured Card Border", "default": "rgba(212,131,42,0.2)" },
+    { "type": "color", "id": "quote_color", "label": "Quote Color", "default": "#4A4A4A" },
+    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#E8A020" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "filter_chip",
+      "name": "Filter Chip",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Chip Label", "default": "All Products" }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review Card",
+      "settings": [
+        { "type": "checkbox", "id": "is_featured", "label": "Featured (Full Width)", "default": false },
+        { "type": "text", "id": "stars", "label": "Stars Text", "default": "★★★★★" },
+        { "type": "text", "id": "badge", "label": "Badge Text", "default": "Custom Portrait" },
+        { "type": "color", "id": "badge_bg", "label": "Badge BG", "default": "#D4E8D0" },
+        { "type": "color", "id": "badge_color", "label": "Badge Text Color", "default": "#1C3A2F" },
+        { "type": "image_picker", "id": "image", "label": "Review Image" },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "I was skeptical ordering a custom portrait online but PawCo completely blew me away." },
+        { "type": "image_picker", "id": "avatar", "label": "Author Avatar" },
+        { "type": "text", "id": "author", "label": "Author Name", "default": "Rachel B." },
+        { "type": "text", "id": "meta", "label": "Author Meta", "default": "Austin, TX · 2 weeks ago" },
+        { "type": "checkbox", "id": "verified", "label": "Verified Purchase", "default": true }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Grid",
+      "blocks": [
+        { "type": "filter_chip", "settings": { "label": "All Products" } },
+        { "type": "filter_chip", "settings": { "label": "Custom Portraits" } },
+        { "type": "review", "settings": { "is_featured": true, "author": "Rachel B." } },
+        { "type": "review", "settings": { "author": "Marcus W." } },
+        { "type": "review", "settings": { "author": "Nicole H." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

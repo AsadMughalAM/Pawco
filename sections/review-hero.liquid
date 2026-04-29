@@ -1,0 +1,304 @@
+{% comment %}
+  Section: Review Hero
+  Highly customizable hero section for the reviews page.
+{% endcomment %}
+
+<div id="ReviewHero-{{ section.id }}" class="review-hero-wrapper">
+  <section class="review-hero">
+    <div class="hero-paws"></div>
+    <div class="hero-eyebrow" style="background-color: {{ section.settings.badge_bg }}; color: {{ section.settings.badge_color }};">
+      {{ section.settings.badge_text }}
+    </div>
+    <h1 style="color: {{ section.settings.text_color }};">
+      {{ section.settings.heading_main }} <em style="color: {{ section.settings.highlight_color }};">{{ section.settings.heading_italic }}</em>
+    </h1>
+    <p style="color: {{ section.settings.subtext_color }};">{{ section.settings.subtext }}</p>
+
+    <div class="agg-box" style="background-color: {{ section.settings.agg_bg }}; border-color: {{ section.settings.agg_border }};">
+      <div class="agg-score">
+        <div class="agg-num" style="color: {{ section.settings.text_color }};">{{ section.settings.score }}</div>
+        <div class="agg-stars" style="color: {{ section.settings.star_color }};">{{ section.settings.stars_text }}</div>
+        <div class="agg-count" style="color: {{ section.settings.subtext_color }}; opacity: 0.7;">{{ section.settings.review_count_text }}</div>
+      </div>
+      
+      <div class="agg-divider"></div>
+      
+      <div class="agg-bars">
+        {% for block in section.blocks %}
+          {% if block.type == 'rating_bar' %}
+            <div class="bar-row">
+              <span class="bar-label" style="color: {{ section.settings.subtext_color }};">{{ block.settings.label }}</span>
+              <div class="bar-track" style="background-color: {{ section.settings.bar_track_color }};">
+                <div class="bar-fill" style="width: {{ block.settings.percentage }}%; background-color: {{ section.settings.star_color }};"></div>
+              </div>
+              <span class="bar-val" style="color: {{ section.settings.subtext_color }};">{{ block.settings.percentage }}%</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <div class="agg-divider"></div>
+      
+      <div class="agg-badges">
+        {% for block in section.blocks %}
+          {% if block.type == 'badge' %}
+            <div class="agg-badge" style="background-color: {{ section.settings.badge_item_bg }}; border-color: {{ section.settings.badge_item_border }};">
+              <span class="agg-badge-icon">{{ block.settings.icon }}</span>
+              <div>
+                <div class="agg-badge-text" style="color: {{ section.settings.text_color }};">{{ block.settings.title }}</div>
+                <div class="agg-badge-sub" style="color: {{ section.settings.subtext_color }}; opacity: 0.7;">{{ block.settings.subtitle }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  #ReviewHero-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
+  }
+
+  .review-hero {
+    padding: 80px 20px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-paws {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='20' cy='20' r='8' fill='white'/%3E%3Ccircle cx='35' cy='14' r='6' fill='white'/%3E%3Ccircle cx='48' cy='18' r='7' fill='white'/%3E%3Ccircle cx='55' cy='30' r='6' fill='white'/%3E%3Cellipse cx='38' cy='44' rx='14' ry='18' fill='white'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+  }
+
+  .hero-eyebrow {
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .review-hero h1 {
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 800px;
+    margin: 0 auto 20px;
+  }
+
+  .review-hero h1 em {
+    font-style: italic;
+  }
+
+  .review-hero p {
+    position: relative;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+
+  .agg-box {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 30px 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 5;
+  }
+
+  .agg-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .agg-stars {
+    font-size: 20px;
+    margin: 5px 0;
+    letter-spacing: 2px;
+  }
+
+  .agg-count {
+    font-size: 13px;
+  }
+
+  .agg-divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .agg-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 220px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bar-label {
+    font-size: 12px;
+    width: 30px;
+    flex-shrink: 0;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  .bar-val {
+    font-size: 12px;
+    width: 30px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .agg-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .agg-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid;
+    border-radius: 12px;
+    padding: 8px 15px;
+    text-align: left;
+  }
+
+  .agg-badge-icon {
+    font-size: 18px;
+  }
+
+  .agg-badge-text {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .agg-badge-sub {
+    font-size: 11px;
+  }
+
+  @media (max-width: 960px) {
+    .agg-divider {
+      display: none;
+    }
+    .agg-box {
+      gap: 30px;
+      padding: 25px;
+    }
+  }
+
+  @keyframes fadeUp { 
+    from { opacity: 0; transform: translateY(30px); } 
+    to { opacity: 1; transform: translateY(0); } 
+  }
+  
+  .review-hero h1 { animation: fadeUp 0.8s ease 0.1s both; }
+  .review-hero p  { animation: fadeUp 0.8s ease 0.3s both; }
+  .agg-box { animation: fadeUp 0.8s ease 0.5s both; }
+</style>
+
+{% schema %}
+{
+  "name": "Review Hero",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#1C3A2F" },
+    { "type": "color", "id": "text_color", "label": "Text Color", "default": "#FFFFFF" },
+    { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#E0E0E0" },
+    { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "⭐ Verified Customer Stories" },
+    { "type": "color", "id": "badge_bg", "label": "Badge Background", "default": "rgba(255,255,255,0.08)" },
+    { "type": "color", "id": "badge_color", "label": "Badge Text Color", "default": "#F2C07A" },
+    { "type": "text", "id": "heading_main", "label": "Heading Main", "default": "Thousands of Tails" },
+    { "type": "text", "id": "heading_italic", "label": "Heading Italic", "default": "Wagging with Joy" },
+    { "type": "color", "id": "highlight_color", "label": "Highlight Color", "default": "#F2C07A" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Real reviews from real pet parents who fell in love with their personalized PawCo creations." },
+    { "type": "header", "content": "Aggregate Box" },
+    { "type": "color", "id": "agg_bg", "label": "Box Background", "default": "rgba(255,255,255,0.06)" },
+    { "type": "color", "id": "agg_border", "label": "Box Border", "default": "rgba(255,255,255,0.12)" },
+    { "type": "text", "id": "score", "label": "Average Score", "default": "4.9" },
+    { "type": "text", "id": "stars_text", "label": "Stars Text", "default": "★★★★★" },
+    { "type": "text", "id": "review_count_text", "label": "Review Count Text", "default": "Based on 14,280 reviews" },
+    { "type": "color", "id": "star_color", "label": "Star/Fill Color", "default": "#E8A020" },
+    { "type": "color", "id": "bar_track_color", "label": "Bar Track Color", "default": "rgba(255,255,255,0.12)" },
+    { "type": "color", "id": "badge_item_bg", "label": "Badge Item BG", "default": "rgba(255,255,255,0.06)" },
+    { "type": "color", "id": "badge_item_border", "label": "Badge Item Border", "default": "rgba(255,255,255,0.1)" },
+    { "type": "range", "id": "padding_left", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Left", "default": 20 },
+    { "type": "range", "id": "padding_right", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Right", "default": 20 }
+  ],
+  "blocks": [
+    {
+      "type": "rating_bar",
+      "name": "Rating Bar",
+      "limit": 5,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label (e.g. 5★)", "default": "5★" },
+        { "type": "range", "id": "percentage", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Percentage", "default": 88 }
+      ]
+    },
+    {
+      "type": "badge",
+      "name": "Feature Badge",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Emoji/Icon", "default": "🎨" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Personalization Quality" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Rated 4.9 / 5.0" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Hero",
+      "blocks": [
+        { "type": "rating_bar", "settings": { "label": "5★", "percentage": 88 } },
+        { "type": "rating_bar", "settings": { "label": "4★", "percentage": 9 } },
+        { "type": "rating_bar", "settings": { "label": "3★", "percentage": 2 } },
+        { "type": "badge", "settings": { "icon": "🎨", "title": "Personalization Quality", "subtitle": "Rated 4.9 / 5.0" } },
+        { "type": "badge", "settings": { "icon": "📦", "title": "Packaging & Delivery", "subtitle": "Rated 4.8 / 5.0" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

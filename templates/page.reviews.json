@@ -1,0 +1,137 @@
+{
+  "sections": {
+    "review_hero": {
+      "type": "review-hero",
+      "blocks": {
+        "bar_5": { "type": "rating_bar", "settings": { "label": "5★", "percentage": 88 } },
+        "bar_4": { "type": "rating_bar", "settings": { "label": "4★", "percentage": 9 } },
+        "bar_3": { "type": "rating_bar", "settings": { "label": "3★", "percentage": 2 } },
+        "badge_1": { "type": "badge", "settings": { "icon": "🎨", "title": "Personalization Quality", "subtitle": "Rated 4.9 / 5.0" } },
+        "badge_2": { "type": "badge", "settings": { "icon": "📦", "title": "Packaging & Delivery", "subtitle": "Rated 4.8 / 5.0" } },
+        "badge_3": { "type": "badge", "settings": { "icon": "🐾", "title": "Pet Happiness", "subtitle": "Rated 5.0 / 5.0" } }
+      },
+      "block_order": ["bar_5", "bar_4", "bar_3", "badge_1", "badge_2", "badge_3"],
+      "settings": {
+        "bg_color": "#1C3A2F",
+        "text_color": "#FFFFFF",
+        "highlight_color": "#F2C07A",
+        "score": "4.9",
+        "star_color": "#E8A020"
+      }
+    },
+    "review_marquee": {
+      "type": "review-marquee",
+      "blocks": {
+        "rev_1": { "type": "review", "settings": { "author_name": "Sarah M.", "product_name": "Custom Pet Portrait", "quote": "The custom portrait of my golden retriever Biscuit arrived and I literally cried. It's perfect — the likeness is uncanny!" } },
+        "rev_2": { "type": "review", "settings": { "author_name": "James T.", "product_name": "Personalized Blanket", "quote": "Ordered a personalized blanket with my cat's face on it. My whole family wants one now. Quality is absolutely top notch." } },
+        "rev_3": { "type": "review", "settings": { "author_name": "Priya K.", "product_name": "Engraved ID Tag", "quote": "The engraved tag for my rescue dog Luna is beautiful. The paw design is exactly what I picked. Arrived so fast!" } },
+        "rev_4": { "type": "review", "settings": { "author_name": "Michael R.", "product_name": "Custom Photo Mug", "quote": "Gave a custom photo mug to my dog-mom friend. She uses it every morning and always gets compliments on it." } }
+      },
+      "block_order": ["rev_1", "rev_2", "rev_3", "rev_4"],
+      "settings": {
+        "bg_color": "#FAF7F2",
+        "speed": 40
+      }
+    },
+    "review_spotlight": {
+      "type": "review-spotlight",
+      "settings": {
+        "bg_color": "#1C3A2F",
+        "heading": "A Gift That Made Her Weep Happy Tears",
+        "quote": "I ordered a large custom portrait of our late dog Maple as a surprise for my mom's birthday. When she unwrapped it, she sobbed — the good kind. The detail was breathtaking.",
+        "author": "Diana L. — Verified Buyer",
+        "product_tag": "🎨 Custom Pet Portrait – Large Canvas"
+      }
+    },
+    "review_grid": {
+      "type": "review-grid",
+      "blocks": {
+        "f1": { "type": "filter_chip", "settings": { "label": "All Products" } },
+        "f2": { "type": "filter_chip", "settings": { "label": "Custom Portraits" } },
+        "f3": { "type": "filter_chip", "settings": { "label": "Blankets" } },
+        "r1": { "type": "review", "settings": { "is_featured": true, "author": "Rachel B.", "quote": "I was skeptical ordering a custom portrait online but PawCo completely blew me away. The brushstroke detail on Cooper's fur is amazing." } },
+        "r2": { "type": "review", "settings": { "author": "Marcus W.", "quote": "My two pups now have matching engraved tags. Solid, scratch-resistant, and totally adorable." } },
+        "r3": { "type": "review", "settings": { "author": "Nicole H.", "quote": "Princess refuses to sleep anywhere else since her embroidered bed arrived. The stitching quality is incredible." } }
+      },
+      "block_order": ["f1", "f2", "f3", "r1", "r2", "r3"],
+      "settings": {
+        "bg_color": "#FFFFFF",
+        "heading": "Stories From Our PawCo Family"
+      }
+    },
+    "review_photo_grid": {
+      "type": "review-photo-grid",
+      "blocks": {
+        "p1": { "type": "photo", "settings": { "author": "Emma S.", "product": "Custom Portrait", "height": 350 } },
+        "p2": { "type": "photo", "settings": { "author": "Carlos G.", "product": "Photo Blanket", "height": 280 } },
+        "p3": { "type": "photo", "settings": { "author": "Jenny W.", "product": "Engraved Tag", "height": 280 } },
+        "p4": { "type": "photo", "settings": { "author": "Aaron P.", "product": "Canvas Print", "height": 350 } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {
+        "bg_color": "#D4E8D0",
+        "heading": "See It in Real Homes"
+      }
+    },
+    "review_video_grid": {
+      "type": "review-video-grid",
+      "blocks": {
+        "v1": { "type": "video_review", "settings": { "author": "Kelly M.", "quote": "I was not expecting this level of quality. It honestly looks like a painting." } },
+        "v2": { "type": "video_review", "settings": { "author": "Zoe & Pete", "quote": "My husband's face when he unwrapped the custom blanket — priceless." } },
+        "v3": { "type": "video_review", "settings": { "author": "Sam D.", "quote": "The engraving on this tag is razor sharp — my dog Kona has never looked more stylish." } }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {
+        "bg_color": "#FFFFFF",
+        "heading": "Watch Them Unbox the Joy"
+      }
+    },
+    "review_category": {
+      "type": "review-category",
+      "blocks": {
+        "cat1": { "type": "category", "settings": { "title": "Custom Portraits", "rating_text": "4.9 · 5,210 reviews" } },
+        "cat2": { "type": "category", "settings": { "title": "Blankets", "rating_text": "4.8 · 3,450 reviews" } },
+        "sum1": { "type": "summary_item", "settings": { "icon": "🎨", "title": "Personalization Accuracy", "score": "4.9" } },
+        "sum2": { "type": "summary_item", "settings": { "icon": "📐", "title": "Material Quality", "score": "4.8" } }
+      },
+      "block_order": ["cat1", "cat2", "sum1", "sum2"],
+      "settings": {
+        "bg_color": "#FAF7F2",
+        "heading": "Reviews Across Every Category"
+      }
+    },
+    "review_trust": {
+      "type": "review-trust",
+      "blocks": {
+        "t1": { "type": "stat", "settings": { "number": "14", "suffix": "K+", "label": "Verified Reviews" } },
+        "t2": { "type": "stat", "settings": { "number": "4", "suffix": ".9★", "label": "Average Rating" } },
+        "t3": { "type": "stat", "settings": { "number": "98", "suffix": "%", "label": "Would Recommend" } },
+        "t4": { "type": "stat", "settings": { "number": "50", "suffix": "K+", "label": "Happy Pet Parents" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "bg_color": "#1C3A2F"
+      }
+    },
+    "review_cta": {
+      "type": "review-cta",
+      "settings": {
+        "bg_color": "#FFFFFF",
+        "heading": "Loved Your PawCo Order? Tell the World.",
+        "btn1_label": "Write a Review",
+        "btn2_label": "Shop Now"
+      }
+    }
+  },
+  "order": [
+    "review_hero",
+    "review_marquee",
+    "review_spotlight",
+    "review_grid",
+    "review_photo_grid",
+    "review_video_grid",
+    "review_category",
+    "review_trust",
+    "review_cta"
+  ]
+}

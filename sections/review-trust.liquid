@@ -1,0 +1,103 @@
+{% comment %}
+  Section: Review Trust Strip
+  Counter/stats strip for social proof.
+{% endcomment %}
+
+<div id="ReviewTrust-{{ section.id }}" class="review-trust-wrapper">
+  <section class="trust-strip">
+    <div class="trust-inner">
+      {% for block in section.blocks %}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          <div class="trust-num" style="color: {{ section.settings.number_color }};">
+            {{ block.settings.number }}<span style="color: {{ section.settings.accent_color }};">{{ block.settings.suffix }}</span>
+          </div>
+          <div class="trust-lbl" style="color: {{ section.settings.label_color }};">
+            {{ block.settings.label }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+<style>
+  #ReviewTrust-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .trust-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  .trust-item {
+    text-align: center;
+  }
+
+  .trust-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .trust-lbl {
+    font-size: 13px;
+    margin-top: 8px;
+    line-height: 1.5;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .trust-inner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Review Trust Strip",
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#1C3A2F" },
+    { "type": "color", "id": "number_color", "label": "Number Color", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent_color", "label": "Accent Color", "default": "#F2C07A" },
+    { "type": "color", "id": "label_color", "label": "Label Color", "default": "rgba(255,255,255,0.6)" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 60 }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat Item",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "14" },
+        { "type": "text", "id": "suffix", "label": "Suffix", "default": "K+" },
+        { "type": "textarea", "id": "label", "label": "Label", "default": "Verified Reviews across all products" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review Trust Strip",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "14", "suffix": "K+", "label": "Verified Reviews across all products" } },
+        { "type": "stat", "settings": { "number": "4", "suffix": ".9★", "label": "Average Rating from real buyers" } },
+        { "type": "stat", "settings": { "number": "98", "suffix": "%", "label": "Would Recommend PawCo to a friend" } },
+        { "type": "stat", "settings": { "number": "50", "suffix": "K+", "label": "Happy Pet Parents and counting" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
