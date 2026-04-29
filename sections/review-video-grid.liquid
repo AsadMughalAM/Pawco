@@ -1,32 +1,38 @@
 {% comment %}
-  Section: Review Video Grid
-  A grid of customer video reviews with thumbnails.
+  Section: Review Video Grid (Playful Pet Master Style)
+  A grid of customer video reviews with bold playful cards and hard shadows.
 {% endcomment %}
 
 <div id="ReviewVideoGrid-{{ section.id }}" class="review-video-grid-wrapper">
   <section class="section-inner">
     <div class="header-content" style="text-align: {{ section.settings.header_align }};">
-      <span class="section-tag" style="color: {{ section.settings.tag_color }};">{{ section.settings.tag }}</span>
+      <span class="section-tag-playful" style="background-color: {{ section.settings.tag_color }}; color: #fff;">{{ section.settings.tag }}</span>
       <h2 class="section-title" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
       <p class="section-sub" style="color: {{ section.settings.subtext_color }};">{{ section.settings.subtext }}</p>
     </div>
 
-    <div class="video-grid">
+    <div class="video-grid-playful">
       {% for block in section.blocks %}
-        <div class="video-card" style="background-color: {{ section.settings.card_bg }}; border-color: {{ section.settings.card_border }};" {{ block.shopify_attributes }}>
-          <div class="video-thumb-wrap">
+        <div class="video-card-playful" {{ block.shopify_attributes }}>
+          <div class="video-thumb-container">
             {% if block.settings.thumbnail != blank %}
               <img class="video-thumb" src="{{ block.settings.thumbnail | image_url: width: 800 }}" alt="{{ block.settings.author }}">
             {% else %}
               <div class="video-thumb-placeholder"></div>
             {% endif %}
-            <div class="video-play"></div>
+            <div class="play-btn-playful">
+              <div class="play-icon"></div>
+            </div>
           </div>
+          
           <div class="video-info">
             <div class="video-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.stars }}</div>
             <div class="video-quote" style="color: {{ section.settings.quote_color }};">"{{ block.settings.quote }}"</div>
-            <div class="video-author" style="color: {{ section.settings.heading_color }};">{{ block.settings.author }}</div>
-            <div class="video-product" style="color: {{ section.settings.tag_color }};">{{ block.settings.product }}</div>
+            
+            <div class="video-author-info">
+              <div class="video-author" style="color: {{ section.settings.heading_color }};">{{ block.settings.author }}</div>
+              <div class="video-product" style="color: {{ section.settings.tag_color }};">{{ block.settings.product }}</div>
+            </div>
           </div>
         </div>
       {% endfor %}
@@ -36,106 +42,168 @@
 
 <style>
   #ReviewVideoGrid-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .video-grid {
+  .section-tag-playful {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 2px solid var(--dark);
+    box-shadow: 3px 3px 0px var(--dark);
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+  }
+
+  .section-sub {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 650px;
+    margin-bottom: 50px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .video-grid-playful {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 40px;
     margin-top: 40px;
   }
 
-  .video-card {
-    border-radius: 20px;
+  .video-card-playful {
+    border-radius: 35px;
+    border: 3px solid var(--dark);
     overflow: hidden;
-    border: 1px solid;
-    position: relative;
-    cursor: pointer;
+    background: #fff;
+    box-shadow: 12px 12px 0px var(--dark);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
 
-  .video-thumb-wrap {
+  .video-card-playful:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 18px 18px 0px var(--dark);
+  }
+
+  .video-thumb-container {
     position: relative;
     overflow: hidden;
+    height: 260px;
+    border-bottom: 3px solid var(--dark);
   }
 
-  .video-thumb, .video-thumb-placeholder {
+  .video-thumb {
     width: 100%;
-    height: 240px;
+    height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform 0.4s;
-    background-color: #eee;
+    transition: transform 0.5s ease;
   }
 
-  .video-card:hover .video-thumb {
+  .video-card-playful:hover .video-thumb {
     transform: scale(1.05);
   }
 
-  .video-play {
+  .play-btn-playful {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.95);
+    background: #FFFFFF;
+    border: 3px solid var(--dark);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s, background 0.2s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 4px 4px 0px var(--dark);
+    transition: all 0.2s ease;
+    z-index: 5;
   }
 
-  .video-card:hover .video-play {
+  .video-card-playful:hover .play-btn-playful {
     transform: translate(-50%, -50%) scale(1.1);
-    background: white;
+    box-shadow: 6px 6px 0px var(--dark);
   }
 
-  .video-play::after {
-    content: '';
+  .play-icon {
     width: 0;
     height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 18px solid #1C3A2F;
-    margin-left: 4px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid var(--dark);
+    margin-left: 5px;
   }
 
   .video-info {
-    padding: 24px;
+    padding: 30px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .video-stars {
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
   }
 
   .video-quote {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
+    font-weight: 600;
     font-style: italic;
-    margin-bottom: 12px;
+    margin-bottom: 25px;
+    flex: 1;
+    color: #444;
+  }
+
+  .video-author-info {
+    padding-top: 20px;
+    border-top: 2px dashed rgba(0,0,0,0.1);
   }
 
   .video-author {
-    font-size: 14px;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 900;
   }
 
   .video-product {
-    font-size: 12px;
-    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 5px;
   }
 
-  @media (max-width: 960px) {
-    .video-grid {
+  @media (max-width: 1024px) {
+    .video-grid-playful {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .video-grid-playful {
       grid-template-columns: 1fr;
     }
   }
@@ -149,19 +217,17 @@
     { "type": "text", "id": "tag", "label": "Tag", "default": "Video Reviews" },
     { "type": "color", "id": "tag_color", "label": "Tag Color", "default": "#4A7C59" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Watch Them Unbox the Joy" },
-    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A1A" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A2E" },
     { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Nothing beats a real reaction. Watch customers open their personalized orders." },
     { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#4A4A4A" },
     { "type": "select", "id": "header_align", "label": "Header Alignment", "options": [
       { "value": "left", "label": "Left" },
       { "value": "center", "label": "Center" }
     ], "default": "left" },
-    { "type": "color", "id": "card_bg", "label": "Card BG", "default": "#FFFFFF" },
-    { "type": "color", "id": "card_border", "label": "Card Border", "default": "rgba(74,124,89,0.15)" },
     { "type": "color", "id": "star_color", "label": "Star Color", "default": "#E8A020" },
-    { "type": "color", "id": "quote_color", "label": "Quote Color", "default": "#4A4A4A" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 80 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 80 }
+    { "type": "color", "id": "quote_color", "label": "Quote Color", "default": "#1A1A2E" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 100 }
   ],
   "blocks": [
     {

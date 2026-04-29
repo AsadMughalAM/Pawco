@@ -1,52 +1,65 @@
 {% comment %}
-  Section: Review Hero
-  Highly customizable hero section for the reviews page.
+  Section: Review Hero (Playful Pet Master Style)
+  A high-impact hero with aggregate rating and playful decorative elements.
 {% endcomment %}
 
 <div id="ReviewHero-{{ section.id }}" class="review-hero-wrapper">
-  <section class="review-hero">
-    <div class="hero-paws"></div>
-    <div class="hero-eyebrow" style="background-color: {{ section.settings.badge_bg }}; color: {{ section.settings.badge_color }};">
-      {{ section.settings.badge_text }}
-    </div>
-    <h1 style="color: {{ section.settings.text_color }};">
-      {{ section.settings.heading_main }} <em style="color: {{ section.settings.highlight_color }};">{{ section.settings.heading_italic }}</em>
-    </h1>
-    <p style="color: {{ section.settings.subtext_color }};">{{ section.settings.subtext }}</p>
+  <div class="impact-dot impact-dot-1"></div>
+  <div class="impact-dot impact-dot-2"></div>
 
-    <div class="agg-box" style="background-color: {{ section.settings.agg_bg }}; border-color: {{ section.settings.agg_border }};">
-      <div class="agg-score">
-        <div class="agg-num" style="color: {{ section.settings.text_color }};">{{ section.settings.score }}</div>
-        <div class="agg-stars" style="color: {{ section.settings.star_color }};">{{ section.settings.stars_text }}</div>
-        <div class="agg-count" style="color: {{ section.settings.subtext_color }}; opacity: 0.7;">{{ section.settings.review_count_text }}</div>
+  <section class="review-hero-inner section-inner">
+    <div class="hero-main-content">
+      <div class="review-badge" style="background-color: {{ section.settings.badge_bg }}; color: {{ section.settings.badge_color }};">
+        {{ section.settings.badge_text }}
       </div>
+
+      <h1 class="hero-title" style="color: {{ section.settings.text_color }};">
+        {{ section.settings.heading_main }}<br>
+        <span class="hero-highlight" style="color: {{ section.settings.highlight_color }};">{{ section.settings.heading_italic }}</span>
+      </h1>
       
-      <div class="agg-divider"></div>
-      
-      <div class="agg-bars">
+      <p class="hero-subtext" style="color: {{ section.settings.text_color }}; opacity: 0.9;">
+        {{ section.settings.subtext }}
+      </p>
+
+      <div class="hero-actions">
+        <a href="#ReviewGrid-{{ section.id }}" class="btn-primary-playful" style="background-color: {{ section.settings.highlight_color }}; color: #1A1A2E;">
+          Read Our Stories
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats-card fade-up">
+      <div class="stats-header">
+        <div class="big-score" style="color: {{ section.settings.highlight_color }};">{{ section.settings.score }}</div>
+        <div class="stars-wrap">
+          <div class="stars" style="color: {{ section.settings.star_color }};">★★★★★</div>
+          <div class="total-revs" style="color: {{ section.settings.text_color }};">{{ section.settings.review_count_text }}</div>
+        </div>
+      </div>
+
+      <div class="rating-bars">
         {% for block in section.blocks %}
           {% if block.type == 'rating_bar' %}
-            <div class="bar-row">
-              <span class="bar-label" style="color: {{ section.settings.subtext_color }};">{{ block.settings.label }}</span>
+            <div class="rating-bar-row" {{ block.shopify_attributes }}>
+              <span class="bar-label">{{ block.settings.label }}</span>
               <div class="bar-track" style="background-color: {{ section.settings.bar_track_color }};">
                 <div class="bar-fill" style="width: {{ block.settings.percentage }}%; background-color: {{ section.settings.star_color }};"></div>
               </div>
-              <span class="bar-val" style="color: {{ section.settings.subtext_color }};">{{ block.settings.percentage }}%</span>
+              <span class="bar-percent">{{ block.settings.percentage }}%</span>
             </div>
           {% endif %}
         {% endfor %}
       </div>
-      
-      <div class="agg-divider"></div>
-      
-      <div class="agg-badges">
+
+      <div class="feature-badges">
         {% for block in section.blocks %}
           {% if block.type == 'badge' %}
-            <div class="agg-badge" style="background-color: {{ section.settings.badge_item_bg }}; border-color: {{ section.settings.badge_item_border }};">
-              <span class="agg-badge-icon">{{ block.settings.icon }}</span>
-              <div>
-                <div class="agg-badge-text" style="color: {{ section.settings.text_color }};">{{ block.settings.title }}</div>
-                <div class="agg-badge-sub" style="color: {{ section.settings.subtext_color }}; opacity: 0.7;">{{ block.settings.subtitle }}</div>
+            <div class="feature-badge" {{ block.shopify_attributes }}>
+              <span class="badge-icon">{{ block.settings.icon }}</span>
+              <div class="badge-texts">
+                <span class="badge-title">{{ block.settings.title }}</span>
+                <span class="badge-sub">{{ block.settings.subtitle }}</span>
               </div>
             </div>
           {% endif %}
@@ -54,190 +67,230 @@
       </div>
     </div>
   </section>
+
+  <svg class="impact-wave" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#FFFFFF"></path>
+  </svg>
 </div>
 
 <style>
   #ReviewHero-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
     background-color: {{ section.settings.bg_color }};
-    padding-left: {{ section.settings.padding_left }}px;
-    padding-right: {{ section.settings.padding_right }}px;
-  }
-
-  .review-hero {
-    padding: 80px 20px 60px;
-    text-align: center;
     position: relative;
     overflow: hidden;
+    padding-top: 100px;
+    padding-bottom: 80px;
   }
 
-  .hero-paws {
+  .impact-dot {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='20' cy='20' r='8' fill='white'/%3E%3Ccircle cx='35' cy='14' r='6' fill='white'/%3E%3Ccircle cx='48' cy='18' r='7' fill='white'/%3E%3Ccircle cx='55' cy='30' r='6' fill='white'/%3E%3Cellipse cx='38' cy='44' rx='14' ry='18' fill='white'/%3E%3C/svg%3E");
-    background-size: 80px 80px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.2;
+    z-index: 1;
+  }
+  .impact-dot-1 { width: 300px; height: 300px; background: {{ section.settings.highlight_color }}; top: -100px; left: -100px; }
+  .impact-dot-2 { width: 250px; height: 250px; background: #4A7C59; bottom: 10%; right: -100px; }
+
+  .review-hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
   }
 
-  .hero-eyebrow {
-    position: relative;
+  .review-badge {
     display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 8px 18px;
+    padding: 8px 20px;
     border-radius: 50px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.12);
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 25px;
+    border: 3px solid var(--dark);
+    box-shadow: 4px 4px 0px var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
-  .review-hero h1 {
-    position: relative;
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 5vw, 64px);
-    font-weight: 700;
-    line-height: 1.15;
-    max-width: 800px;
-    margin: 0 auto 20px;
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(40px, 6vw, 75px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 30px;
+    letter-spacing: -2px;
   }
 
-  .review-hero h1 em {
+  .hero-highlight {
     font-style: italic;
   }
 
-  .review-hero p {
-    position: relative;
+  .hero-subtext {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 550px;
+    margin-bottom: 40px;
+    font-weight: 500;
+  }
+
+  .btn-primary-playful {
+    display: inline-block;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-weight: 900;
     font-size: 18px;
-    line-height: 1.8;
-    max-width: 600px;
-    margin: 0 auto 40px;
-    font-weight: 300;
+    color: #1A1A2E;
+    text-decoration: none;
+    border: 3px solid var(--dark);
+    box-shadow: 6px 6px 0px var(--dark);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
-  .agg-box {
-    position: relative;
-    display: inline-flex;
+  .btn-primary-playful:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--dark);
+  }
+
+  .hero-stats-card {
+    background: #FFFFFF;
+    border-radius: 40px;
+    padding: 40px;
+    border: 4px solid var(--dark);
+    box-shadow: 20px 20px 0px var(--dark);
+  }
+
+  .stats-header {
+    display: flex;
     align-items: center;
-    gap: 40px;
-    border: 1px solid;
-    border-radius: 20px;
-    padding: 30px 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-    z-index: 5;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 2px dashed rgba(0,0,0,0.1);
   }
 
-  .agg-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    font-weight: 700;
+  .big-score {
+    font-family: var(--font-heading);
+    font-size: 65px;
+    font-weight: 900;
     line-height: 1;
   }
 
-  .agg-stars {
-    font-size: 20px;
-    margin: 5px 0;
-    letter-spacing: 2px;
+  .stars {
+    font-size: 24px;
+    margin-bottom: 5px;
   }
 
-  .agg-count {
-    font-size: 13px;
+  .total-revs {
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0.7;
   }
 
-  .agg-divider {
-    width: 1px;
-    height: 80px;
-    background: rgba(255,255,255,0.12);
-  }
-
-  .agg-bars {
+  .rating-bars {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    min-width: 220px;
+    gap: 12px;
+    margin-bottom: 35px;
   }
 
-  .bar-row {
+  .rating-bar-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-  }
-
-  .bar-label {
-    font-size: 12px;
-    width: 30px;
-    flex-shrink: 0;
+    gap: 15px;
+    font-weight: 700;
+    font-size: 14px;
   }
 
   .bar-track {
     flex: 1;
-    height: 6px;
-    border-radius: 3px;
+    height: 12px;
+    background: #F0F0F0;
+    border-radius: 10px;
     overflow: hidden;
   }
 
   .bar-fill {
     height: 100%;
-    border-radius: 3px;
+    border-radius: 10px;
   }
 
-  .bar-val {
-    font-size: 12px;
-    width: 30px;
-    text-align: right;
-    flex-shrink: 0;
+  .feature-badges {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
-  .agg-badges {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .agg-badge {
+  .feature-badge {
     display: flex;
     align-items: center;
-    gap: 10px;
-    border: 1px solid;
-    border-radius: 12px;
-    padding: 8px 15px;
-    text-align: left;
+    gap: 15px;
+    padding: 15px;
+    background: #FAF7F2;
+    border-radius: 20px;
+    border: 2px solid var(--dark);
   }
 
-  .agg-badge-icon {
-    font-size: 18px;
+  .badge-icon {
+    font-size: 24px;
   }
 
-  .agg-badge-text {
-    font-size: 13px;
+  .badge-title {
+    display: block;
+    font-weight: 800;
+    font-size: 14px;
+  }
+
+  .badge-sub {
+    font-size: 12px;
+    opacity: 0.8;
     font-weight: 600;
   }
 
-  .agg-badge-sub {
-    font-size: 11px;
+  .impact-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 2;
   }
 
   @media (max-width: 960px) {
-    .agg-divider {
-      display: none;
+    .review-hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 50px;
     }
-    .agg-box {
-      gap: 30px;
-      padding: 25px;
+    .hero-subtext {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-stats-card {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    #ReviewHero-{{ section.id }} {
+      padding-top: 60px;
     }
   }
 
-  @keyframes fadeUp { 
-    from { opacity: 0; transform: translateY(30px); } 
-    to { opacity: 1; transform: translateY(0); } 
+  .fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
-  
-  .review-hero h1 { animation: fadeUp 0.8s ease 0.1s both; }
-  .review-hero p  { animation: fadeUp 0.8s ease 0.3s both; }
-  .agg-box { animation: fadeUp 0.8s ease 0.5s both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 </style>
 
 {% schema %}
@@ -246,26 +299,18 @@
   "settings": [
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#1C3A2F" },
     { "type": "color", "id": "text_color", "label": "Text Color", "default": "#FFFFFF" },
-    { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#E0E0E0" },
-    { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "⭐ Verified Customer Stories" },
-    { "type": "color", "id": "badge_bg", "label": "Badge Background", "default": "rgba(255,255,255,0.08)" },
-    { "type": "color", "id": "badge_color", "label": "Badge Text Color", "default": "#F2C07A" },
+    { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "⭐️ Rated 4.9/5 by 14K+ Parents" },
+    { "type": "color", "id": "badge_bg", "label": "Badge Background", "default": "#FFEBAD" },
+    { "type": "color", "id": "badge_color", "label": "Badge Text Color", "default": "#1A1A2E" },
     { "type": "text", "id": "heading_main", "label": "Heading Main", "default": "Thousands of Tails" },
     { "type": "text", "id": "heading_italic", "label": "Heading Italic", "default": "Wagging with Joy" },
     { "type": "color", "id": "highlight_color", "label": "Highlight Color", "default": "#F2C07A" },
     { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Real reviews from real pet parents who fell in love with their personalized PawCo creations." },
-    { "type": "header", "content": "Aggregate Box" },
-    { "type": "color", "id": "agg_bg", "label": "Box Background", "default": "rgba(255,255,255,0.06)" },
-    { "type": "color", "id": "agg_border", "label": "Box Border", "default": "rgba(255,255,255,0.12)" },
+    { "type": "header", "content": "Stats Card" },
     { "type": "text", "id": "score", "label": "Average Score", "default": "4.9" },
-    { "type": "text", "id": "stars_text", "label": "Stars Text", "default": "★★★★★" },
     { "type": "text", "id": "review_count_text", "label": "Review Count Text", "default": "Based on 14,280 reviews" },
     { "type": "color", "id": "star_color", "label": "Star/Fill Color", "default": "#E8A020" },
-    { "type": "color", "id": "bar_track_color", "label": "Bar Track Color", "default": "rgba(255,255,255,0.12)" },
-    { "type": "color", "id": "badge_item_bg", "label": "Badge Item BG", "default": "rgba(255,255,255,0.06)" },
-    { "type": "color", "id": "badge_item_border", "label": "Badge Item Border", "default": "rgba(255,255,255,0.1)" },
-    { "type": "range", "id": "padding_left", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Left", "default": 20 },
-    { "type": "range", "id": "padding_right", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Right", "default": 20 }
+    { "type": "color", "id": "bar_track_color", "label": "Bar Track Color", "default": "rgba(255,255,255,0.12)" }
   ],
   "blocks": [
     {

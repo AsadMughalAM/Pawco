@@ -1,31 +1,33 @@
 {% comment %}
-  Section: Review Photo Grid
-  A gallery of customer photos with review info overlays.
+  Section: Review Photo Grid (Playful Pet Master Style)
+  A gallery of customer photos with bold playful cards and hard shadows.
 {% endcomment %}
 
 <div id="ReviewPhotoGrid-{{ section.id }}" class="review-photo-grid-wrapper">
   <section class="section-inner">
     <div class="header-content" style="text-align: {{ section.settings.header_align }};">
-      <span class="section-tag" style="color: {{ section.settings.tag_color }};">{{ section.settings.tag }}</span>
+      <span class="section-tag-playful" style="background-color: {{ section.settings.tag_color }}; color: #fff;">{{ section.settings.tag }}</span>
       <h2 class="section-title" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
       <p class="section-sub" style="color: {{ section.settings.subtext_color }};">{{ section.settings.subtext }}</p>
     </div>
 
-    <div class="photo-grid">
+    <div class="photo-grid-playful">
       {% for block in section.blocks %}
-        <div class="photo-card" {{ block.shopify_attributes }}>
-          {% if block.settings.image != blank %}
-            <img src="{{ block.settings.image | image_url: width: 800 }}" 
-                 alt="{{ block.settings.author }}" 
-                 style="height: {{ block.settings.height }}px;">
-          {% else %}
-            <div class="photo-placeholder" style="height: {{ block.settings.height }}px;"></div>
-          {% endif %}
-          <div class="photo-card-overlay" style="background: linear-gradient(to top, {{ section.settings.overlay_color }} 0%, transparent 60%);"></div>
-          <div class="photo-card-info">
-            <div class="pc-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.stars }}</div>
-            <div class="pc-name" style="color: white;">{{ block.settings.author }}</div>
-            <div class="pc-product" style="color: rgba(255,255,255,0.8);">{{ block.settings.product }}</div>
+        <div class="photo-card-playful" {{ block.shopify_attributes }}>
+          <div class="photo-img-container">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | image_url: width: 800 }}" 
+                   alt="{{ block.settings.author }}" 
+                   style="height: {{ block.settings.height }}px;">
+            {% else %}
+              <div class="photo-placeholder" style="height: {{ block.settings.height }}px;"></div>
+            {% endif %}
+            
+            <div class="photo-card-info">
+              <div class="pc-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.stars }}</div>
+              <div class="pc-name">{{ block.settings.author }}</div>
+              <div class="pc-product">{{ block.settings.product }}</div>
+            </div>
           </div>
         </div>
       {% endfor %}
@@ -35,46 +37,85 @@
 
 <style>
   #ReviewPhotoGrid-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .photo-grid {
+  .section-tag-playful {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 2px solid var(--dark);
+    box-shadow: 3px 3px 0px var(--dark);
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+  }
+
+  .section-sub {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 650px;
+    margin-bottom: 50px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .photo-grid-playful {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 30px;
     margin-top: 40px;
   }
 
-  .photo-card {
+  .photo-card-playful {
     position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  .photo-card img, .photo-placeholder {
+  .photo-card-playful:hover {
+    transform: translate(-5px, -5px);
+  }
+
+  .photo-img-container {
+    position: relative;
+    border-radius: 35px;
+    overflow: hidden;
+    border: 3px solid var(--dark);
+    box-shadow: 10px 10px 0px var(--dark);
+    background: #fff;
+  }
+
+  .photo-card-playful:hover .photo-img-container {
+    box-shadow: 15px 15px 0px var(--dark);
+  }
+
+  .photo-card-playful img, .photo-placeholder {
     width: 100%;
     display: block;
     object-fit: cover;
-    transition: transform 0.4s;
+    transition: transform 0.5s;
     background-color: #eee;
   }
 
-  .photo-card:hover img {
-    transform: scale(1.08);
-  }
-
-  .photo-card-overlay {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .photo-card:hover .photo-card-overlay {
-    opacity: 1;
+  .photo-card-playful:hover img {
+    transform: scale(1.05);
   }
 
   .photo-card-info {
@@ -83,38 +124,42 @@
     left: 0;
     right: 0;
     padding: 20px;
-    transform: translateY(10px);
-    transition: transform 0.3s;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    color: #fff;
     opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
   }
 
-  .photo-card:hover .photo-card-info {
-    transform: translateY(0);
+  .photo-card-playful:hover .photo-card-info {
     opacity: 1;
+    transform: translateY(0);
   }
 
   .pc-stars {
-    font-size: 12px;
-    margin-bottom: 4px;
+    font-size: 14px;
+    margin-bottom: 5px;
   }
 
   .pc-name {
-    font-size: 14px;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 900;
   }
 
   .pc-product {
     font-size: 12px;
-    margin-top: 2px;
+    font-weight: 600;
+    opacity: 0.8;
   }
 
-  @media (max-width: 960px) {
-    .photo-grid {
+  @media (max-width: 1024px) {
+    .photo-grid-playful {
       grid-template-columns: repeat(2, 1fr);
     }
   }
-  @media (max-width: 480px) {
-    .photo-grid {
+  @media (max-width: 550px) {
+    .photo-grid-playful {
       grid-template-columns: 1fr;
     }
   }
@@ -128,17 +173,16 @@
     { "type": "text", "id": "tag", "label": "Tag", "default": "Customer Photos" },
     { "type": "color", "id": "tag_color", "label": "Tag Color", "default": "#4A7C59" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "See It in Real Homes" },
-    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A1A" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A2E" },
     { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Unfiltered, unprompted — real photos shared by our happiest customers." },
     { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#4A4A4A" },
     { "type": "select", "id": "header_align", "label": "Header Alignment", "options": [
       { "value": "left", "label": "Left" },
       { "value": "center", "label": "Center" }
     ], "default": "left" },
-    { "type": "color", "id": "overlay_color", "label": "Hover Overlay Color", "default": "#1C3A2F" },
-    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#E8A020" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 80 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 80 }
+    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#F2C07A" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 100 }
   ],
   "blocks": [
     {
@@ -146,7 +190,7 @@
       "name": "Photo Card",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Photo" },
-        { "type": "range", "id": "height", "min": 200, "max": 500, "step": 10, "unit": "px", "label": "Card Height", "default": 300 },
+        { "type": "range", "id": "height", "min": 200, "max": 500, "step": 10, "unit": "px", "label": "Card Height", "default": 350 },
         { "type": "text", "id": "stars", "label": "Stars Text", "default": "★★★★★" },
         { "type": "text", "id": "author", "label": "Author Name", "default": "Emma S." },
         { "type": "text", "id": "product", "label": "Product Name", "default": "Custom Portrait" }
@@ -157,10 +201,10 @@
     {
       "name": "Review Photo Grid",
       "blocks": [
-        { "type": "photo", "settings": { "height": 350 } },
-        { "type": "photo", "settings": { "height": 280 } },
-        { "type": "photo", "settings": { "height": 280 } },
-        { "type": "photo", "settings": { "height": 350 } }
+        { "type": "photo", "settings": { "height": 380 } },
+        { "type": "photo", "settings": { "height": 320 } },
+        { "type": "photo", "settings": { "height": 320 } },
+        { "type": "photo", "settings": { "height": 380 } }
       ]
     }
   ]

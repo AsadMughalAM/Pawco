@@ -1,6 +1,6 @@
 {% comment %}
-  Section: Review Spotlight
-  Featured review with a large image and big quote.
+  Section: Review Spotlight (Playful Pet Master Style)
+  Featured review with a large image and bold playful typography.
 {% endcomment %}
 
 <div id="ReviewSpotlight-{{ section.id }}" class="review-spotlight-wrapper">
@@ -12,19 +12,23 @@
         {% else %}
           <div class="spotlight-img-placeholder"></div>
         {% endif %}
-        {% if section.settings.badge_text != blank %}
-          <div class="spotlight-product-badge" style="background-color: {{ section.settings.badge_bg }}; color: {{ section.settings.badge_color }};">
-            {{ section.settings.badge_text }}
-          </div>
-        {% endif %}
+        
+        <div class="spotlight-badge-playful" style="background-color: {{ section.settings.badge_bg }}; color: {{ section.settings.badge_color }};">
+          {{ section.settings.badge_text }}
+        </div>
       </div>
+
       <div class="spotlight-text">
-        <span class="section-tag" style="color: {{ section.settings.tag_color }};">{{ section.settings.tag }}</span>
+        <span class="section-tag-playful" style="background-color: {{ section.settings.tag_color }}; color: #fff;">{{ section.settings.tag }}</span>
         <h2 class="section-title" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
         <div class="spotlight-stars" style="color: {{ section.settings.star_color }};">{{ section.settings.stars }}</div>
-        <blockquote class="big-quote" style="color: {{ section.settings.quote_color }}; border-left-color: {{ section.settings.tag_color }};">
-          "{{ section.settings.quote }}"
-        </blockquote>
+        
+        <div class="quote-container-playful">
+          <blockquote class="big-quote" style="color: {{ section.settings.quote_color }};">
+            "{{ section.settings.quote }}"
+          </blockquote>
+        </div>
+
         <div class="spotlight-reviewer">
           {% if section.settings.avatar != blank %}
             <img class="spotlight-avatar" src="{{ section.settings.avatar | image_url: width: 120 }}" alt="{{ section.settings.author }}">
@@ -36,8 +40,9 @@
             <div class="meta" style="color: {{ section.settings.quote_color }}; opacity: 0.6;">{{ section.settings.meta }}</div>
           </div>
         </div>
+
         {% if section.settings.product_tag != blank %}
-          <div class="spotlight-product-tag" style="background-color: {{ section.settings.tag_bg }}; border-color: {{ section.settings.tag_border }}; color: {{ section.settings.quote_color }};">
+          <div class="spotlight-product-tag-playful" style="background-color: #fff; color: #1A1A2E;">
             {{ section.settings.product_tag }}
           </div>
         {% endif %}
@@ -48,119 +53,153 @@
 
 <style>
   #ReviewSpotlight-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
   }
 
   .spotlight-inner {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 80px;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 40px;
   }
 
   .spotlight-img-wrap {
     position: relative;
+    z-index: 5;
   }
 
   .spotlight-img, .spotlight-img-placeholder {
     width: 100%;
-    height: 480px;
+    height: 550px;
     object-fit: cover;
-    border-radius: 24px;
+    border-radius: 40px;
     display: block;
     background-color: #eee;
+    border: 4px solid var(--dark);
+    box-shadow: 20px 20px 0px var(--dark);
   }
 
-  .spotlight-product-badge {
+  .spotlight-badge-playful {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    bottom: 30px;
+    right: -20px;
+    font-size: 14px;
+    font-weight: 900;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 10px 25px;
     border-radius: 50px;
+    border: 3px solid var(--dark);
+    box-shadow: 5px 5px 0px var(--dark);
+    z-index: 10;
   }
 
-  .section-tag {
+  .section-tag-playful {
     display: inline-block;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-weight: 800;
     font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 2px solid var(--dark);
+    box-shadow: 3px 3px 0px var(--dark);
   }
 
   .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 12px;
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
   }
 
   .spotlight-stars {
-    font-size: 16px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+
+  .quote-container-playful {
+    position: relative;
+    margin-bottom: 40px;
   }
 
   .big-quote {
-    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    line-height: 1.5;
+    font-weight: 600;
     font-style: italic;
-    font-size: clamp(18px, 2.5vw, 24px);
-    line-height: 1.55;
-    margin: 20px 0 30px;
-    padding-left: 20px;
-    border-left: 3px solid;
+    position: relative;
+    z-index: 2;
   }
 
   .spotlight-reviewer {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
+    padding-top: 30px;
+    border-top: 2px dashed rgba(255,255,255,0.2);
+    margin-bottom: 35px;
   }
 
-  .spotlight-avatar, .spotlight-avatar-placeholder {
-    width: 60px;
-    height: 60px;
+  .spotlight-avatar {
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid rgba(255,255,255,0.2);
-    background-color: #eee;
+    border: 3px solid var(--dark);
+    box-shadow: 4px 4px 0px var(--dark);
   }
 
   .spotlight-reviewer-info .name {
-    font-weight: 600;
-    font-size: 16px;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: -0.5px;
   }
 
   .spotlight-reviewer-info .meta {
-    font-size: 13px;
-    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 600;
   }
 
-  .spotlight-product-tag {
+  .spotlight-product-tag-playful {
     display: inline-block;
-    margin-top: 24px;
-    border: 1px solid;
-    font-size: 13px;
-    padding: 6px 16px;
+    border: 3px solid var(--dark);
+    font-size: 14px;
+    font-weight: 800;
+    padding: 10px 25px;
     border-radius: 50px;
+    box-shadow: 4px 4px 0px var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   @media (max-width: 960px) {
     .spotlight-inner {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 60px;
+      text-align: center;
     }
     .spotlight-img, .spotlight-img-placeholder {
-      height: 350px;
+      height: 400px;
+    }
+    .spotlight-badge-playful {
+      right: 20px;
+    }
+    .spotlight-reviewer {
+      justify-content: center;
     }
   }
 </style>
@@ -172,26 +211,24 @@
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#1C3A2F" },
     { "type": "image_picker", "id": "image", "label": "Spotlight Image" },
     { "type": "text", "id": "badge_text", "label": "Spotlight Badge", "default": "Editor's Pick Review" },
-    { "type": "color", "id": "badge_bg", "label": "Badge BG", "default": "#D4832A" },
-    { "type": "color", "id": "badge_color", "label": "Badge Text", "default": "#FFFFFF" },
+    { "type": "color", "id": "badge_bg", "label": "Badge BG", "default": "#FFEBAD" },
+    { "type": "color", "id": "badge_color", "label": "Badge Text", "default": "#1A1A2E" },
     { "type": "header", "content": "Text Content" },
     { "type": "text", "id": "tag", "label": "Section Tag", "default": "Featured Review" },
-    { "type": "color", "id": "tag_color", "label": "Tag Color", "default": "#F2C07A" },
+    { "type": "color", "id": "tag_color", "label": "Tag Color", "default": "#D4832A" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "A Gift That Made Her Weep Happy Tears" },
     { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#FFFFFF" },
     { "type": "text", "id": "stars", "label": "Stars Text", "default": "★★★★★" },
-    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#E8A020" },
+    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#F2C07A" },
     { "type": "textarea", "id": "quote", "label": "Quote", "default": "I ordered a large custom portrait of our late dog Maple as a surprise for my mom's birthday. When she unwrapped it, she sobbed — the good kind." },
-    { "type": "color", "id": "quote_color", "label": "Quote/Meta Color", "default": "#E0E0E0" },
+    { "type": "color", "id": "quote_color", "label": "Quote Color", "default": "#FFFFFF" },
     { "type": "header", "content": "Reviewer Info" },
     { "type": "image_picker", "id": "avatar", "label": "Reviewer Avatar" },
     { "type": "text", "id": "author", "label": "Author Name", "default": "Diana L. — Verified Buyer" },
     { "type": "text", "id": "meta", "label": "Author Meta", "default": "Portland, OR · Purchased 3 months ago" },
-    { "type": "text", "id": "product_tag", "label": "Product Tag", "default": "🎨 Custom Pet Portrait – Large Canvas (24×30)" },
-    { "type": "color", "id": "tag_bg", "label": "Product Tag BG", "default": "rgba(255,255,255,0.08)" },
-    { "type": "color", "id": "tag_border", "label": "Product Tag Border", "default": "rgba(255,255,255,0.15)" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 80 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 80 }
+    { "type": "text", "id": "product_tag", "label": "Product Tag", "default": "🎨 Custom Pet Portrait – Large Canvas" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 100 }
   ],
   "presets": [
     {

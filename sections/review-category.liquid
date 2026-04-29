@@ -1,72 +1,83 @@
 {% comment %}
-  Section: Review Category
-  Tabbed category reviews showing product specific feedback.
+  Section: Review Category (Playful Pet Master Style)
+  Tabbed category reviews with bold playful design and hard shadows.
 {% endcomment %}
 
 <div id="ReviewCategory-{{ section.id }}" class="review-category-wrapper">
   <section class="section-inner">
     <div class="header-content" style="text-align: {{ section.settings.header_align }};">
-      <span class="section-tag" style="color: {{ section.settings.tag_color }};">{{ section.settings.tag }}</span>
+      <span class="section-tag-playful" style="background-color: {{ section.settings.tag_color }}; color: #fff;">{{ section.settings.tag }}</span>
       <h2 class="section-title" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
       <p class="section-sub" style="color: {{ section.settings.subtext_color }};">{{ section.settings.subtext }}</p>
     </div>
 
-    <div class="cat-tabs">
+    <div class="cat-tabs-playful">
       {% for block in section.blocks %}
         {% if block.type == 'category' %}
-          <button class="cat-tab {% if forloop.first %}active{% endif %}" 
-                  data-tab="tab-{{ block.id }}"
-                  style="--tab-border: {{ section.settings.card_border }}; --tab-active-bg: {{ section.settings.heading_bg }};">
+          <button class="cat-tab-playful {% if forloop.first %}active{% endif %}" 
+                  data-tab="tab-{{ block.id }}">
             {{ block.settings.title }}
           </button>
         {% endif %}
       {% endfor %}
     </div>
 
-    <div class="cat-contents">
+    <div class="cat-contents-playful">
       {% for block in section.blocks %}
         {% if block.type == 'category' %}
-          <div id="tab-{{ block.id }}" class="cat-content {% if forloop.first %}active{% endif %}">
-            <div class="cat-product-panel" style="background-color: {{ section.settings.card_bg }}; border-color: {{ section.settings.card_border }};">
-              {% if block.settings.image != blank %}
-                <img class="cpp-img" src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}">
-              {% else %}
-                <div class="cpp-img-placeholder"></div>
-              {% endif %}
+          <div id="tab-{{ block.id }}" class="cat-content-playful {% if forloop.first %}active{% endif %}">
+            <div class="cat-product-panel-playful">
+              <div class="cpp-img-wrap">
+                {% if block.settings.image != blank %}
+                  <img class="cpp-img" src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}">
+                {% else %}
+                  <div class="cpp-img-placeholder"></div>
+                {% endif %}
+              </div>
+              
               <div class="cpp-body">
-                <div class="cpp-title" style="color: {{ section.settings.heading_bg }};">{{ block.settings.title }}</div>
+                <div class="cpp-title">{{ block.settings.title }}</div>
                 <div class="cpp-rating">
                   <span class="cpp-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.stars }}</span>
-                  <span class="cpp-num" style="color: {{ section.settings.subtext_color }}; opacity: 0.7;">{{ block.settings.rating_text }}</span>
+                  <span class="cpp-num">{{ block.settings.rating_text }}</span>
                 </div>
+                
                 <div class="cpp-review-list">
                   {% if block.settings.rev1_name != blank %}
-                    <div class="mini-review" style="background-color: {{ section.settings.mini_rev_bg }};">
-                      <div class="mr-head"><span class="mr-name" style="color: {{ section.settings.heading_color }};">{{ block.settings.rev1_name }}</span><span class="mr-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.rev1_stars }}</span></div>
-                      <p class="mr-quote" style="color: {{ section.settings.subtext_color }};">"{{ block.settings.rev1_quote }}"</p>
+                    <div class="mini-review-playful">
+                      <div class="mr-head">
+                        <span class="mr-name">{{ block.settings.rev1_name }}</span>
+                        <span class="mr-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.rev1_stars }}</span>
+                      </div>
+                      <p class="mr-quote">"{{ block.settings.rev1_quote }}"</p>
                     </div>
                   {% endif %}
                   {% if block.settings.rev2_name != blank %}
-                    <div class="mini-review" style="background-color: {{ section.settings.mini_rev_bg }};">
-                      <div class="mr-head"><span class="mr-name" style="color: {{ section.settings.heading_color }};">{{ block.settings.rev2_name }}</span><span class="mr-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.rev2_stars }}</span></div>
-                      <p class="mr-quote" style="color: {{ section.settings.subtext_color }};">"{{ block.settings.rev2_quote }}"</p>
+                    <div class="mini-review-playful">
+                      <div class="mr-head">
+                        <span class="mr-name">{{ block.settings.rev2_name }}</span>
+                        <span class="mr-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.rev2_stars }}</span>
+                      </div>
+                      <p class="mr-quote">"{{ block.settings.rev2_quote }}"</p>
                     </div>
                   {% endif %}
                 </div>
               </div>
             </div>
 
-            <div class="cat-summary">
+            <div class="cat-summary-playful">
               {% for subblock in section.blocks %}
                 {% if subblock.type == 'summary_item' %}
-                  <div class="summary-card" style="background-color: {{ section.settings.card_bg }}; border-color: {{ section.settings.card_border }};">
-                    <div class="summary-icon" style="background-color: {{ section.settings.icon_bg }};">{{ subblock.settings.icon }}</div>
-                    <div class="summary-text">
-                      <h4 style="color: {{ section.settings.heading_bg }};">{{ subblock.settings.title }}</h4>
-                      <p style="color: {{ section.settings.subtext_color }}; opacity: 0.8;">{{ subblock.settings.description }}</p>
+                  <div class="summary-card-playful">
+                    <div class="summary-icon-playful" style="background-color: {{ section.settings.icon_bg }};">
+                      {{ subblock.settings.icon }}
                     </div>
-                    <div class="summary-score">
-                      <div class="s-num" style="color: {{ section.settings.heading_bg }};">{{ subblock.settings.score }}</div>
+                    <div class="summary-text">
+                      <h4>{{ subblock.settings.title }}</h4>
+                      <p>{{ subblock.settings.description }}</p>
+                    </div>
+                    <div class="summary-score-playful">
+                      <div class="s-num" style="color: {{ section.settings.tag_color }};">{{ subblock.settings.score }}</div>
                       <div class="s-stars" style="color: {{ section.settings.star_color }};">{{ subblock.settings.stars }}</div>
                     </div>
                   </div>
@@ -82,108 +93,165 @@
 
 <style>
   #ReviewCategory-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .cat-tabs {
+  .section-tag-playful {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 2px solid var(--dark);
+    box-shadow: 3px 3px 0px var(--dark);
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+  }
+
+  .section-sub {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto 50px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .cat-tabs-playful {
     display: flex;
-    gap: 10px;
-    margin: 30px 0 40px;
+    gap: 15px;
+    margin: 40px 0 60px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .cat-tab {
-    padding: 8px 24px;
+  .cat-tab-playful {
+    padding: 12px 30px;
     border-radius: 50px;
-    border: 1.5px solid var(--tab-border);
+    border: 3px solid var(--dark);
     font-size: 14px;
-    font-weight: 500;
-    color: #4A4A4A;
+    font-weight: 900;
+    color: var(--dark);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .cat-tab.active {
-    background: var(--tab-active-bg);
+  .cat-tab-playful.active {
+    background: {{ section.settings.heading_bg }};
     color: white;
-    border-color: var(--tab-active-bg);
+    box-shadow: 4px 4px 0px var(--dark);
+    transform: translate(-2px, -2px);
   }
 
-  .cat-content {
+  .cat-content-playful {
     display: none;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: start;
   }
 
-  .cat-content.active {
+  .cat-content-playful.active {
     display: grid;
   }
 
-  .cat-product-panel {
-    border-radius: 24px;
-    border: 1px solid;
+  .cat-product-panel-playful {
+    background: #fff;
+    border-radius: 40px;
+    border: 4px solid var(--dark);
+    overflow: hidden;
+    box-shadow: 15px 15px 0px var(--dark);
+  }
+
+  .cpp-img-wrap {
+    height: 350px;
+    border-bottom: 3px solid var(--dark);
     overflow: hidden;
   }
 
-  .cpp-img, .cpp-img-placeholder {
+  .cpp-img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
-    display: block;
-    background-color: #eee;
+    transition: transform 0.5s ease;
+  }
+
+  .cat-product-panel-playful:hover .cpp-img {
+    transform: scale(1.05);
   }
 
   .cpp-body {
-    padding: 30px;
+    padding: 40px;
   }
 
   .cpp-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
   }
 
   .cpp-rating {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 24px;
+    gap: 15px;
+    margin-bottom: 30px;
   }
 
   .cpp-stars {
-    font-size: 16px;
+    font-size: 20px;
+    letter-spacing: 2px;
   }
 
   .cpp-num {
     font-size: 14px;
+    font-weight: 800;
+    opacity: 0.7;
   }
 
   .cpp-review-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
   }
 
-  .mini-review {
-    padding: 20px;
-    border-radius: 16px;
+  .mini-review-playful {
+    padding: 25px;
+    background: #FAF7F2;
+    border-radius: 25px;
+    border: 2px solid var(--dark);
   }
 
   .mr-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
   .mr-name {
-    font-size: 14px;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 900;
   }
 
   .mr-stars {
@@ -191,70 +259,84 @@
   }
 
   .mr-quote {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 600;
     font-style: italic;
+    color: #444;
   }
 
-  .cat-summary {
+  .cat-summary-playful {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
   }
 
-  .summary-card {
-    border-radius: 20px;
-    border: 1px solid;
-    padding: 24px;
+  .summary-card-playful {
+    background: #fff;
+    border-radius: 30px;
+    border: 3px solid var(--dark);
+    padding: 30px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
+    box-shadow: 8px 8px 0px var(--dark);
+    transition: all 0.3s ease;
   }
 
-  .summary-icon {
-    width: 50px;
-    height: 50px;
+  .summary-card-playful:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 12px 12px 0px var(--dark);
+  }
+
+  .summary-icon-playful {
+    width: 60px;
+    height: 60px;
     flex-shrink: 0;
-    border-radius: 12px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 24px;
+    border: 2px solid var(--dark);
   }
 
   .summary-text h4 {
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 5px;
   }
 
   .summary-text p {
     font-size: 14px;
-    line-height: 1.6;
-    font-weight: 300;
+    line-height: 1.4;
+    font-weight: 600;
+    opacity: 0.8;
   }
 
-  .summary-score {
+  .summary-score-playful {
     margin-left: auto;
-    flex-shrink: 0;
     text-align: right;
   }
 
-  .summary-score .s-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 700;
+  .summary-score-playful .s-num {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 900;
     line-height: 1;
-    margin-bottom: 4px;
   }
 
-  .summary-score .s-stars {
+  .summary-score-playful .s-stars {
     font-size: 12px;
   }
 
   @media (max-width: 960px) {
-    .cat-content {
+    .cat-content-playful {
       grid-template-columns: 1fr;
+    }
+    .cpp-img-wrap {
+      height: 300px;
     }
   }
 </style>
@@ -264,8 +346,8 @@
     const section = document.querySelector('#ReviewCategory-{{ section.id }}');
     if (!section) return;
 
-    const tabs = section.querySelectorAll('.cat-tab');
-    const contents = section.querySelectorAll('.cat-content');
+    const tabs = section.querySelectorAll('.cat-tab-playful');
+    const contents = section.querySelectorAll('.cat-content-playful');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -275,7 +357,8 @@
         contents.forEach(c => c.classList.remove('active'));
 
         tab.classList.add('active');
-        section.querySelector('#' + target).classList.add('active');
+        const targetEl = section.querySelector('#' + target);
+        if (targetEl) targetEl.classList.add('active');
       });
     });
   });
@@ -285,26 +368,22 @@
 {
   "name": "Review Categories",
   "settings": [
-    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FAF7F2" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FFFFFF" },
     { "type": "text", "id": "tag", "label": "Tag", "default": "By Product" },
     { "type": "color", "id": "tag_color", "label": "Tag Color", "default": "#4A7C59" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Reviews Across Every Category" },
-    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A1A" },
-    { "type": "color", "id": "heading_bg", "label": "Accent Color", "default": "#1C3A2F" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A2E" },
+    { "type": "color", "id": "heading_bg", "label": "Active Tab BG", "default": "#D4832A" },
     { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Personalized for every pet, loved by every owner." },
     { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#4A4A4A" },
     { "type": "select", "id": "header_align", "label": "Header Alignment", "options": [
       { "value": "left", "label": "Left" },
       { "value": "center", "label": "Center" }
     ], "default": "center" },
-    { "type": "header", "content": "Styling" },
-    { "type": "color", "id": "card_bg", "label": "Card BG", "default": "#FFFFFF" },
-    { "type": "color", "id": "card_border", "label": "Card Border", "default": "rgba(74,124,89,0.15)" },
-    { "type": "color", "id": "mini_rev_bg", "label": "Mini Review BG", "default": "#FAF7F2" },
-    { "type": "color", "id": "icon_bg", "label": "Icon BG", "default": "#D4E8D0" },
-    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#E8A020" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 80 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 80 }
+    { "type": "color", "id": "icon_bg", "label": "Icon BG", "default": "#FFEBAD" },
+    { "type": "color", "id": "star_color", "label": "Star Color", "default": "#F2C07A" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 100 }
   ],
   "blocks": [
     {

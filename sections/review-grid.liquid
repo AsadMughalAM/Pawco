@@ -1,23 +1,23 @@
 {% comment %}
-  Section: Review Grid
-  A grid of customer stories and reviews with filtering capability.
+  Section: Review Grid (Playful Pet Master Style)
+  A grid of customer stories and reviews with bold typography and hard shadows.
 {% endcomment %}
 
 <div id="ReviewGrid-{{ section.id }}" class="review-grid-wrapper">
   <section class="section-inner">
     <div class="header-content" style="text-align: {{ section.settings.header_align }};">
-      <span class="section-tag" style="color: {{ section.settings.tag_color }};">{{ section.settings.tag }}</span>
+      <span class="section-tag" style="background-color: {{ section.settings.tag_color }}; color: #fff;">{{ section.settings.tag }}</span>
       <h2 class="section-title" style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
       <p class="section-sub" style="color: {{ section.settings.subtext_color }};">{{ section.settings.subtext }}</p>
     </div>
 
     {% if section.settings.show_filter %}
-      <div class="filter-wrap" style="background-color: {{ section.settings.filter_bg }};">
-        <span class="filter-label" style="color: {{ section.settings.subtext_color }}; opacity: 0.7;">{{ section.settings.filter_label }}</span>
+      <div class="filter-wrap">
+        <span class="filter-label" style="color: {{ section.settings.subtext_color }};">{{ section.settings.filter_label }}</span>
         <div class="filter-chips">
           {% for block in section.blocks %}
             {% if block.type == 'filter_chip' %}
-              <button class="chip {% if forloop.first %}active{% endif %}" style="--chip-border: {{ section.settings.card_border }}; --chip-active-bg: {{ section.settings.tag_color }};">
+              <button class="chip-playful {% if forloop.first %}active{% endif %}">
                 {{ block.settings.label }}
               </button>
             {% endif %}
@@ -29,39 +29,42 @@
     <div class="reviews-grid">
       {% for block in section.blocks %}
         {% if block.type == 'review' %}
-          <div class="review-card {% if block.settings.is_featured %}featured{% endif %}" 
-               style="background-color: {% if block.settings.is_featured %}{{ section.settings.featured_card_bg }}{% else %}{{ section.settings.card_bg }}{% endif %}; 
-                      border-color: {% if block.settings.is_featured %}{{ section.settings.featured_card_border }}{% else %}{{ section.settings.card_border }}{% endif %};" 
+          <div class="review-card-playful {% if block.settings.is_featured %}featured{% endif %}" 
+               style="background-color: {% if block.settings.is_featured %}{{ section.settings.featured_card_bg }}{% else %}{{ section.settings.card_bg }}{% endif %};" 
                {{ block.shopify_attributes }}>
             
             <div class="rc-top">
               <div class="rc-stars" style="color: {{ section.settings.star_color }};">{{ block.settings.stars }}</div>
               {% if block.settings.badge != blank %}
-                <span class="rc-badge" style="background-color: {{ block.settings.badge_bg }}; color: {{ block.settings.badge_color }};">
+                <span class="rc-badge-playful" style="background-color: {{ block.settings.badge_bg }}; color: {{ block.settings.badge_color }};">
                   {{ block.settings.badge }}
                 </span>
               {% endif %}
             </div>
 
             {% if block.settings.image != blank %}
-              <img class="rc-product-img" src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.author }}">
+              <div class="rc-img-container">
+                <img class="rc-product-img" src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.author }}">
+              </div>
             {% endif %}
 
-            <p class="rc-quote" style="color: {{ section.settings.quote_color }};">"{{ block.settings.quote }}"</p>
-            
-            <div class="rc-author" style="border-top-color: {{ section.settings.card_border }};">
-              {% if block.settings.avatar != blank %}
-                <img class="rc-avatar" src="{{ block.settings.avatar | image_url: width: 80 }}" alt="{{ block.settings.author }}">
-              {% else %}
-                <div class="rc-avatar-placeholder"></div>
-              {% endif %}
-              <div>
-                <div class="rc-author-name" style="color: {{ section.settings.heading_color }};">{{ block.settings.author }}</div>
-                <div class="rc-author-meta" style="color: {{ section.settings.subtext_color }}; opacity: 0.6;">{{ block.settings.meta }}</div>
+            <div class="rc-content">
+              <p class="rc-quote" style="color: {{ section.settings.quote_color }};">"{{ block.settings.quote }}"</p>
+              
+              <div class="rc-author">
+                {% if block.settings.avatar != blank %}
+                  <img class="rc-avatar" src="{{ block.settings.avatar | image_url: width: 80 }}" alt="{{ block.settings.author }}">
+                {% else %}
+                  <div class="rc-avatar-placeholder"></div>
+                {% endif %}
+                <div class="author-info">
+                  <div class="rc-author-name" style="color: {{ section.settings.heading_color }};">{{ block.settings.author }}</div>
+                  <div class="rc-author-meta" style="color: {{ section.settings.subtext_color }}; opacity: 0.6;">{{ block.settings.meta }}</div>
+                </div>
+                {% if block.settings.verified %}
+                  <div class="rc-verified-badge" title="Verified Purchase">✅</div>
+                {% endif %}
               </div>
-              {% if block.settings.verified %}
-                <span class="rc-verified" style="color: {{ section.settings.tag_color }};">Verified Purchase</span>
-              {% endif %}
             </div>
           </div>
         {% endif %}
@@ -72,198 +75,246 @@
 
 <style>
   #ReviewGrid-{{ section.id }} {
+    --dark: #1A1A2E;
+    --font-heading: 'Fredoka', 'Outfit', sans-serif;
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-  }
-
-  .section-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .header-content {
-    margin-bottom: 40px;
+    overflow: hidden;
   }
 
   .section-tag {
     display: inline-block;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-weight: 800;
     font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 2px solid var(--dark);
+    box-shadow: 3px 3px 0px var(--dark);
   }
 
   .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 15px;
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
   }
 
   .section-sub {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 300;
+    max-width: 650px;
+    margin-bottom: 50px;
+    font-weight: 500;
+    opacity: 0.8;
   }
 
   .filter-wrap {
-    padding: 15px 0;
     display: flex;
     align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    gap: 20px;
+    margin-bottom: 60px;
+    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 30px;
+    border: 3px solid var(--dark);
+    box-shadow: 8px 8px 0px var(--dark);
   }
 
   .filter-label {
-    font-size: 12px;
-    font-weight: 600;
+    font-weight: 900;
     text-transform: uppercase;
+    font-size: 14px;
     letter-spacing: 1px;
   }
 
   .filter-chips {
     display: flex;
-    gap: 8px;
+    gap: 12px;
     flex-wrap: wrap;
   }
 
-  .chip {
-    padding: 6px 16px;
+  .chip-playful {
+    padding: 10px 22px;
     border-radius: 50px;
-    border: 1.5px solid var(--chip-border);
-    font-size: 13px;
-    font-weight: 500;
-    background: transparent;
+    border: 2px solid var(--dark);
+    font-size: 14px;
+    font-weight: 800;
+    background: #fff;
     cursor: pointer;
     transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .chip.active {
-    background: var(--chip-active-bg);
+  .chip-playful.active {
+    background: {{ section.settings.tag_color }};
     color: white;
-    border-color: var(--chip-active-bg);
+    box-shadow: 4px 4px 0px var(--dark);
+    transform: translate(-2px, -2px);
   }
 
   .reviews-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 40px;
   }
 
-  .review-card {
-    border-radius: 18px;
-    border: 1px solid;
-    padding: 24px;
+  .review-card-playful {
+    border-radius: 35px;
+    border: 3px solid var(--dark);
+    padding: 30px;
     display: flex;
     flex-direction: column;
+    box-shadow: 12px 12px 0px var(--dark);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: #fff;
+    position: relative;
   }
 
-  .reviews-grid .review-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+  .review-card-playful:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 18px 18px 0px var(--dark);
   }
 
-  .review-card.featured {
+  .review-card-playful.featured {
     grid-column: span 2;
-  }
-
-  .rc-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 15px;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
   }
 
   .rc-stars {
-    font-size: 14px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
   }
 
-  .rc-badge {
-    font-size: 10px;
-    font-weight: 600;
+  .rc-badge-playful {
+    font-size: 11px;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 50px;
+    border: 2px solid var(--dark);
+    box-shadow: 2px 2px 0px var(--dark);
+  }
+
+  .rc-img-container {
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--dark);
+  }
+
+  .featured .rc-img-container {
+    width: 45%;
+    margin-bottom: 0;
   }
 
   .rc-product-img {
     width: 100%;
-    height: 180px;
+    height: 250px;
     object-fit: cover;
-    border-radius: 12px;
     display: block;
-    margin-bottom: 15px;
+    transition: transform 0.5s ease;
   }
 
-  .review-card.featured .rc-product-img {
-    height: 240px;
+  .review-card-playful:hover .rc-product-img {
+    transform: scale(1.05);
+  }
+
+  .rc-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .rc-quote {
-    font-size: 14px;
-    line-height: 1.7;
-    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 600;
+    margin-bottom: 25px;
     flex: 1;
-    margin-bottom: 18px;
+    color: #444;
+  }
+
+  .featured .rc-quote {
+    font-size: 20px;
   }
 
   .rc-author {
     display: flex;
     align-items: center;
-    gap: 12px;
-    border-top: 1px solid;
-    padding-top: 15px;
-    margin-top: auto;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 2px dashed rgba(0,0,0,0.1);
   }
 
-  .rc-avatar, .rc-avatar-placeholder {
-    width: 40px;
-    height: 40px;
+  .rc-avatar {
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+    border: 2px solid var(--dark);
     object-fit: cover;
-    background-color: #eee;
+  }
+
+  .rc-avatar-placeholder {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--dark);
+    background: #eee;
+  }
+
+  .author-info {
+    flex: 1;
   }
 
   .rc-author-name {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: var(--font-heading);
   }
 
   .rc-author-meta {
     font-size: 12px;
-    margin-top: 2px;
-  }
-
-  .rc-verified {
-    margin-left: auto;
-    font-size: 11px;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  
-  .rc-verified::before {
-    content: '✓';
-    font-size: 12px;
   }
 
-  @media (max-width: 960px) {
+  .rc-verified-badge {
+    font-size: 18px;
+  }
+
+  @media (max-width: 1024px) {
+    .reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .review-card-playful.featured {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 768px) {
     .reviews-grid {
       grid-template-columns: 1fr;
     }
-    .review-card.featured {
+    .review-card-playful.featured {
       grid-column: span 1;
+      flex-direction: column;
+    }
+    .featured .rc-img-container {
+      width: 100%;
+    }
+    .filter-wrap {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 </style>
@@ -272,12 +323,12 @@
 {
   "name": "Review Grid",
   "settings": [
-    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FFFFFF" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FAF7F2" },
     { "type": "header", "content": "Header" },
     { "type": "text", "id": "tag", "label": "Tag", "default": "Customer Reviews" },
-    { "type": "color", "id": "tag_color", "label": "Tag/Accent Color", "default": "#4A7C59" },
+    { "type": "color", "id": "tag_color", "label": "Tag Color", "default": "#4A7C59" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Stories From Our PawCo Family" },
-    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A1A" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#1A1A2E" },
     { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Every review is verified. Every story is real. Every tail wag is earned." },
     { "type": "color", "id": "subtext_color", "label": "Subtext Color", "default": "#4A4A4A" },
     { "type": "select", "id": "header_align", "label": "Header Alignment", "options": [
@@ -287,16 +338,13 @@
     { "type": "header", "content": "Filters" },
     { "type": "checkbox", "id": "show_filter", "label": "Show Filter Bar", "default": true },
     { "type": "text", "id": "filter_label", "label": "Filter Label", "default": "Filter by:" },
-    { "type": "color", "id": "filter_bg", "label": "Filter Bar BG", "default": "#FFFFFF" },
     { "type": "header", "content": "Card Styling" },
     { "type": "color", "id": "card_bg", "label": "Card BG", "default": "#FFFFFF" },
-    { "type": "color", "id": "card_border", "label": "Card Border", "default": "rgba(74,124,89,0.15)" },
-    { "type": "color", "id": "featured_card_bg", "label": "Featured Card BG", "default": "#FDF1DF" },
-    { "type": "color", "id": "featured_card_border", "label": "Featured Card Border", "default": "rgba(212,131,42,0.2)" },
-    { "type": "color", "id": "quote_color", "label": "Quote Color", "default": "#4A4A4A" },
+    { "type": "color", "id": "featured_card_bg", "label": "Featured Card BG", "default": "#FFEBAD" },
+    { "type": "color", "id": "quote_color", "label": "Quote Color", "default": "#1A1A2E" },
     { "type": "color", "id": "star_color", "label": "Star Color", "default": "#E8A020" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 80 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 80 }
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 100 }
   ],
   "blocks": [
     {
@@ -310,7 +358,7 @@
       "type": "review",
       "name": "Review Card",
       "settings": [
-        { "type": "checkbox", "id": "is_featured", "label": "Featured (Full Width)", "default": false },
+        { "type": "checkbox", "id": "is_featured", "label": "Featured (Wide Card)", "default": false },
         { "type": "text", "id": "stars", "label": "Stars Text", "default": "★★★★★" },
         { "type": "text", "id": "badge", "label": "Badge Text", "default": "Custom Portrait" },
         { "type": "color", "id": "badge_bg", "label": "Badge BG", "default": "#D4E8D0" },
@@ -328,8 +376,9 @@
     {
       "name": "Review Grid",
       "blocks": [
-        { "type": "filter_chip", "settings": { "label": "All Products" } },
-        { "type": "filter_chip", "settings": { "label": "Custom Portraits" } },
+        { "type": "filter_chip", "settings": { "label": "All Stories" } },
+        { "type": "filter_chip", "settings": { "label": "Portraits" } },
+        { "type": "filter_chip", "settings": { "label": "Blankets" } },
         { "type": "review", "settings": { "is_featured": true, "author": "Rachel B." } },
         { "type": "review", "settings": { "author": "Marcus W." } },
         { "type": "review", "settings": { "author": "Nicole H." } }
