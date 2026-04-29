@@ -82,6 +82,8 @@
     overflow: hidden;
     padding-top: 100px;
     padding-bottom: 80px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
   }
 
   .impact-dot {
@@ -310,7 +312,10 @@
     { "type": "text", "id": "score", "label": "Average Score", "default": "4.9" },
     { "type": "text", "id": "review_count_text", "label": "Review Count Text", "default": "Based on 14,280 reviews" },
     { "type": "color", "id": "star_color", "label": "Star/Fill Color", "default": "#E8A020" },
-    { "type": "color", "id": "bar_track_color", "label": "Bar Track Color", "default": "rgba(255,255,255,0.12)" }
+    { "type": "color", "id": "bar_track_color", "label": "Bar Track Color", "default": "rgba(255,255,255,0.12)" },
+    { "type": "header", "content": "Section Padding" },
+    { "type": "range", "id": "padding_left", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Left", "default": 40 },
+    { "type": "range", "id": "padding_right", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Right", "default": 40 }
   ],
   "blocks": [
     {

@@ -58,6 +58,8 @@
     background-color: {{ section.settings.bg_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
     position: relative;
     overflow: hidden;
   }
@@ -228,7 +230,10 @@
     { "type": "text", "id": "meta", "label": "Author Meta", "default": "Portland, OR · Purchased 3 months ago" },
     { "type": "text", "id": "product_tag", "label": "Product Tag", "default": "🎨 Custom Pet Portrait – Large Canvas" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Top", "default": 100 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 100 }
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Bottom", "default": 100 },
+    { "type": "header", "content": "Section Padding" },
+    { "type": "range", "id": "padding_left", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Left", "default": 40 },
+    { "type": "range", "id": "padding_right", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding Right", "default": 40 }
   ],
   "presets": [
     {
