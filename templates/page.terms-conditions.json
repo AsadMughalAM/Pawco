@@ -1,0 +1,817 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "text_8nAgpK": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Help & FAQ</h2>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_xDcBKh": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>We're here to help. Find answers to the most common questions below.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_8nAgpK",
+        "text_xDcBKh"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "section_FDbRce": {
+      "type": "section",
+      "blocks": {
+        "text_L4LKrP": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Terms & Conditions</h2>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "accordion_xVKeKb": {
+          "type": "accordion",
+          "name": "t:names.accordion",
+          "settings": {
+            "icon": "caret",
+            "dividers": true,
+            "type_preset": "h5",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "accordion_row_UJnFg6": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "1. Agreement to terms",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_Hbj8qX": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Welcome to our website. By accessing or using this site, you confirm that you have read, understood, and agree to be bound by these Terms & Conditions. If you do not agree, please do not use this website. Throughout these terms, \"we,\" \"us,\" and \"our\" refer to the company operating this website. \"You\" refers to any individual or entity accessing or purchasing from us.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_Hbj8qX"
+              ]
+            },
+            "accordion_row_miWccz": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "2. Placing an order",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_49LPJJ": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We strive to ensure that all product descriptions, images, and prices displayed on this website are accurate and up to date. Product colors and textures may appear differently depending on your screen settings, and we cannot guarantee pixel-perfect accuracy in all cases.</p><p>2.1 Order acceptance</p><p>Submitting an order constitutes an offer to purchase. All orders are subject to our acceptance. We reserve the right to decline any order for reasons including but not limited to:</p><ul><li>The item being out of stock at the time of processing</li><li>Failure to authorize payment</li><li>A detected pricing or product description error</li><li>System or fulfillment issues on our end</li></ul><p>2.2 Order confirmation</p><p>Once your order is received, you will be sent a confirmation email summarizing the items ordered and the payment method used. This email does not constitute final acceptance of your order.</p><p>2.3 External purchases & third-party links</p><p>Our website may contain links to third-party websites or apps. Any purchases made via those links are governed by the terms of that third party. We are not responsible for the practices, content, or policies of external platforms.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_49LPJJ"
+              ]
+            },
+            "accordion_row_4YhTHH": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "3. Shipping & tracking",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_anGqct": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>3.1 Processing times</p><p>Orders placed on business days (Monday–Friday, excluding public holidays) are typically dispatched the next business day. You will receive a shipping confirmation email containing your courier name and tracking number once your order has left our facility.</p><p>3.2 Tracking updates</p><p>Tracking information may take 24–48 hours to reflect on the courier's system. Occasional delays in tracking updates do not necessarily mean your parcel has been delayed. If your tracking shows delivery has been completed but you have not received your item, please contact the courier directly as this falls outside our control once the parcel leaves our hands.</p><p>3.3 Delivery address accuracy</p><p>It is your responsibility to ensure the delivery address entered at checkout is correct and complete. If you need to amend an address, please contact us as soon as possible after placing your order. While we will make every effort to accommodate changes, we cannot guarantee updates once an order has entered processing.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_anGqct"
+              ]
+            },
+            "accordion_row_rXQEnf": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "4. Cancellations",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_4jb67R": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>You may request an order cancellation by contacting our support team promptly after placing your order. Because we aim to process and dispatch orders quickly, we cannot guarantee a cancellation will be possible once processing has begun. Please review our Returns Policy if your order has already shipped.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_4jb67R"
+              ]
+            },
+            "accordion_row_Xk37Ta": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "5. Payment",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_CKaLEc": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>5.1 Currency<br/>All transactions are processed in US Dollars (USD) unless otherwise stated.</p><p>5.2 Accepted method<br/>We currently accept Visa, Mastercard, American Express, Visa Debit, and PayPal. We do not accept cash, cheques, or bank transfers at this time.</p><p>5.3 Security<br/>We use industry-standard SSL encryption to protect your personal and payment information during transmission. While we take every precaution, we cannot be held liable for unauthorized access resulting from circumstances outside our reasonable control.</p><p>5.4 Authorization<br/>By completing a purchase, you authorize us to verify your identity and validate your payment method through appropriate third-party channels as part of our standard fraud prevention processes.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_CKaLEc"
+              ]
+            },
+            "accordion_row_fg6k8n": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "6. Pricing policy",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_FLaB3w": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We make every effort to display accurate pricing at all times. In the event a pricing error is identified after you have placed an order, we will contact you to offer the choice of confirming the order at the correct price or cancelling it. If we are unable to reach you, the affected item will be treated as cancelled and a full refund issued.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_FLaB3w"
+              ]
+            },
+            "accordion_row_y4JkUJ": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "7. Product availability",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_p3mUyp": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>All products are sold subject to availability. If an item becomes unavailable after your order is placed but before it is accepted, we will notify you promptly and ensure you are not charged for that item. Prices may change at any time and we reserve the right to discontinue products without notice.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_p3mUyp"
+              ]
+            },
+            "accordion_row_TAAdWg": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "8. Your account",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_6gNbz9": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>If you create an account on our website, you are responsible for keeping your login credentials confidential and for all activity occurring under your account. Please notify us immediately if you suspect unauthorized access. We will not be liable for any loss or damage resulting from a failure to protect your account details.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_6gNbz9"
+              ]
+            },
+            "accordion_row_LkHpQE": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "9. Acceptable use",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_bbdKGD": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>You agree to use this website lawfully and respectfully. The following activities are strictly prohibited:</p><ul><li>Uploading or transmitting malicious software, viruses, or harmful code</li><li>Sending unsolicited commercial messages or spam to other users</li><li>Posting content that is abusive, hateful, threatening, or defamatory</li><li>Engaging in any activity that disrupts or degrades the experience of other users</li><li>Impersonating any person or entity, or misrepresenting your affiliation with any person or entity</li><li>Using proxy IPs or multiple accounts to manipulate our platform</li></ul><p>By submitting any content to us, you grant us a perpetual, royalty-free license to use, adapt, and publish that content across our platforms. We are not obligated to publish any user-submitted material. We reserve the right to remove content or restrict account access at our sole discretion.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_bbdKGD"
+              ]
+            },
+            "accordion_row_gH4fCm": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "10. Liability",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_nRUmGf": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>10.1 Limitation of liability<br/>To the fullest extent permitted by law, we are not liable for any direct, indirect, incidental, or consequential damages arising from your use of this website, product performance, or interaction with other users — even if we have been made aware of the possibility of such damages.</p><p>10.2 Third-party sites<br/>This website may link to external websites we do not operate. We accept no responsibility for the content, accuracy, or practices of those sites.</p><p>10.3 Indemnification<br/>You agree to indemnify and hold harmless our company, its officers, directors, and employees from any claims, losses, or expenses — including legal fees — arising from a breach of these terms by you.</p><p>10.4 Product disclaimer<br/>FDA DisclaimerStatements made on this website have not been evaluated by the Food and Drug Administration. Our products are not intended to diagnose, treat, cure, or prevent any disease or medical condition. If your pet has a health concern, please consult a licensed veterinarian before using any supplement or product.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_nRUmGf"
+              ]
+            },
+            "accordion_row_kPDN9F": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "11. SMS marketing program",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_XinjTV": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>By opting in to our SMS program, you agree to receive recurring automated marketing messages at the phone number you provided. Message and data rates may apply. Consent is not required to make a purchase.</p><p>Opting out<br/>To stop receiving messages, reply STOP, END, CANCEL, UNSUBSCRIBE, or QUIT to any message from us. You will receive a confirmation and no further messages will be sent. No other opt-out method is supported.</p><p>Number changes<br/>If you change or discontinue the phone number used to enroll, you must opt out before doing so. You accept responsibility for any costs arising from failure to notify us of such a change, including claims under the Telephone Consumer Protection Act (TCPA).</p><p>Support<br/>For help, text HELP to the number from which you received messages or email our support team. Age restriction: you must be at least 13 years of age to participate; users aged 13–17 require parental consent.</p><p>Dispute resolution<br/>Any disputes relating to this program shall be resolved through binding individual arbitration and not through class action proceedings. The arbitrator's decision is final and binding on both parties.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_XinjTV"
+              ]
+            },
+            "accordion_row_dJwT9b": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "12. Contact & disputes",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_h83BmY": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We are committed to resolving any concerns quickly and fairly. If you have a complaint or question, please reach out to our support team first — we will do our best to resolve the matter without escalation. These terms are governed by the laws of the United States. Any unresolved disputes will be subject to the exclusive jurisdiction of US courts.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_h83BmY"
+              ]
+            },
+            "accordion_row_njXdRY": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_row",
+              "settings": {
+                "heading": "13. General provisions",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_jjnWRQ": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<ul><li>We may update these terms at any time. Continued use of the website after changes are posted constitutes your acceptance of the revised terms.</li><li>If any provision of these terms is found unenforceable, the remaining provisions continue in full effect.</li><li>Our failure to enforce any right or provision shall not constitute a waiver of that right.</li><li>We will not be liable for delays or failures caused by circumstances beyond our reasonable control.</li><li>These terms, together with our Privacy Policy and Returns Policy, constitute the entire agreement between you and us.</li></ul>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_jjnWRQ"
+              ]
+            }
+          },
+          "block_order": [
+            "accordion_row_UJnFg6",
+            "accordion_row_miWccz",
+            "accordion_row_4YhTHH",
+            "accordion_row_rXQEnf",
+            "accordion_row_Xk37Ta",
+            "accordion_row_fg6k8n",
+            "accordion_row_y4JkUJ",
+            "accordion_row_TAAdWg",
+            "accordion_row_LkHpQE",
+            "accordion_row_gH4fCm",
+            "accordion_row_kPDN9F",
+            "accordion_row_dJwT9b",
+            "accordion_row_njXdRY"
+          ]
+        }
+      },
+      "block_order": [
+        "text_L4LKrP",
+        "accordion_xVKeKb"
+      ],
+      "name": "t:names.faq_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "section_4CFWzF": {
+      "type": "section",
+      "blocks": {
+        "text_gy8XbH": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Contact us</h2>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "contact_form_wWceH4": {
+          "type": "contact-form",
+          "settings": {
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 63,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "show_info": true,
+            "info_heading": "Get in Touch",
+            "info_text": "<p>We'd love to hear from you. Please fill out the form or reach out to us directly.</p>",
+            "email_label": "Email us",
+            "email_value": "info@example.com",
+            "phone_label": "Call us",
+            "phone_value": "+1 (555) 000-0000",
+            "address_label": "Visit us",
+            "address_value": "123 Street Name, City, Country",
+            "info_bg_color": "#f4f4f4",
+            "info_text_color": "#000000",
+            "facebook_url": "https://facebook.coom",
+            "instagram_url": "https://facebook.coom",
+            "youtube_url": "https://facebook.coom",
+            "tiktok_url": "https://facebook.coom",
+            "twitter_url": "https://facebook.coom",
+            "pinterest_url": "https://facebook.coom"
+          },
+          "blocks": {
+            "submit-button": {
+              "type": "contact-form-submit-button",
+              "static": true,
+              "settings": {
+                "label": "Submit",
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "text_gy8XbH",
+        "contact_form_wWceH4"
+      ],
+      "name": "t:names.contact_form",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-1",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 32,
+        "padding-block-end": 32
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_FDbRce",
+    "section_4CFWzF"
+  ]
+}
