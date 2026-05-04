@@ -1,0 +1,320 @@
+{%- style -%}
+  .terms-content-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    font-family: var(--font-body-family);
+  }
+  .terms-content__inner-{{ section.id }} {
+    max-width: {{ section.settings.content_width }}px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    background-color: {{ section.settings.inner_bg_color }};
+    border-radius: {{ section.settings.border_radius }}px;
+    box-shadow: {{ section.settings.shadow }};
+  }
+  .terms-content__block {
+    margin-bottom: 30px;
+  }
+  .terms-content__block--heading h2 {
+    font-size: 28px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #1a243e;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+  }
+  .terms-content__block:first-child.terms-content__block--heading h2 {
+    margin-top: 0;
+  }
+  .terms-content__block--rich_text {
+    line-height: 1.8;
+    font-size: 16px;
+    color: #444;
+  }
+  .terms-content__block--rich_text p {
+    margin-bottom: 20px;
+  }
+  .terms-content__block--rich_text ul, .terms-content__block--rich_text ol {
+    margin-bottom: 20px;
+    padding-left: 25px;
+  }
+  .terms-content__block--rich_text li {
+    margin-bottom: 10px;
+  }
+  @media screen and (max-width: 749px) {
+    .terms-content__inner-{{ section.id }} {
+      padding: 0 20px;
+    }
+    .terms-content__block--heading h2 {
+      font-size: 22px;
+    }
+  }
+
+  /* Contact Form Styles */
+  .terms-content__contact-form {
+    margin-top: 30px;
+  }
+  .contact__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  .field {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .field__input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .field__label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    color: #999;
+  }
+  .field__input:focus + .field__label,
+  .field__input:not(:placeholder-shown) + .field__label {
+    top: 0;
+    font-size: 12px;
+    background: #fff;
+    padding: 0 5px;
+    color: #1a243e;
+  }
+  .text-area.field__input {
+    height: 150px;
+    padding-top: 25px;
+  }
+  .text-area.field__input + .field__label {
+    top: 25px;
+  }
+  .contact__button .button {
+    background: #1a243e;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+  }
+  @media screen and (max-width: 749px) {
+    .contact__fields {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<div class="terms-content terms-content-{{ section.id }}">
+  <div class="terms-content__inner-{{ section.id }}">
+    {%- for block in section.blocks -%}
+      <div class="terms-content__block terms-content__block--{{ block.type }}" {{ block.shopify_attributes }}>
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <h2>{{ block.settings.heading }}</h2>
+          
+          {%- when 'rich_text' -%}
+            <div class="rte">
+              {{ block.settings.text }}
+            </div>
+
+          {%- when 'custom_html' -%}
+            {{ block.settings.html }}
+
+          {%- when 'contact_form' -%}
+            <div class="terms-content__contact-form">
+              {%- form 'contact', id: 'ContactForm' -%}
+                {%- if form.posted_successfully? -%}
+                  <p class="form-status form-status-list form__message" tabindex="-1" autofocus>Thanks for contacting us. We'll get back to you as soon as possible.</p>
+                {%- elsif form.errors -%}
+                  <div class="form__message">
+                    <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>Please adjust the following:</h2>
+                    <ul>
+                      {%- for field in form.errors -%}
+                        <li>
+                          <a href="#ContactForm-{{ field }}" class="link">
+                            {{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+
+                <div class="contact__fields">
+                  <div class="field">
+                    <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[Name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder=" ">
+                    <label class="field__label" for="ContactForm-name">Name</label>
+                  </div>
+                  <div class="field">
+                    <input
+                      type="email"
+                      id="ContactForm-email"
+                      name="contact[email]"
+                      spellcheck="false"
+                      autocapitalize="off"
+                      value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                      aria-required="true"
+                      {% if form.errors contains 'email' %}
+                        aria-invalid="true"
+                        aria-describedby="ContactForm-email-error"
+                      {% endif %}
+                      class="field__input"
+                      placeholder=" "
+                    >
+                    <label class="field__label" for="ContactForm-email">Email</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <textarea
+                    rows="10"
+                    id="ContactForm-body"
+                    class="text-area field__input"
+                    name="contact[body]"
+                    placeholder=" "
+                  >{{- form.body -}}</textarea>
+                  <label class="form__label field__label" for="ContactForm-body">Comment</label>
+                </div>
+                <div class="contact__button">
+                  <button type="submit" class="button">
+                    Send
+                  </button>
+                </div>
+              {%- endform -%}
+            </div>
+        {%- endcase -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Terms Content",
+  "settings": [
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content Max Width",
+      "min": 400,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 800
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#f4faff"
+    },
+    {
+      "type": "color",
+      "id": "inner_bg_color",
+      "label": "Content Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "text",
+      "id": "shadow",
+      "label": "Box Shadow",
+      "default": "0 10px 30px rgba(0,0,0,0.05)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Section Heading"
+        }
+      ]
+    },
+    {
+      "type": "rich_text",
+      "name": "Rich Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Add your terms and conditions text here.</p>"
+        }
+      ]
+    },
+    {
+      "type": "custom_html",
+      "name": "Custom HTML",
+      "settings": [
+        {
+          "type": "html",
+          "id": "html",
+          "label": "HTML"
+        }
+      ]
+    },
+    {
+      "type": "contact_form",
+      "name": "Contact Form",
+      "settings": []
+    }
+  ],
+  "presets": [
+    {
+      "name": "Terms Content",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "rich_text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
