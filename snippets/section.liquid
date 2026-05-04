@@ -38,17 +38,11 @@
     %}
   </div>
 
-  <div
-    class="border-style custom-section-content"
-    style="{% render 'border-override', settings: section.settings %}"
-  >
-    {% if section.settings.toggle_overlay %}
-      {% render 'overlay', settings: section.settings, layer: '0' %}
-    {% endif %}
-
+  <div class="custom-section-content">
     <div
       class="
         spacing-style
+        border-style
         layout-panel-flex
         layout-panel-flex--{{ section.settings.content_direction }}
         section-content-wrapper
@@ -57,12 +51,18 @@
       style="
         {% render 'layout-panel-style', settings: section.settings %}
         {% render 'spacing-style', settings: section.settings %}
+        {% render 'border-override', settings: section.settings %}
         max-width: {{ section.settings.content_max_width }}px;
         margin-left: auto;
         margin-right: auto;
+        position: relative;
       "
       data-testid="section-content"
     >
+      {% if section.settings.toggle_overlay %}
+        {% render 'overlay', settings: section.settings, layer: '0' %}
+      {% endif %}
+
       {{ children }}
     </div>
   </div>
