@@ -60,7 +60,7 @@
       data-testid="section-content"
     >
       {% if section.settings.toggle_overlay %}
-        {% render 'overlay', settings: section.settings, layer: '0' %}
+        {% render 'overlay', settings: section.settings, layer: '-1' %}
       {% endif %}
 
       {{ children }}
