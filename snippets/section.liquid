@@ -57,6 +57,9 @@
       style="
         {% render 'layout-panel-style', settings: section.settings %}
         {% render 'spacing-style', settings: section.settings %}
+        max-width: {{ section.settings.content_max_width }}px;
+        margin-left: auto;
+        margin-right: auto;
       "
       data-testid="section-content"
     >
