@@ -1,571 +1,155 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "blocks": {
-        "text_NDgknC": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h1>Privacy Policy</h1>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_CKFVQK": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>At Alpha Paw, we are committed to protecting your privacy. This policy explains what information we collect, how we use it, and your choices regarding your data.<br/></p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_NDgknC",
-        "text_CKFVQK"
-      ],
-      "disabled": true,
+    "hero": {
+      "type": "privacy-hero",
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "color_scheme": "",
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "title": "Privacy Policy",
+        "bg_color": "#1a243e",
+        "text_color": "#ffffff",
+        "border_color": "#e0e0e0",
+        "content_width": 900,
+        "border_radius": 20,
+        "font_size": 40,
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
-    "section_UTQnNE": {
-      "type": "section",
+    "content": {
+      "type": "privacy-content",
       "blocks": {
-        "text_6E8qw3": {
-          "type": "text",
-          "name": "t:names.heading",
+        "intro": {
+          "type": "rich_text",
           "settings": {
-            "text": "<h2>Privacy&Policy</h2>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "h3",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "text": "<p>At Alpha Paw, we are committed to protecting your privacy. This policy explains what information we collect, how we use it, and your choices regarding your data.</p>"
+          }
         },
-        "accordion_k9GE9W": {
-          "type": "accordion",
-          "name": "t:names.accordion",
+        "heading_1": {
+          "type": "heading",
           "settings": {
-            "icon": "caret",
-            "dividers": true,
-            "type_preset": "h5",
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "accordion_row_jJbeqt": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "Information We Collect",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_Lf7JTP": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>We collect information you provide directly — such as your name, email address, shipping address, and payment details — when you make a purchase, create an account, or contact us. We may also collect pet-related details such as your pet's name, breed, and health concerns. Additionally, we automatically collect certain technical data when you visit our site, including your IP address, browser type, device information, and browsing activity, using technologies such as cookies and web beacons.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_Lf7JTP"
-              ]
-            },
-            "accordion_row_AgrReX": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "How We Use Your Information",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_eb97iE": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>We use your information to process orders, manage your account, communicate with you about your purchases, personalize your experience, and improve our website. We may also use it to send you promotional offers and marketing communications, which you ca opt out of at any time</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_eb97iE"
-              ]
-            },
-            "accordion_row_39yzKN": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Information We Share",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_QkYXpR": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>We do not sell your personal information. We may share data with trusted service providers who help us operate our business — such as payment processors and shipping partners — as well as advertising partners for targeted marketing purposes. Any email address shared for advertising is securely hashed before transfer. We may also disclose information when required by law.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_QkYXpR"
-              ]
-            },
-            "accordion_row_VtJwch": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Your Choices & Rights",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_UVibRG": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>You can opt out of marketing emails at any time by following the unsubscribe link in any email or contacting us a support@alphapaw.com. California residents may request details about data shared with third parties for direct marketing. European residents have the right to access, correct, or delete their personal data. To request data deletion or correction, email support@alphapaw.com.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_UVibRG"
-              ]
-            },
-            "accordion_row_FcnyAP": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Cookies & Advertising",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_yjbCce": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>We use cookies to improve site functionality and serve relevant ads. You can manage cookie preferences through your browser settings. To opt out of targeted advertising, visit the settings pages for Facebook, Google, or Bing, or use the Digital Advertising Alliance opt-out portal at optout.aboutads.info.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_yjbCce"
-              ]
-            },
-            "accordion_row_m4DRTg": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "Children's Privacy",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_kzt8eN": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Our site is not intended for children under 13. We do not knowingly collect personal information from anyone under 13.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_kzt8eN"
-              ]
-            },
-            "accordion_row_RA8z79": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_row",
-              "settings": {
-                "heading": "When will I get my order?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_wVYQCY": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_wVYQCY"
-              ]
-            }
-          },
-          "block_order": [
-            "accordion_row_jJbeqt",
-            "accordion_row_AgrReX",
-            "accordion_row_39yzKN",
-            "accordion_row_VtJwch",
-            "accordion_row_FcnyAP",
-            "accordion_row_m4DRTg",
-            "accordion_row_RA8z79"
-          ]
+            "heading": "Information We Collect"
+          }
+        },
+        "text_1": {
+          "type": "rich_text",
+          "settings": {
+            "text": "<p>We collect information you provide directly — such as your name, email address, shipping address, and payment details — when you make a purchase, create an account, or contact us. We may also collect pet-related details such as your pet's name, breed, and health concerns. Additionally, we automatically collect certain technical data when you visit our site, including your IP address, browser type, device information, and browsing activity, using technologies such as cookies and web beacons.</p>"
+          }
+        },
+        "heading_2": {
+          "type": "heading",
+          "settings": {
+            "heading": "How We Use Your Information"
+          }
+        },
+        "text_2": {
+          "type": "rich_text",
+          "settings": {
+            "text": "<p>We use your information to process orders, manage your account, communicate with you about your purchases, personalize your experience, and improve our website. We may also use it to send you promotional offers and marketing communications, which you ca opt out of at any time</p>"
+          }
+        },
+        "heading_3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Information We Share"
+          }
+        },
+        "text_3": {
+          "type": "rich_text",
+          "settings": {
+            "text": "<p>We do not sell your personal information. We may share data with trusted service providers who help us operate our business — such as payment processors and shipping partners — as well as advertising partners for targeted marketing purposes. Any email address shared for advertising is securely hashed before transfer. We may also disclose information when required by law.</p>"
+          }
+        },
+        "heading_4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Choices & Rights"
+          }
+        },
+        "text_4": {
+          "type": "rich_text",
+          "settings": {
+            "text": "<p>You can opt out of marketing emails at any time by following the unsubscribe link in any email or contacting us a support@alphapaw.com. California residents may request details about data shared with third parties for direct marketing. European residents have the right to access, correct, or delete their personal data. To request data deletion or correction, email support@alphapaw.com.</p>"
+          }
+        },
+        "heading_5": {
+          "type": "heading",
+          "settings": {
+            "heading": "Cookies & Advertising"
+          }
+        },
+        "text_5": {
+          "type": "rich_text",
+          "settings": {
+            "text": "<p>We use cookies to improve site functionality and serve relevant ads. You can manage cookie preferences through your browser settings. To opt out of targeted advertising, visit the settings pages for Facebook, Google, or Bing, or use the Digital Advertising Alliance opt-out portal at optout.aboutads.info.</p>"
+          }
+        },
+        "heading_6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Children's Privacy"
+          }
+        },
+        "text_6": {
+          "type": "rich_text",
+          "settings": {
+            "text": "<p>Our site is not intended for children under 13. We do not knowingly collect personal information from anyone under 13.</p>"
+          }
+        },
+        "heading_7": {
+          "type": "heading",
+          "settings": {
+            "heading": "When will I get my order?"
+          }
+        },
+        "text_7": {
+          "type": "rich_text",
+          "settings": {
+            "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>"
+          }
+        },
+        "heading_contact": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact Us"
+          }
+        },
+        "contact_form": {
+          "type": "contact_form",
+          "settings": {}
         }
       },
       "block_order": [
-        "text_6E8qw3",
-        "accordion_k9GE9W"
+        "intro",
+        "heading_1",
+        "text_1",
+        "heading_2",
+        "text_2",
+        "heading_3",
+        "text_3",
+        "heading_4",
+        "text_4",
+        "heading_5",
+        "text_5",
+        "heading_6",
+        "text_6",
+        "heading_7",
+        "text_7",
+        "heading_contact",
+        "contact_form"
       ],
-      "name": "t:names.faq_section",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
+        "content_width": 900,
+        "bg_color": "#ffffff",
+        "inner_bg_color": "#faf4f4",
         "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
-    "section_MM4HEr": {
-      "type": "section",
-      "blocks": {
-        "text_DPetE4": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Contact us</h2>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "contact_form_GyDqnJ": {
-          "type": "contact-form",
-          "settings": {
-            "width": "custom",
-            "custom_width": 100,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "show_info": true,
-            "info_heading": "Get in Touch",
-            "info_text": "<p>We'd love to hear from you. Please fill out the form or reach out to us directly.</p>",
-            "email_label": "Email us",
-            "email_value": "info@example.com",
-            "phone_label": "Call us",
-            "phone_value": "+1 (555) 000-0000",
-            "address_label": "Visit us",
-            "address_value": "123 Street Name, City, Country",
-            "info_bg_color": "#f4f4f4",
-            "info_text_color": "#000000",
-            "facebook_url": "https://facebook.coom",
-            "instagram_url": "https://facebook.coom",
-            "youtube_url": "https://facebook.coom",
-            "tiktok_url": "https://facebook.coom",
-            "twitter_url": "https://facebook.coom",
-            "pinterest_url": "https://facebook.coom"
-          },
-          "blocks": {
-            "submit-button": {
-              "type": "contact-form-submit-button",
-              "static": true,
-              "settings": {
-                "label": "Submit",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "block_order": [
-        "text_DPetE4",
-        "contact_form_GyDqnJ"
-      ],
-      "name": "t:names.contact_form",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 32,
-        "padding-block-end": 32
+        "shadow": "0 10px 30px rgba(0,0,0,0.05)",
+        "padding_top": 0,
+        "padding_bottom": 50
       }
     }
   },
   "order": [
-    "main",
-    "section_UTQnNE",
-    "section_MM4HEr"
+    "hero",
+    "content"
   ]
 }
