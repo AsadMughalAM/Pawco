@@ -218,6 +218,37 @@
         "padding-block-end": 31
       }
     },
+    "home_welcome_impact_dynamic": {
+      "type": "home-welcome-impact",
+      "blocks": {
+        "trust_1": {
+          "type": "trust_item",
+          "settings": {
+            "title": "FAST SHIPPING",
+            "text": "Most orders ship within 48 hours, Monday thru Friday."
+          }
+        },
+        "trust_2": {
+          "type": "trust_item",
+          "settings": {
+            "title": "HAPPINESS GUARANTEE",
+            "text": "If you're not 100% satisfied, we proudly offer returns within 30 days."
+          }
+        },
+        "trust_3": {
+          "type": "trust_item",
+          "settings": {
+            "title": "OUTSTANDING SERVICE",
+            "text": "Email or chat with our devoted customer service reps anytime."
+          }
+        }
+      },
+      "block_order": [
+        "trust_1",
+        "trust_2",
+        "trust_3"
+      ]
+    },
     "product_list_EDUBdR": {
       "type": "product-list",
       "blocks": {
@@ -755,6 +786,7 @@
   },
   "order": [
     "hero_iLBwPd",
+    "home_welcome_impact_dynamic",
     "product_list_EDUBdR",
     "media_with_content_LfPdEJ",
     "collection_list_xpBxCm"
