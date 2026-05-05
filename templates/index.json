@@ -509,7 +509,6 @@
           "settings": {
             "media_type": "video",
             "link": "",
-            "video": "shopify://files/videos/7683651-uhd_3840_2160_25fps_1509b932-ef4a-4201-8a03-100abad9615b.mp4",
             "video_loop": true,
             "video_autoplay": true,
             "image_position": "cover",
@@ -530,7 +529,6 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/pexels-mathew-coulton-2358287-4445456.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -797,6 +795,98 @@
         "padding-block-end": 64
       }
     },
+    "testimonial_slider_custom": {
+      "type": "testimonial-slider",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "My dog looks like a king! The detail is incredible.",
+            "author": "Sarah J.",
+            "meta": "Verified Buyer • New York, NY",
+            "verified": true,
+            "product_name": ""
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Best gift I ever bought. My wife was in tears!",
+            "author": "Mike R.",
+            "meta": "Verified Buyer • New York, NY",
+            "verified": true,
+            "product_name": ""
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Fast shipping and amazing customer support. 10/10!",
+            "author": "Emma L.",
+            "meta": "Verified Buyer • New York, NY",
+            "verified": true,
+            "product_name": ""
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The canvas quality is much better than other sites I've tried. Buddy looks like a king!",
+            "author": "David W.",
+            "meta": "Verified Buyer • New York, NY",
+            "verified": true,
+            "product_name": ""
+          }
+        },
+        "testimonial_5": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've ordered three portraits now and each one is perfect. Highly recommend for any pet parent.",
+            "author": "Linda M.",
+            "meta": "Verified Buyer • New York, NY",
+            "verified": true,
+            "product_name": ""
+          }
+        },
+        "testimonial_6": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The customer service was so helpful when I had a question about the photo quality. Great experience!",
+            "author": "Chris P.",
+            "meta": "Verified Buyer • New York, NY",
+            "verified": true,
+            "product_name": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4",
+        "testimonial_5",
+        "testimonial_6"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "tag": "Customer Stories",
+        "tag_color": "#1a243e",
+        "heading": "Loved by Pets, Trusted by Paw-rents",
+        "heading_color": "#1a243e",
+        "subtext": "See why thousands of pet owners choose Pawco for their custom pet memories.",
+        "subtext_color": "#1a243e",
+        "header_align": "center",
+        "cards_to_show": 4,
+        "gap": 25,
+        "card_bg": "#ffffff",
+        "quote_color": "#1a243e",
+        "star_color": "#ffb800",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_left": 20,
+        "padding_right": 20
+      }
+    },
     "section_tKaB6j": {
       "type": "section",
       "blocks": {
@@ -1035,62 +1125,18 @@
         "padding-inline-end": 100
       }
     },
-    "testimonial_slider_custom": {
-      "type": "testimonial-slider",
-      "blocks": {
-        "testimonial_1": {
-          "type": "testimonial",
-          "settings": {
-            "author": "Sarah J.",
-            "quote": "My dog looks like a king! The detail is incredible."
-          }
-        },
-        "testimonial_2": {
-          "type": "testimonial",
-          "settings": {
-            "author": "Mike R.",
-            "quote": "Best gift I ever bought. My wife was in tears!"
-          }
-        },
-        "testimonial_3": {
-          "type": "testimonial",
-          "settings": {
-            "author": "Emma L.",
-            "quote": "Fast shipping and amazing customer support. 10/10!"
-          }
-        },
-        "testimonial_4": {
-          "type": "testimonial",
-          "settings": {
-            "author": "David W.",
-            "quote": "The canvas quality is much better than other sites I've tried. Buddy looks like a king!"
-          }
-        },
-        "testimonial_5": {
-          "type": "testimonial",
-          "settings": {
-            "author": "Linda M.",
-            "quote": "I've ordered three portraits now and each one is perfect. Highly recommend for any pet parent."
-          }
-        },
-        "testimonial_6": {
-          "type": "testimonial",
-          "settings": {
-            "author": "Chris P.",
-            "quote": "The customer service was so helpful when I had a question about the photo quality. Great experience!"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_1",
-        "testimonial_2",
-        "testimonial_3",
-        "testimonial_4",
-        "testimonial_5",
-        "testimonial_6"
-      ],
+    "divider_x8xjcn": {
+      "type": "divider",
+      "name": "t:names.divider_section",
       "settings": {
-        "heading": "Loved by Pets, Trusted by Paw-rents"
+        "color_scheme": "",
+        "section_width": "full-width",
+        "thickness": 0.5,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 100,
+        "padding-block-end": 16
       }
     }
   },
@@ -1101,6 +1147,7 @@
     "media_with_content_LfPdEJ",
     "collection_list_xpBxCm",
     "testimonial_slider_custom",
-    "section_tKaB6j"
+    "section_tKaB6j",
+    "divider_x8xjcn"
   ]
 }
