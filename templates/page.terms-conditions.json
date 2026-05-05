@@ -288,12 +288,12 @@
             "address_value": "123 Street Name, City, Country",
             "info_bg_color": "#f4f4f4",
             "info_text_color": "#000000",
-            "facebook_url": "",
-            "instagram_url": "",
-            "youtube_url": "",
-            "tiktok_url": "",
-            "twitter_url": "",
-            "pinterest_url": ""
+            "facebook_url": "https://facebook.com",
+            "instagram_url": "https://facebook.com",
+            "youtube_url": "https://facebook.com",
+            "tiktok_url": "https://facebook.com",
+            "twitter_url": "https://facebook.com",
+            "pinterest_url": "https://facebook.com"
           },
           "blocks": {
             "submit-button": {
