@@ -1034,6 +1034,64 @@
         "padding-inline-start": 48,
         "padding-inline-end": 100
       }
+    },
+    "testimonial_slider_custom": {
+      "type": "testimonial-slider",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Sarah J.",
+            "quote": "My dog looks like a king! The detail is incredible."
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Mike R.",
+            "quote": "Best gift I ever bought. My wife was in tears!"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Emma L.",
+            "quote": "Fast shipping and amazing customer support. 10/10!"
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "settings": {
+            "author": "David W.",
+            "quote": "The canvas quality is much better than other sites I've tried. Buddy looks like a king!"
+          }
+        },
+        "testimonial_5": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Linda M.",
+            "quote": "I've ordered three portraits now and each one is perfect. Highly recommend for any pet parent."
+          }
+        },
+        "testimonial_6": {
+          "type": "testimonial",
+          "settings": {
+            "author": "Chris P.",
+            "quote": "The customer service was so helpful when I had a question about the photo quality. Great experience!"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4",
+        "testimonial_5",
+        "testimonial_6"
+      ],
+      "settings": {
+        "heading": "Loved by Pets, Trusted by Paw-rents"
+      }
     }
   },
   "order": [
@@ -1042,6 +1100,7 @@
     "home_welcome_impact_dynamic",
     "media_with_content_LfPdEJ",
     "collection_list_xpBxCm",
+    "testimonial_slider_custom",
     "section_tKaB6j"
   ]
 }
